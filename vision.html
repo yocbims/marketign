@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arca Continental - Nuestra Vision</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #mision-pagina {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .mision-container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .mision-title {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .mision-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #FFD700;
+            padding: 2.5rem;
+            margin: 2.5rem auto;
+            border-radius: 0 15px 15px 0;
+            text-align: left;
+        }
+
+        .mision-text {
+            color: #ffffff;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .mision-text strong {
+            color: #FFD700;
+        }
+
+        .mision-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-title {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .value-description {
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* CONTENEDOR DEL LOGO CON BRILLO SUAVE */
+        .logo-container {
+            margin: 0 auto 3rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .main-logo {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 2px rgba(255, 215, 0, 0.3); /* Borde dorado suave */
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); /* Brillo suave */
+        }
+
+        .main-logo:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6)); /* Más brillo al hover */
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 2px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-mision {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            margin-top: 2rem;
+        }
+
+        .btn-mision:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        /* SECCIÓN DE METAS CON ICONOS */
+        .metas-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .metas-title {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .metas-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .meta-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .meta-icon {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .meta-text {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* CONTENEDOR DE BOTONES MEJORADO */
+        .botones-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 15px;
+        }
+
+        .btn-navegacion {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-navegacion:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .mision-container {
+                padding: 2rem;
+            }
+            .mision-title {
+                font-size: 2.5rem;
+            }
+            .mision-content {
+                padding: 1.5rem;
+            }
+            .logo-container {
+                max-width: 300px;
+            }
+            .mision-values {
+                grid-template-columns: 1fr;
+            }
+            .metas-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .botones-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .btn-navegacion {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .metas-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="mision-pagina">
+        <div class="mision-container" data-aos="fade-up">
+            
+          <!-- LOGO CON BRILLO INTENSO -->
+            <div class="logo-container" data-aos="zoom-in" data-aos-delay="200">
+                <img src="imagenes/logo.arcacontinental-removebg-preview.png" alt="Logo de Arca Continental" class="main-logo">
+            </div>
+            
+            <h2 class="mision-title" data-aos="fade-up" data-aos-delay="400">NUESTRA VISION</h2>
+            
+            <div class="mision-content" data-aos="fade-right" data-aos-delay="600">
+                <p class="mision-text">En <strong>Arca Continental</strong>, nuestra misión es satisfacer y deleitar a nuestros consumidores con productos de bebidas de la más alta calidad, generando valor económico, social y ambiental de manera sostenible para todos nuestros grupos de interés.</p>
+                
+                <p class="mision-text">Trabajamos cada día para ser la <strong>mejor empresa de bebidas</strong> en cada uno de los territorios donde operamos, impulsando el desarrollo de nuestras comunidades y promoviendo un estilo de vida activo y saludable.</p>
+                
+                <p class="mision-text">Nos comprometemos a operar con <strong>integridad, excelencia y pasión</strong>, construyendo relaciones duraderas con nuestros clientes, consumidores, colaboradores y socios comerciales.</p>
+            </div>
+            
+            <div class="mision-values" data-aos="fade-up" data-aos-delay="800">
+               
+            </div>
+            
+            <!-- SECCIÓN DE METAS CON ICONOS -->
+            <div class="metas-section" data-aos="zoom-in" data-aos-delay="1000">
+                <h3 class="metas-title">Nuestras Metas Estratégicas</h3>
+                <div class="metas-container">
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <p class="meta-text">Excelencia Operativa</p>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <p class="meta-text">Crecimiento Sostenible</p>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <p class="meta-text">Relaciones Duraderas</p>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <p class="meta-text">Expansión Regional</p>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <p class="meta-text">Sostenibilidad Ambiental</p>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <p class="meta-text">Bienestar Comunitario</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CONTENEDOR DE BOTONES MEJORADO -->
+            <div class="botones-container" data-aos="fade-up" data-aos-delay="1200">
+                <a href="index.html" class="btn-navegacion">
+                    <i class="fas fa-arrow-left"></i> Volver al Inicio
+                </a>
+                <a href="valores.institucionales.html" class="btn-navegacion">
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

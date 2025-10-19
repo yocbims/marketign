@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arca Continental - Valores Institucionales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #valores-pagina {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .valores-container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .valores-title {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .valores-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #FFD700;
+            padding: 2.5rem;
+            margin: 2.5rem auto;
+            border-radius: 0 15px 15px 0;
+            text-align: left;
+        }
+
+        .valores-text {
+            color: #ffffff;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .valores-text strong {
+            color: #FFD700;
+        }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .valor-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .valor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .valor-icon {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+        }
+
+        .valor-title {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .valor-description {
+            color: #ffffff;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        /* CONTENEDOR DEL LOGO CON BRILLO SUAVE */
+        .logo-container {
+            margin: 0 auto 3rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .main-logo {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 2px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+        }
+
+        .main-logo:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 2px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-valores {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            margin-top: 2rem;
+        }
+
+        .btn-valores:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        /* SECCIÓN DE OBJETIVOS CON ICONOS */
+        .objetivos-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .objetivos-title {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .objetivos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .objetivo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            height: 100%;
+        }
+
+        .objetivo-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .objetivo-icon {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .objetivo-text {
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .botones-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .valores-container {
+                padding: 2rem;
+            }
+            .valores-title {
+                font-size: 2.5rem;
+            }
+            .valores-content {
+                padding: 1.5rem;
+            }
+            .logo-container {
+                max-width: 300px;
+            }
+            .valores-grid {
+                grid-template-columns: 1fr;
+            }
+            .objetivos-container {
+                grid-template-columns: 1fr;
+            }
+            .botones-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .objetivos-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="valores-pagina">
+        <div class="valores-container" data-aos="fade-up">
+            
+            <!-- LOGO CON BRILLO INTENSO -->
+            <div class="logo-container" data-aos="zoom-in" data-aos-delay="200">
+                <img src="imagenes/logo.arcacontinental-removebg-preview.png" alt="Logo de Arca Continental" class="main-logo">
+            </div>
+            
+            <h2 class="valores-title" data-aos="fade-up" data-aos-delay="400">VALORES INSTITUCIONALES</h2>
+            
+            <div class="valores-content" data-aos="fade-right" data-aos-delay="600">
+                <p class="valores-text">En <strong>Arca Continental</strong>, nuestros valores institucionales son el fundamento de nuestra cultura organizacional y guían cada una de nuestras acciones y decisiones. Representan el compromiso que tenemos con nuestros clientes, colaboradores y la sociedad en general.</p>
+                
+                <p class="valores-text">Estos principios nos permiten mantener nuestra posición como líder en la industria de bebidas y seguir creciendo de manera sostenible y responsable.</p>
+            </div>
+            
+            <!-- GRID DE VALORES INSTITUCIONALES -->
+            <div class="valores-grid" data-aos="fade-up" data-aos-delay="800">
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="valor-title">CALIDAD DE PRODUCTO</h3>
+                    <p class="valor-description">Ofrecemos productos de calidad logrando la excelencia en toda la cadena de valor y promoviendo el mejoramiento continuo en cada proceso.</p>
+                </div>
+                
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="valor-title">ORIENTACIÓN AL CLIENTE</h3>
+                    <p class="valor-description">Nos preocupamos por satisfacer las necesidades de nuestros clientes, cumpliendo con sus pedidos y expectativas del producto.</p>
+                </div>
+                
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="valor-title">INTEGRIDAD</h3>
+                    <p class="valor-description">Cada miembro de la empresa trabaja con valores y ética, reflejándose ante los clientes y manteniendo nuestra marca prestigiosa.</p>
+                </div>
+                
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="valor-title">INNOVACIÓN</h3>
+                    <p class="valor-description">Estamos en constante búsqueda de mejora para nuestros productos y mejores oportunidades de crecimiento de la marca.</p>
+                </div>
+                
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-people-group"></i>
+                    </div>
+                    <h3 class="valor-title">TRABAJO EN EQUIPO</h3>
+                    <p class="valor-description">Nuestros trabajadores realizan su labor de manera eficiente, aportando valor en cada actividad para cumplir los objetivos propuestos.</p>
+                </div>
+                
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="valor-title">EXCELENCIA</h3>
+                    <p class="valor-description">Comprometidos a ofrecer productos innovadores que superen las expectativas de nuestros clientes y satisfagan sus necesidades.</p>
+                </div>
+                
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="valor-title">RESULTADOS</h3>
+                    <p class="valor-description">Nos orientamos al cumplimiento de nuestros objetivos, de la manera más eficaz y eficiente posible.</p>
+                </div>
+                
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="valor-title">ORIENTACIÓN AL SERVICIO</h3>
+                    <p class="valor-description">Atendemos a nuestros clientes internos y externos anticipándonos a sus necesidades y superando sus expectativas.</p>
+                </div>
+            </div>
+            
+            <!-- SECCIÓN DE OBJETIVOS ORGANIZACIONALES -->
+            <div class="objetivos-section" data-aos="zoom-in" data-aos-delay="1000">
+                <h3 class="objetivos-title">Objetivos Organizacionales</h3>
+                <div class="objetivos-container">
+                    <div class="objetivo-item">
+                        <div class="objetivo-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <p class="objetivo-text">Tener tecnología más avanzada para facilitar la compra de sus productos a un mercado más extenso</p>
+                    </div>
+                    <div class="objetivo-item">
+                        <div class="objetivo-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <p class="objetivo-text">Hacer que los envases de sus productos sean más eco amigables</p>
+                    </div>
+                    <div class="objetivo-item">
+                        <div class="objetivo-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <p class="objetivo-text">Obtener una mayor productividad en la elaboración, comercialización y diseño de bebidas</p>
+                    </div>
+                    <div class="objetivo-item">
+                        <div class="objetivo-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <p class="objetivo-text">Mantener una utilidad estable</p>
+                    </div>
+                    <div class="objetivo-item">
+                        <div class="objetivo-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <p class="objetivo-text">Generar promociones de procesos innovadores para la comercialización y diseño de bebidas de alta calidad</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- BOTONES DE NAVEGACIÓN -->
+            <div class="botones-container" data-aos="fade-up" data-aos-delay="1200">
+                <a href="index.html" class="btn-valores">
+                    <i class="fas fa-arrow-left"></i> Volver al Inicio
+                </a>
+                <a href="historia.html" class="btn-valores">
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arca Continental - Análisis FODA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #foda-pagina {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .foda-container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .foda-title {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* CUADRÍCULA FODA */
+        .foda-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .foda-quadrant {
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* FORTALEZAS - VERDE */
+        .fortalezas {
+            background: rgba(76, 175, 80, 0.15);
+            border-left: 5px solid #4CAF50;
+        }
+
+        /* OPORTUNIDADES - AZUL */
+        .oportunidades {
+            background: rgba(33, 150, 243, 0.15);
+            border-left: 5px solid #2196F3;
+        }
+
+        /* DEBILIDADES - NARANJA */
+        .debilidades {
+            background: rgba(255, 152, 0, 0.15);
+            border-left: 5px solid #FF9800;
+        }
+
+        /* AMENAZAS - ROJO */
+        .amenazas {
+            background: rgba(244, 67, 54, 0.15);
+            border-left: 5px solid #F44336;
+        }
+
+        .quadrant-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .fortalezas .quadrant-title { color: #4CAF50; }
+        .oportunidades .quadrant-title { color: #2196F3; }
+        .debilidades .quadrant-title { color: #FF9800; }
+        .amenazas .quadrant-title { color: #F44336; }
+
+        .foda-list {
+            list-style: none;
+        }
+
+        .foda-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .foda-item:last-child {
+            border-bottom: none;
+        }
+
+        .foda-item i {
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .fortalezas .foda-item i { color: #4CAF50; }
+        .oportunidades .foda-item i { color: #2196F3; }
+        .debilidades .foda-item i { color: #FF9800; }
+        .amenazas .foda-item i { color: #F44336; }
+
+        .item-text {
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        /* LOGO */
+        .logo-container {
+            margin: 0 auto 3rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .main-logo {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 4px rgba(255, 215, 0, 0.8);
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8))
+                    drop-shadow(0 0 40px rgba(255, 107, 0, 0.4));
+        }
+
+        .main-logo:hover {
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1))
+                    drop-shadow(0 0 50px rgba(255, 107, 0, 0.6));
+        }
+
+        /* CONTENEDOR DE BOTONES */
+        .botones-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-foda {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            min-width: 200px;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-foda:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6),
+                        0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .foda-container {
+                padding: 2rem;
+            }
+            .foda-title {
+                font-size: 2.5rem;
+            }
+            .foda-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .logo-container {
+                max-width: 300px;
+            }
+            .botones-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .btn-foda {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="foda-pagina">
+        <div class="foda-container" data-aos="fade-up">
+            
+            <!-- LOGO -->
+            <div class="logo-container" data-aos="zoom-in" data-aos-delay="200">
+                <img src="imagenes/producot_1.webp" alt="Logo de Arca Continental" class="main-logo">
+            </div>
+            
+            <h1 class="foda-title" data-aos="fade-up" data-aos-delay="400">ANÁLISIS FODA</h1>
+            
+            <!-- CUADRÍCULA FODA -->
+            <div class="foda-grid">
+                <!-- FORTALEZAS -->
+                <div class="foda-quadrant fortalezas" data-aos="fade-right" data-aos-delay="600">
+                    <h2 class="quadrant-title">
+                        <i class="fas fa-shield-alt"></i>
+                        FORTALEZAS
+                    </h2>
+                    <ul class="foda-list">
+                        <li class="foda-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="item-text">Fuerte identidad y reconocimiento cultural</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="item-text">Respaldo de un gigante global (Arca Continental)</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="item-text">Amplia distribución en Latinoamérica</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="item-text">Sabor único y distintivo</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- OPORTUNIDADES -->
+                <div class="foda-quadrant oportunidades" data-aos="fade-left" data-aos-delay="600">
+                    <h2 class="quadrant-title">
+                        <i class="fas fa-rocket"></i>
+                        OPORTUNIDADES
+                    </h2>
+                    <ul class="foda-list">
+                        <li class="foda-item">
+                            <i class="fas fa-bullseye"></i>
+                            <span class="item-text">Expansión a nuevos mercados internacionales</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-bullseye"></i>
+                            <span class="item-text">Crecimiento de bebidas saludables</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-bullseye"></i>
+                            <span class="item-text">Digitalización de la cadena de suministro</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-bullseye"></i>
+                            <span class="item-text">Crecimiento del orgullo nacional.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- DEBILIDADES -->
+                <div class="foda-quadrant debilidades" data-aos="fade-right" data-aos-delay="800">
+                    <h2 class="quadrant-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        DEBILIDADES
+                    </h2>
+                    <ul class="foda-list">
+                        <li class="foda-item">
+                            <i class="fas fa-times-circle"></i>
+                            <span class="item-text">Alto contenido de azúcar en la versión clásica</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-times-circle"></i>
+                            <span class="item-text">Márgenes de utilidad presionados</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-times-circle"></i>
+                            <span class="item-text">Limitada presencia en algunos mercados</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-times-circle"></i>
+                            <span class="item-text">Alta competencia en el sector</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- AMENAZAS -->
+                <div class="foda-quadrant amenazas" data-aos="fade-left" data-aos-delay="800">
+                    <h2 class="quadrant-title">
+                        <i class="fas fa-skull-crossbones"></i>
+                        AMENAZAS
+                    </h2>
+                    <ul class="foda-list">
+                        <li class="foda-item">
+                            <i class="fas fa-radiation"></i>
+                            <span class="item-text">Cambios en regulaciones de salud</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-radiation"></i>
+                            <span class="item-text">Fluctuaciones económicas en mercados clave</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-radiation"></i>
+                            <span class="item-text">Aumento de competidores locales</span>
+                        </li>
+                        <li class="foda-item">
+                            <i class="fas fa-radiation"></i>
+                            <span class="item-text">Cambios en preferencias de consumidores</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- CONTENEDOR DE BOTONES -->
+            <div class="botones-container" data-aos="fade-up" data-aos-delay="1000">
+                <a href="index.html" class="btn-foda">
+                    <i class="fas fa-arrow-left"></i> Volver al Inicio
+                </a>
+                <a href="pestel.html" class="btn-foda">
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

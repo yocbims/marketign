@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+/* -------------------------------------- */
+/* 1. VARIABLES (Consolidado de estilos anteriores) */
+/* -------------------------------------- */
+:root {
+    --gold: #FFD700;
+    --dark-gold: #D4AF37;
+    --red: #E31837;
+    --dark-red: #C8102E;
+    --white: #FFFFFF;
+    --black: #1A1A1A;
+    --light-bg: #F8F8F8;
+}
+
+/* -------------------------------------- */
+/* 2. ESTILOS BASE Y GENERALES */
+/* -------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* La fuente ya se define en el body, se quita la línea 'Segoe UI' para evitar conflictos */
+}
+
+body {
+    /* Fondo general que se adapta a las secciones oscuras */
+    background: linear-gradient(135deg, var(--black) 0%, #2d2d2d 100%);
+    color: var(--white);
+    overflow-x: hidden;
+    /* APLICAMOS LA NUEVA FUENTE A TODO EL CUERPO */
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* AJUSTES PARA TEXTOS DE CONTENIDO (misión, historia, etc.) */
+.main-text {
+    /* Color de texto ajustado para mayor visibilidad, usando la variable --white (#FFFFFF). */
+    color: var(--white); 
+    line-height: 1.7; /* Mejorar la legibilidad */
+    font-weight: 300; /* Peso ligero para el cuerpo de texto, elegante con Poppins */
+    font-size: 1.1rem;
+}
+
+.main-text strong {
+    font-weight: 600; /* Hace que las palabras clave resaltadas sigan viéndose fuertes */
+}
+
+/* Título de sección general (usado en showcase, gallery, etc.) */
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 60px;
+    /* Se utiliza un gradiente para el efecto dorado/naranja */
+    background: linear-gradient(45deg, var(--gold), #FF6B00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+
+/* -------------------------------------- */
+/* 3. HERO SECTION (ÍNDICE) */
+/* -------------------------------------- */
+.hero-content {
+    transform: translateY(40px); /* mueve todo el bloque un poco hacia abajo */
+}
+
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Efecto de luz suave detrás del héroe */
+    background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.2) 0%, rgba(255, 107, 0, 0.1) 40%, transparent 70%);
+    z-index: -1;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    /* Usa el mismo gradiente que el section-title */
+    background: linear-gradient(45deg, var(--gold), #FF6B00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: #e0e0e0;
+}
+
+.hero-bottle {
+    height: 70vh;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* -------------------------------------- */
+/* 4. PRODUCT SHOWCASE SECTION */
+/* -------------------------------------- */
+.showcase {
+    padding: 100px 0;
+    position: relative;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.5s, box-shadow 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--gold), #FF6B00);
+}
+
+.product-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(255, 107, 0, 0.2);
+}
+
+.product-image {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.product-image img {
+    max-height: 100%;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    transition: transform 0.5s;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.product-name {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--gold);
+}
+
+.product-desc {
+    color: #b0b0b0;
+    line-height: 1.6;
+}
+
+/* -------------------------------------- */
+/* 5. GALLERY SECTION */
+/* -------------------------------------- */
+.gallery {
+    padding: 100px 0;
+    position: relative;
+}
+
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.gallery-item {
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    height: 300px;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* -------------------------------------- */
+/* 6. ELEMENTOS FLOTANTES Y ANIMACIONES */
+/* -------------------------------------- */
+.floating-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-element {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 50%;
+    animation: float-around 15s infinite linear;
+}
+
+@keyframes float-around {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(100px, 100px) rotate(90deg); }
+    50% { transform: translate(200px, 0) rotate(180deg); }
+    75% { transform: translate(100px, -100px) rotate(270deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+/* -------------------------------------- */
+/* 7. FOOTER */
+/* -------------------------------------- */
+footer {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    /* Usa el mismo gradiente que el hero h1 */
+    background: linear-gradient(45deg, var(--gold), #FF6B00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--gold);
+    font-size: 1.5rem;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-5px);
+}
+
+/* -------------------------------------- */
+/* 8. RESPONSIVE / MEDIA QUERIES */
+/* -------------------------------------- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+    
+    .hero-bottle {
+        height: 50vh;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+.content-box {
+    /* ... */
+    background-image: url('imagenes/fondo-mision.jpg'); /* <-- ¡AQUÍ! */
+    /* ... */
+}
+/* Estilo para el botón dentro de la Galería/Análisis */
+.btn-analisis-small {
+    background: linear-gradient(to right, var(--gold), var(--dark-gold)); 
+    color: var(--black); /* Color del texto negro para contraste */
+    padding: 10px 20px; 
+    font-size: 1rem;
+    margin-top: 15px; 
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* ... (estilos de hover) ... */
+/* -------------------------------------- */
+/* 9. ENLACES DE IDENTIDAD DORADOS (HISTORIA, MISIÓN, VISIÓN) */
+/* -------------------------------------- */
+
+.showcase .product-card a {
+    /* Forzamos que el color del texto y el ícono sea dorado */
+    color: var(--gold) !important; 
+    text-decoration: none; /* Quitamos el subrayado por defecto */
+    font-weight: 600;
+    transition: color 0.3s ease;
+    padding-top: 5px; 
+    display: inline-block;
+}
+
+.showcase .product-card a:hover {
+    color: var(--dark-gold) !important; /* Oscurece un poco al pasar el ratón */
+}
+
+.showcase .product-card a i {
+    /* Aseguramos que el ícono dentro del enlace también sea dorado */
+    color: var(--gold) !important;
+    margin-right: 5px;
+}

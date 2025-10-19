@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inca Kola - Propuesta de Valor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #propuesta-pagina {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .propuesta-container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .propuesta-title {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 3rem;
+        }
+
+        /* CONTENEDOR DEL LOGO */
+        .logo-container {
+            margin: 0 auto 3rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .main-logo {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 2px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+        }
+
+        .main-logo:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 2px rgba(255, 215, 0, 0.5);
+        }
+
+        /* SECCIÓN DE VALORES PRINCIPALES */
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .valor-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border-top: 5px solid #FFD700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .valor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .valor-card:hover::before {
+            opacity: 1;
+        }
+
+        .valor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .valor-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #1a1a1a;
+        }
+
+        .valor-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .valor-desc {
+            color: #ffffff;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* SECCIÓN DE DIFERENCIADORES */
+        .diferenciadores-section {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .diferenciadores-title {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 2rem;
+        }
+
+        .diferenciadores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .diferenciador-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .diferenciador-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .diferenciador-icon {
+            width: 50px;
+            height: 50px;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            font-size: 1.2rem;
+        }
+
+        .diferenciador-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .diferenciador-text h4 {
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* SECCIÓN DE COMPROMISO */
+        .compromiso-section {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .compromiso-title {
+            font-size: 2.2rem;
+            color: #FFD700;
+            margin-bottom: 2rem;
+        }
+
+        .compromiso-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .compromiso-item {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid #FFD700;
+        }
+
+        .compromiso-item h4 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* CONTENEDOR DE BOTONES */
+        .botones-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-propuesta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            min-width: 200px;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-propuesta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6),
+                        0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .propuesta-container {
+                padding: 2rem;
+            }
+            .propuesta-title {
+                font-size: 2.5rem;
+            }
+            .valores-grid {
+                grid-template-columns: 1fr;
+            }
+            .logo-container {
+                max-width: 300px;
+            }
+            .diferenciadores-grid {
+                grid-template-columns: 1fr;
+            }
+            .diferenciador-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .botones-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .btn-propuesta {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="propuesta-pagina">
+        <div class="propuesta-container" data-aos="fade-up">
+            
+            <!-- LOGO -->
+            <div class="logo-container" data-aos="zoom-in" data-aos-delay="200">
+                <img src="imagenes/catalogo/1_gordita_inca_cola_bien.png" alt="Logo de Inca Kola" class="main-logo">
+            </div>
+            
+            <h1 class="propuesta-title" data-aos="fade-up" data-aos-delay="400">PROPUESTA DE VALOR</h1>
+            
+            <!-- VALORES PRINCIPALES -->
+            <div class="valores-grid">
+                <!-- SABOR ÚNICO -->
+                <div class="valor-card" data-aos="fade-right" data-aos-delay="600">
+                    <div class="valor-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="valor-title">Sabor Único e Inigualable</h3>
+                    <p class="valor-desc">
+                        Es lo que le da sentido a su existencia en el mercado y lo que conecta emocional y funcionalmente con el cliente.
+                    </p>
+                </div>
+
+                <!-- IDENTIDAD PERUANA -->
+                <div class="valor-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="valor-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h3 class="valor-title">Identidad Peruana</h3>
+                    <p class="valor-desc">
+                        "Inca Kola es la bebida que representa el sabor y orgullo del Perú. Con su sabor único e inconfundible, acompaña las tradiciones y celebraciones peruanas desde hace más de 80 años, ofreciendo una experiencia auténticamente nacional que une generaciones."
+                    </p>
+                </div>
+
+                <!-- CALIDAD PREMIUM -->
+                <div class="valor-card" data-aos="fade-left" data-aos-delay="800">
+                    <div class="valor-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="valor-title">Calidad Premium</h3>
+                    <p class="valor-desc">
+                        Mantenemos los más altos estándares de calidad en cada etapa de producción, 
+                        garantizando un producto consistente y confiable para nuestros consumidores.
+                    </p>
+                </div>
+            </div>
+
+            <!-- DIFERENCIADORES COMPETITIVOS -->
+            <div class="diferenciadores-section" data-aos="fade-up" data-aos-delay="900">
+                <h2 class="diferenciadores-title">Lo Que Nos Hace Únicos</h2>
+                <div class="diferenciadores-grid">
+                    <div class="diferenciador-item">
+                        <div class="diferenciador-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="diferenciador-text">
+                            <h4>Herencia Cultural</h4>
+                            <p>85 años de tradición y legado peruano</p>
+                        </div>
+                    </div>
+                    <div class="diferenciador-item">
+                        <div class="diferenciador-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="diferenciador-text">
+                            <h4>Ingredientes Naturales</h4>
+                            <p>Formulación única con hierba luisa</p>
+                        </div>
+                    </div>
+                    <div class="diferenciador-item">
+                        <div class="diferenciador-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="diferenciador-text">
+                            <h4>Conexión Emocional</h4>
+                            <p>Presente en los momentos especiales de las familias</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPROMISOS -->
+            <div class="compromiso-section" data-aos="fade-up" data-aos-delay="1000">
+                <h2 class="compromiso-title">Nuestros Compromisos</h2>
+                <div class="compromiso-content">
+                    <div class="compromiso-item">
+                        <h4>🔄 Innovación Continua</h4>
+                        <p>Evolucionamos manteniendo nuestra esencia</p>
+                    </div>
+                    <div class="compromiso-item">
+                        <h4>🌱 Sostenibilidad</h4>
+                        <p>Comprometidos con el medio ambiente</p>
+                    </div>
+                    <div class="compromiso-item">
+                        <h4>🤝 Comunidad</h4>
+                        <p>Apoyamos el desarrollo del Perú</p>
+                    </div>
+                    <div class="compromiso-item">
+                        <h4>⭐ Excelencia</h4>
+                        <p>Calidad superior en cada producto</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- BOTONES DE NAVEGACIÓN -->
+            <div class="botones-container" data-aos="fade-up" data-aos-delay="1100">
+                <a href="index.html" class="btn-propuesta">
+                    <i class="fas fa-arrow-left"></i> Volver al Inicio
+                </a>
+                <a href="foda.html" class="btn-propuesta">
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

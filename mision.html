@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arca Continental - Nuestra Misión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #mision-pagina {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .mision-container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .mision-title {
+            font-size: 3.5rem;
+            /* Usamos colores de Inca Kola para el Título Principal */
+            background: linear-gradient(45deg, #FFE900, #FFBB00); 
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* HE ELIMINADO .mision-content YA QUE SOLO NECESITAS LA MISION RESUMIDA */
+
+        .mision-text-principal {
+            color: #ffffff;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px auto; 
+            line-height: 1.7;
+            padding: 1.5rem;
+            border-left: 4px solid #FFE900;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0 15px 15px 0;
+            text-align: left;
+        }
+        
+        .mision-text-principal strong {
+             color: #FFE900;
+        }
+
+
+        .mision-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center; /* Asegura que la misión principal resumida esté centrada */
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-title {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .value-description {
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* CONTENEDOR DEL LOGO CON BRILLO INTENSO (IGUAL QUE HISTORIA.HTML) */
+        .logo-container {
+            margin: 0 auto 3rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .main-logo {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 4px rgba(255, 215, 0, 0.8), 
+                0 0 20px rgba(255, 215, 0, 0.6); 
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8)) 
+                    drop-shadow(0 0 40px rgba(255, 107, 0, 0.4)); 
+        }
+
+        .main-logo:hover {
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1)) 
+                    drop-shadow(0 0 50px rgba(255, 107, 0, 0.6));
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 4px rgba(255, 215, 0, 1),
+                0 0 30px rgba(255, 215, 0, 0.8);
+        }
+
+        /* CONTENEDOR DE BOTONES */
+        .botones-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-mision {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .btn-mision:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6),
+                        0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .mision-timeline {
+            margin-top: 4rem;
+            height: 150px;
+            background: linear-gradient(90deg, #FFD700, #E31837);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .mision-container {
+                padding: 2rem;
+            }
+            .mision-title {
+                font-size: 2.5rem;
+            }
+            .mision-text-principal {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+            .logo-container {
+                max-width: 300px;
+            }
+            .mision-values {
+                grid-template-columns: 1fr;
+            }
+            .botones-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .btn-mision {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="mision-pagina">
+        <div class="mision-container" data-aos="fade-up">
+            
+            <div class="logo-container" data-aos="zoom-in" data-aos-delay="200">
+                <img src="imagenes/logo.arcacontinental-removebg-preview.png" alt="Logo de Arca Continental" class="main-logo">
+            </div>
+            
+            <h2 class="mision-title" data-aos="fade-up" data-aos-delay="400">NUESTRA MISIÓN Y COMPROMISOS</h2>
+            
+            <p class="mision-text-principal" data-aos="fade-right" data-aos-delay="600">
+                La misión central es **satisfacer a los consumidores en todas sus ocasiones de consumo de bebidas**,
+                produciendo con la más alta calidad y seguridad, y **creando valor de manera sostenida para los accionistas**.
+            </p>
+
+            <div class="mision-values" data-aos="fade-up" data-aos-delay="800">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-industry"></i> 
+                    </div>
+                    <h3 class="value-title">Eficiencia y Calidad</h3>
+                    <p class="value-description">
+                        Producir y distribuir **eficientemente** bebidas de la **más alta calidad y seguridad alimentaria**.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-home"></i> 
+                    </div>
+                    <h3 class="value-title">Vínculo y Unión Familiar</h3>
+                    <p class="value-description">
+                        Ser la bebida de "**casa**" de las familias para **promover la unión**, fortaleciendo el vínculo con la comunidad.
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i> 
+                    </div>
+                    <h3 class="value-title">Desarrollo de Socios</h3>
+                    <p class="value-description">
+                        Potenciar el desarrollo integral de los **proveedores, distribuidores y clientes**, actuando como ciudadano responsable.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="botones-container" data-aos="fade-up" data-aos-delay="1000">
+                <a href="index.html" class="btn-mision">
+                    <i class="fas fa-arrow-left"></i> Volver al Inicio
+                </a>
+                <a href="vision.html" class="btn-mision">
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="mision-timeline" data-aos="zoom-in" data-aos-delay="1200"></div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

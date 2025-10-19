@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Ishikawa - Inca Kola (Invertido)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #FFE900; /* Inca Kola Dorado/Amarillo */
+            --color-secondary: #FFBB00; /* Inca Kola Naranja */
+            --color-dark: #1a1a1a;
+            --color-card-bg: rgba(30, 30, 30, 0.9);
+            --card-width: 200px;
+            --spine-height: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--color-dark) 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ishikawa-container {
+            max-width: 1400px;
+            width: 95%;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .ishikawa-title {
+            font-size: 3rem;
+            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 3rem;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Contenedor principal del diagrama */
+        .fishbone-container {
+            position: relative;
+            width: 100%;
+            height: 650px;
+            margin: 2rem auto;
+        }
+
+        /* --- CUERPO DEL PEZ (INVERTIDO) --- */
+
+        /* Espina principal (Eje horizontal) */
+        .fish-spine {
+            position: absolute;
+            left: 15%; /* Ahora la espina empieza más a la derecha */
+            top: 50%;
+            width: 70%; 
+            height: var(--spine-height);
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            transform: translateY(-50%);
+            border-radius: calc(var(--spine-height) / 2);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+            z-index: 1;
+        }
+
+        /* Cola del pez (Punta de flecha DERECHA) */
+        .fish-tail {
+            position: absolute;
+            right: 8%; /* Posicionado a la derecha */
+            top: 50%;
+            width: 0;
+            height: 0;
+            /* Triángulo apuntando a la DERECHA */
+            border-top: 30px solid transparent;
+            border-bottom: 30px solid transparent;
+            border-left: 50px solid var(--color-primary); /* Cambiado de right a left */
+            transform: translateY(-50%) translateX(100%); /* Trasladado fuera del contenedor */
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Cabeza del pez (Efecto/Problema) - POSICIÓN INVERTIDA */
+        .fish-head {
+            position: absolute;
+            left: 5%; /* Mueve la cabeza a la izquierda */
+            top: 50%;
+            width: 140px;
+            height: 100px;
+            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+            border-radius: 15px;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+            z-index: 2;
+        }
+
+        .fish-head-text {
+            color: var(--color-dark);
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* --- RAMAS Y CATEGORÍAS --- */
+        .category-ishikawa {
+            position: absolute;
+            background: var(--color-card-bg);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 10px;
+            padding: 0.7rem;
+            width: var(--card-width);
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            z-index: 3;
+        }
+
+        .category-title {
+            color: var(--color-primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .category-items {
+            list-style-type: none;
+            text-align: left;
+        }
+
+        .category-items li {
+            margin-bottom: 0.4rem;
+            padding: 0.2rem;
+            padding-left: 0.6rem;
+            border-left: 3px solid rgba(255, 215, 0, 0.6);
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 0 5px 5px 0;
+            line-height: 1.2;
+            font-size: 0.7rem;
+        }
+
+        /* Posicionamiento de las categorías (INVERTIDO) */
+        /* Las categorías están AHORA A LA DERECHA de sus puntos de conexión en la espina */
+        /* Categorías superiores */
+        .cat-metodo { top: 5%; right: 70%; } /* Corresponde al 15% de LEFT en el diagrama normal */
+        .cat-maquina { top: 5%; right: 45%; }
+        .cat-entorno { top: 5%; right: 20%; } 
+
+        /* Categorías inferiores */
+        .cat-mediciones { bottom: 5%; right: 70%; }
+        .cat-materiales { bottom: 5%; right: 45%; }
+        .cat-mano-obra { bottom: 5%; right: 20%; }
+
+        /* Líneas de conexión (Las Espinas) */
+        .conn-line {
+            position: absolute;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            border-radius: 2px;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+            z-index: 1;
+            /* El origen de la transformación es el final de la línea (100% center) */
+            transform-origin: 100% 50%; 
+            top: calc(50% - 2px); 
+        }
+
+        /* CONECTORES SUPERIORES: Se inician desde la espina y se extienden a la IZQUIERDA */
+        .conn-metodo-line { right: 75%; width: 170px; transform: rotate(35deg); } /* Rotación invertida */
+        .conn-maquina-line { right: 50%; width: 150px; transform: rotate(10deg); } /* Rotación invertida */
+        .conn-entorno-line { right: 25%; width: 100px; transform: rotate(-15deg); } /* Rotación invertida */
+
+        /* CONECTORES INFERIORES */
+        .conn-mediciones-line { right: 75%; width: 170px; transform: rotate(-35deg); } /* Rotación invertida */
+        .conn-materiales-line { right: 50%; width: 150px; transform: rotate(-10deg); } /* Rotación invertida */
+        .conn-mano-obra-line { right: 25%; width: 100px; transform: rotate(15deg); } /* Rotación invertida */
+
+
+        /* Botones (Estilos sin cambios) */
+        .botones-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-ishikawa {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .btn-ishikawa:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6),
+                        0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Responsive adjustments (Inversión también en media queries) */
+        @media (max-width: 1024px) {
+            .fishbone-container { height: 750px; }
+            .fish-spine { width: 65%; left: 15%; }
+            .fish-head { left: 5%; width: 100px; height: 75px; }
+            .fish-head-text { font-size: 1rem; }
+            .fish-tail { border-left: 40px solid var(--color-primary); border-top: 25px solid transparent; border-bottom: 25px solid transparent; right: 10%; }
+            .category-ishikawa { width: 150px; padding: 0.6rem; }
+            .category-title { font-size: 0.9rem; }
+            .category-items li { font-size: 0.65rem; }
+            /* Posiciones de categorías ajustadas para 1024px */
+            .cat-metodo { top: 5%; right: 70%; } 
+            .cat-maquina { top: 5%; right: 45%; }
+            .cat-entorno { top: 5%; right: 20%; }
+            .cat-mediciones { bottom: 5%; right: 70%; }
+            .cat-materiales { bottom: 5%; right: 45%; }
+            .cat-mano-obra { bottom: 5%; right: 20%; }
+            /* Conectores ajustados para 1024px */
+            .conn-metodo-line { right: 75%; width: 170px; transform: rotate(30deg); }
+            .conn-maquina-line { right: 50%; width: 130px; transform: rotate(10deg); }
+            .conn-entorno-line { right: 25%; width: 90px; transform: rotate(-10deg); }
+            .conn-mediciones-line { right: 75%; width: 170px; transform: rotate(-30deg); }
+            .conn-materiales-line { right: 50%; width: 130px; transform: rotate(-10deg); }
+            .conn-mano-obra-line { right: 25%; width: 90px; transform: rotate(10deg); }
+        }
+
+        @media (max-width: 768px) {
+            .fishbone-container { height: 1000px; }
+            .fish-spine, .fish-head, .fish-tail, .conn-line { display: none; }
+            .ishikawa-title { margin-bottom: 1.5rem; }
+            .category-ishikawa { 
+                position: relative !important;
+                width: 90%; 
+                margin: 0 auto 15px auto !important;
+                left: 0 !important;
+                right: auto !important; /* Desactiva el right para centrar */
+                top: auto !important;
+                bottom: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ishikawa-container">
+        <h1 class="ishikawa-title">DIAGRAMA DE ISHIKAWA - INCA KOLA (ARCA CONTINENTAL)</h1>
+        
+        <div class="fishbone-container">
+            
+<div class="fish-head">
+                <div class="fish-head-text">Defectos en<br>Producción</div>
+            </div>
+
+            
+<div class="fish-spine"></div>
+            
+            
+<div class="fish-tail"></div>
+            
+            
+            <div class="conn-line conn-metodo-line"></div>
+            <div class="conn-line conn-maquina-line"></div>
+            <div class="conn-line conn-entorno-line"></div>
+            <div class="conn-line conn-mediciones-line"></div>
+            <div class="conn-line conn-materiales-line"></div>
+            <div class="conn-line conn-mano-obra-line"></div>
+            
+            <div class="category-ishikawa cat-metodo">
+                <div class="category-title">MÉTODO</div>
+                <ul class="category-items">
+                    <li>Jarabe sin concentrado adecuado</li>
+                    <li>Falta de capacitación a trabajadores</li>
+                    <li>Programación incorrecta de procesos</li>
+                </ul>
+            </div>
+            
+            <div class="category-ishikawa cat-maquina">
+                <div class="category-title">MÁQUINA</div>
+                <ul class="category-items">
+                    <li>Equipo obsoleto</li>
+                    <li>Máquina de calidad no detecta errores</li>
+                    <li>Calibración defectuosa de la carbonatadora</li>
+                </ul>
+            </div>
+            
+            <div class="category-ishikawa cat-entorno">
+                <div class="category-title">ENTORNO</div>
+                <ul class="category-items">
+                    <li>Alta humedad afecta proceso</li>
+                    <li>Exposición a contaminantes</li>
+                    <li>Temperatura ambiental inestable</li>
+                </ul>
+            </div>
+            
+            <div class="category-ishikawa cat-mediciones">
+                <div class="category-title">MEDICIONES</div>
+                <ul class="category-items">
+                    <li>Control de calidad insuficiente</li>
+                    <li>Estándares de llenado no aplicados (385ml)</li>
+                    <li>Nivel de pH o Brix incorrecto</li>
+                    <li>Temperatura de enfriamiento incorrecta</li>
+                </ul>
+            </div>
+
+            <div class="category-ishikawa cat-materiales">
+                <div class="category-title">MATERIALES</div>
+                <ul class="category-items">
+                    <li>Botellas con forma inadecuada</li>
+                    <li>Error en impresión de etiquetas</li>
+                    <li>Lata no completamente llena</li>
+                    <li>Calidad del azúcar inconsistente (principal ingrediente)</li>
+                </ul>
+            </div>
+            
+            <div class="category-ishikawa cat-mano-obra">
+                <div class="category-title">MANO DE OBRA</div>
+                <ul class="category-items">
+                    <li>Desperdicio de materia prima</li>
+                    <li>Supervisión deficiente</li>
+                    <li>Baja reutilización de botellas</li>
+                    <li>Alto consumo de agua</li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="botones-container">
+            <a href="index.html" class="btn-ishikawa">
+                <i class="fas fa-arrow-left"></i> Volver al Inicio
+            </a>
+            <a href="descripcion.problema.html" class="btn-ishikawa">
+                Siguiente <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arca Continental - 5 Fuerzas de Porter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #porter-pagina {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .porter-container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .porter-title {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* LOGO CON BRILLO INTENSO */
+        .logo-container {
+            margin: 0 auto 3rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .main-logo {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 4px rgba(255, 215, 0, 0.8),
+                0 0 20px rgba(255, 215, 0, 0.6);
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8))
+                    drop-shadow(0 0 40px rgba(255, 107, 0, 0.4));
+        }
+
+        .main-logo:hover {
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1))
+                    drop-shadow(0 0 50px rgba(255, 107, 0, 0.6));
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 4px rgba(255, 215, 0, 1),
+                0 0 30px rgba(255, 215, 0, 0.8);
+        }
+
+        /* GRID DE LAS 5 FUERZAS */
+        .fuerzas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .fuerza-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: left;
+            border-left: 5px solid;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fuerza-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .fuerza-card:hover::before {
+            opacity: 1;
+        }
+
+        .fuerza-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* COLORES PARA CADA FUERZA */
+        .rivalidad { border-left-color: #E31837; }
+        .nuevos-entrantes { border-left-color: #FFD700; }
+        .sustitutos { border-left-color: #00A859; }
+        .proveedores { border-left-color: #0072CE; }
+        .compradores { border-left-color: #8B5CF6; }
+
+        .fuerza-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .fuerza-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .icon-rivalidad { background: #E31837; }
+        .icon-nuevos { background: #FFD700; color: #1a1a1a; }
+        .icon-sustitutos { background: #00A859; }
+        .icon-proveedores { background: #0072CE; }
+        .icon-compradores { background: #8B5CF6; }
+
+        .fuerza-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .fuerza-desc {
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .fuerza-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .fuerza-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .fuerza-item:last-child {
+            border-bottom: none;
+        }
+
+        .fuerza-item::before {
+            content: '•';
+            color: #FFD700;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+        }
+
+        /* CONTENEDOR DE BOTONES */
+        .botones-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-porter {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .btn-porter:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6),
+                        0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .porter-container {
+                padding: 2rem;
+            }
+            .porter-title {
+                font-size: 2.5rem;
+            }
+            .fuerzas-grid {
+                grid-template-columns: 1fr;
+            }
+            .logo-container {
+                max-width: 300px;
+            }
+            .fuerza-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            .botones-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .btn-porter {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="porter-pagina">
+        <div class="porter-container" data-aos="fade-up">
+            
+            <!-- LOGO CON BRILLO INTENSO -->
+            <div class="logo-container" data-aos="zoom-in" data-aos-delay="200">
+                <img src="imagenes/producot_1.webp" alt="Logo de Arca Continental" class="main-logo">
+            </div>
+            
+            <h1 class="porter-title" data-aos="fade-up" data-aos-delay="400">5 FUERZAS DE PORTER</h1>
+            
+            <div class="fuerzas-grid">
+                <!-- RIVALIDAD ENTRE COMPETIDORES -->
+                <div class="fuerza-card rivalidad" data-aos="fade-right" data-aos-delay="600">
+                    <div class="fuerza-header">
+                        <div class="fuerza-icon icon-rivalidad">
+                            <i class="fas fa-fist-raised"></i>
+                        </div>
+                        <h2 class="fuerza-title">RIVALIDAD ENTRE COMPETIDORES</h2>
+                    </div>
+                    <p class="fuerza-desc">Intensidad de la competencia en la industria de bebidas</p>
+                    <ul class="fuerza-list">
+                        <li class="fuerza-item">Alta concentración de competidores globales</li>
+                        <li class="fuerza-item">Guerras de precios y promociones constantes</li>
+                        <li class="fuerza-item">Diferenciación limitada entre productos</li>
+                        <li class="fuerza-item">Altos costos de cambio para consumidores</li>
+                        <li class="fuerza-item">Crecimiento lento del mercado maduro</li>
+                    </ul>
+                </div>
+
+                <!-- AMENAZA DE NUEVOS ENTRANTES -->
+                <div class="fuerza-card nuevos-entrantes" data-aos="fade-left" data-aos-delay="700">
+                    <div class="fuerza-header">
+                        <div class="fuerza-icon icon-nuevos">
+                            <i class="fas fa-door-open"></i>
+                        </div>
+                        <h2 class="fuerza-title">AMENAZA DE NUEVOS ENTRANTES</h2>
+                    </div>
+                    <p class="fuerza-desc">Barreras de entrada en la industria de bebidas</p>
+                    <ul class="fuerza-list">
+                        <li class="fuerza-item">Altas economías de escala requeridas</li>
+                        <li class="fuerza-item">Fuertes barreras de distribución</li>
+                        <li class="fuerza-item">Lealtad a marcas establecidas</li>
+                        <li class="fuerza-item">Altos requisitos de capital</li>
+                        <li class="fuerza-item">Regulaciones y estándares de calidad</li>
+                    </ul>
+                </div>
+
+                <!-- AMENAZA DE PRODUCTOS SUSTITUTOS -->
+                <div class="fuerza-card sustitutos" data-aos="fade-right" data-aos-delay="800">
+                    <div class="fuerza-header">
+                        <div class="fuerza-icon icon-sustitutos">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h2 class="fuerza-title">AMENAZA DE PRODUCTOS SUSTITUTOS</h2>
+                    </div>
+                    <p class="fuerza-desc">Alternativas disponibles para los consumidores</p>
+                    <ul class="fuerza-list">
+                        <li class="fuerza-item">Agua embotellada y bebidas saludables</li>
+                        <li class="fuerza-item">Jugos naturales y bebidas funcionales</li>
+                        <li class="fuerza-item">Café y té listos para consumir</li>
+                        <li class="fuerza-item">Bebidas energéticas y deportivas</li>
+                        <li class="fuerza-item">Tendencias hacia opciones más saludables</li>
+                    </ul>
+                </div>
+
+                <!-- PODER DE NEGOCIACIÓN DE PROVEEDORES -->
+                <div class="fuerza-card proveedores" data-aos="fade-left" data-aos-delay="900">
+                    <div class="fuerza-header">
+                        <div class="fuerza-icon icon-proveedores">
+                            <i class="fas fa-truck-loading"></i>
+                        </div>
+                        <h2 class="fuerza-title">PODER DE PROVEEDORES</h2>
+                    </div>
+                    <p class="fuerza-desc">Influencia de los proveedores en la cadena de valor</p>
+                    <ul class="fuerza-list">
+                        <li class="fuerza-item">Concentración de proveedores de ingredientes</li>
+                        <li class="fuerza-item">Especificidad de los insumos requeridos</li>
+                        <li class="fuerza-item">Costos de cambio entre proveedores</li>
+                        <li class="fuerza-item">Importancia de la calidad consistente</li>
+                        <li class="fuerza-item">Dependencia de materias primas clave</li>
+                    </ul>
+                </div>
+
+                <!-- PODER DE NEGOCIACIÓN DE COMPRADORES -->
+                <div class="fuerza-card compradores" data-aos="fade-right" data-aos-delay="1000">
+                    <div class="fuerza-header">
+                        <div class="fuerza-icon icon-compradores">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h2 class="fuerza-title">PODER DE COMPRADORES</h2>
+                    </div>
+                    <p class="fuerza-desc">Influencia de los clientes en precios y términos</p>
+                    <ul class="fuerza-list">
+                        <li class="fuerza-item">Grandes cadenas de retail con poder de compra</li>
+                        <li class="fuerza-item">Sensibilidad al precio de los consumidores</li>
+                        <li class="fuerza-item">Disponibilidad de información del producto</li>
+                        <li class="fuerza-item">Bajos costos de cambio entre marcas</li>
+                        <li class="fuerza-item">Demanda por promociones y descuentos</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- CONTENEDOR DE BOTONES -->
+            <div class="botones-container" data-aos="fade-up" data-aos-delay="1100">
+                <a href="index.html" class="btn-porter">
+                    <i class="fas fa-arrow-left"></i> Volver al Inicio
+                </a>
+                <a href="segmentos.html" class="btn-porter">
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

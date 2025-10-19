@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arca Continental - Análisis de Mercado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #mercado-pagina {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .mercado-container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .mercado-title {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* LOGO */
+        .logo-container {
+            margin: 0 auto 3rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .main-logo {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 4px rgba(255, 215, 0, 0.8);
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8))
+                    drop-shadow(0 0 40px rgba(255, 107, 0, 0.4));
+        }
+
+        .main-logo:hover {
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1))
+                    drop-shadow(0 0 50px rgba(255, 107, 0, 0.6));
+        }
+
+        /* SECCIONES DE ANÁLISIS */
+        .analisis-section {
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title i {
+            font-size: 2.5rem;
+        }
+
+        /* GRID DE SEGMENTOS */
+        .segmentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .segmento-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 5px solid;
+            transition: all 0.3s ease;
+        }
+
+        .segmento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .segmento-demografico { border-left-color: #4CAF50; }
+        .segmento-geografico { border-left-color: #2196F3; }
+        .segmento-conductual { border-left-color: #FF9800; }
+        .segmento-psicografico { border-left-color: #9C27B0; }
+
+        .segmento-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .segmento-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .icon-demografico { background: #4CAF50; }
+        .icon-geografico { background: #2196F3; }
+        .icon-conductual { background: #FF9800; }
+        .icon-psicografico { background: #9C27B0; }
+
+        .segmento-name {
+            font-size: 1.5rem;
+            color: #FFD700;
+            font-weight: 600;
+        }
+
+        .segmento-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .segmento-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .segmento-item:last-child {
+            border-bottom: none;
+        }
+
+        .segmento-item i {
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .segmento-demografico .segmento-item i { color: #4CAF50; }
+        .segmento-geografico .segmento-item i { color: #2196F3; }
+        .segmento-conductual .segmento-item i { color: #FF9800; }
+        .segmento-psicografico .segmento-item i { color: #9C27B0; }
+
+        /* COMPETENCIA */
+        .competencia-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .competencia-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border-top: 4px solid;
+            transition: all 0.3s ease;
+        }
+
+        .competencia-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .competencia-directa { border-top-color: #F44336; }
+        .competencia-indirecta { border-top-color: #FF9800; }
+        .competencia-potencial { border-top-color: #2196F3; }
+
+        .competencia-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .competencia-directa .competencia-icon { color: #F44336; }
+        .competencia-indirecta .competencia-icon { color: #FF9800; }
+        .competencia-potencial .competencia-icon { color: #2196F3; }
+
+        .competencia-title {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .competencia-list {
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+        }
+
+        .competencia-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .competencia-item:last-child {
+            border-bottom: none;
+        }
+
+        /* TENDENCIAS */
+        .tendencias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tendencia-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tendencia-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        .tendencia-icon {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .tendencia-title {
+            font-size: 1.2rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .tendencia-desc {
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .btn-mercado {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            margin-top: 2rem;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-mercado:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6),
+                        0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .botones-navegacion {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .mercado-container {
+                padding: 2rem;
+            }
+            .mercado-title {
+                font-size: 2.5rem;
+            }
+            .segmentos-grid,
+            .competencia-grid,
+            .tendencias-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .logo-container {
+                max-width: 300px;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .botones-navegacion {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="mercado-pagina">
+        <div class="mercado-container" data-aos="fade-up">
+            
+            <!-- LOGO -->
+            <div class="logo-container" data-aos="zoom-in" data-aos-delay="200">
+                <img src="imagenes/producot_1.webp" alt="Logo de Arca Continental" class="main-logo">
+            </div>
+            
+            <h1 class="mercado-title" data-aos="fade-up" data-aos-delay="400">POSICIONAMIENTO EN EL MERCADO</h1>
+            
+            <!-- SEGMENTACIÓN -->
+            <div class="analisis-section" data-aos="fade-up" data-aos-delay="600">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-pie"></i>
+                    SEGMENTACIÓN DEL MERCADO
+                </h2>
+                
+                <div class="segmentos-grid">
+                    <!-- DEMOGRÁFICO -->
+                    <div class="segmento-card segmento-demografico">
+                        <div class="segmento-header">
+                            <div class="segmento-icon icon-demografico">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="segmento-name">DEMOGRÁFICO</h3>
+                        </div>
+                        <ul class="segmento-list">
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Edad: 15-45 años (mercado principal)</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Ingresos: Clase media y media-alta</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Familias y jóvenes profesionales</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Estudiantes y adultos jóvenes</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- GEOGRÁFICO -->
+                    <div class="segmento-card segmento-geografico">
+                        <div class="segmento-header">
+                            <div class="segmento-icon icon-geografico">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <h3 class="segmento-name">GEOGRÁFICO</h3>
+                        </div>
+                        <ul class="segmento-list">
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>América Latina (mercado principal)</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Zonas urbanas y metropolitanas</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Estados Unidos (mercado en crecimiento)</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Centros comerciales y supermercados</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- CONDUCTUAL -->
+                    <div class="segmento-card segmento-conductual">
+                        <div class="segmento-header">
+                            <div class="segmento-icon icon-conductual">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3 class="segmento-name">CONDUCTUAL</h3>
+                        </div>
+                        <ul class="segmento-list">
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Consumo frecuente (semanales)</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Ocasiones sociales y familiares</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Búsqueda de refresco instantáneo</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Lealtad a marcas reconocidas</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- PSICOGRÁFICO -->
+                    <div class="segmento-card segmento-psicografico">
+                        <div class="segmento-header">
+                            <div class="segmento-icon icon-psicografico">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="segmento-name">PSICOGRÁFICO</h3>
+                        </div>
+                        <ul class="segmento-list">
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Consumidores modernos y activos</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Valoración de calidad y sabor</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Interés en marcas con propósito</span>
+                            </li>
+                            <li class="segmento-item">
+                                <i class="fas fa-check"></i>
+                                <span>Preferencia por opciones saludables</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPETENCIA -->
+            <div class="analisis-section" data-aos="fade-up" data-aos-delay="800">
+                <h2 class="section-title">
+                    <i class="fas fa-trophy"></i>
+                    ANÁLISIS DE COMPETENCIA
+                </h2>
+                
+                <div class="competencia-grid">
+                    <!-- COMPETENCIA DIRECTA -->
+                    <div class="competencia-card competencia-directa">
+                        <div class="competencia-icon">
+                            <i class="fas fa-fist-raised"></i>
+                        </div>
+                        <h3 class="competencia-title">COMPETENCIA DIRECTA</h3>
+                        <ul class="competencia-list">
+                            <li class="competencia-item">PepsiCo y sus embotelladoras</li>
+                            <li class="competencia-item">Coca-Cola FEMSA</li>
+                            <li class="competencia-item">Bebidas locales tradicionales</li>
+                            <li class="competencia-item">Otras embotelladoras regionales</li>
+                        </ul>
+                    </div>
+
+                    <!-- COMPETENCIA INDIRECTA -->
+                    <div class="competencia-card competencia-indirecta">
+                        <div class="competencia-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="competencia-title">COMPETENCIA INDIRECTA</h3>
+                        <ul class="competencia-list">
+                            <li class="competencia-item">Jugos y néctares naturales</li>
+                            <li class="competencia-item">Aguas saborizadas</li>
+                            <li class="competencia-item">Bebidas energéticas</li>
+                            <li class="competencia-item">Tés y cafés listos para beber</li>
+                        </ul>
+                    </div>
+
+                    <!-- COMPETENCIA POTENCIAL -->
+                    <div class="competencia-card competencia-potencial">
+                        <div class="competencia-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="competencia-title">COMPETENCIA POTENCIAL</h3>
+                        <ul class="competencia-list">
+                            <li class="competencia-item">Startups de bebidas saludables</li>
+                            <li class="competencia-item">Marcas de bebidas funcionales</li>
+                            <li class="competencia-item">Empresas de tecnología alimentaria</li>
+                            <li class="competencia-item">Nuevos jugadores internacionales</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TENDENCIAS -->
+            <div class="analisis-section" data-aos="fade-up" data-aos-delay="1000">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-line"></i>
+                    TENDENCIAS DEL MERCADO
+                </h2>
+                
+                <div class="tendencias-grid">
+                    <div class="tendencia-card">
+                        <div class="tendencia-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="tendencia-title">SALUD Y BIENESTAR</h3>
+                        <p class="tendencia-desc">Crecimiento en demanda de bebidas bajas en azúcar y opciones saludables</p>
+                    </div>
+
+                    <div class="tendencia-card">
+                        <div class="tendencia-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h3 class="tendencia-title">SOSTENIBILIDAD</h3>
+                        <p class="tendencia-desc">Mayor conciencia ambiental y preferencia por envases reciclables</p>
+                    </div>
+
+                    <div class="tendencia-card">
+                        <div class="tendencia-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="tendencia-title">DIGITALIZACIÓN</h3>
+                        <p class="tendencia-desc">Comercio electrónico y experiencias digitales integradas</p>
+                    </div>
+
+                    <div class="tendencia-card">
+                        <div class="tendencia-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="tendencia-title">PRODUCTOS NATURALES</h3>
+                        <p class="tendencia-desc">Preferencia por ingredientes naturales y orgánicos</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- BOTONES DE NAVEGACIÓN -->
+            <div class="botones-navegacion" data-aos="fade-up" data-aos-delay="1200">
+                <a href="index.html" class="btn-mercado">
+                    <i class="fas fa-arrow-left"></i> Volver a la Página Principal
+                </a>
+                <a href="propuesta.html" class="btn-mercado">
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

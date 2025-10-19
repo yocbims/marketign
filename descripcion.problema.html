@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arca Continental - Análisis del Problema</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #problema-pagina {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .problema-container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .problema-title {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .problema-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #FFD700;
+            padding: 2.5rem;
+            margin: 2.5rem auto;
+            border-radius: 0 15px 15px 0;
+            text-align: left;
+        }
+
+        .problema-text {
+            color: #ffffff;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .problema-text strong {
+            color: #FFD700;
+        }
+
+        .problema-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problema-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .problema-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .problema-icon {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+        }
+
+        .problema-card-title {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .problema-description {
+            color: #ffffff;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        /* CONTENEDOR DEL LOGO */
+        .logo-container {
+            margin: 0 auto 3rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .main-logo {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 2px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+        }
+
+        .main-logo:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 2px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-problema {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background: linear-gradient(45deg, #FFD700, #FF6B00);
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            margin-top: 2rem;
+        }
+
+        .btn-problema:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        /* SECCIÓN DE IMPACTO */
+        .impacto-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .impacto-title {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .impacto-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .impacto-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            height: 100%;
+        }
+
+        .impacto-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .impacto-icon {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .impacto-text {
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .botones-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .problema-container {
+                padding: 2rem;
+            }
+            .problema-title {
+                font-size: 2.5rem;
+            }
+            .problema-content {
+                padding: 1.5rem;
+            }
+            .logo-container {
+                max-width: 300px;
+            }
+            .problema-grid {
+                grid-template-columns: 1fr;
+            }
+            .impacto-container {
+                grid-template-columns: 1fr;
+            }
+            .botones-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .impacto-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="problema-pagina">
+        <div class="problema-container" data-aos="fade-up">
+            
+            <!-- LOGO CON BRILLO INTENSO -->
+            <div class="logo-container" data-aos="zoom-in" data-aos-delay="200">
+                <img src="imagenes/logo.arcacontinental-removebg-preview.png" alt="Logo de Arca Continental" class="main-logo">
+            </div>
+            
+            <h2 class="problema-title" data-aos="fade-up" data-aos-delay="400">ANÁLISIS DEL PROBLEMA</h2>
+            
+            <div class="problema-content" data-aos="fade-right" data-aos-delay="600">
+                <p class="problema-text"><strong>Arca Continental Lindley</strong>, especialmente su marca emblema <strong>Inca Kola</strong>, enfrenta una disminución sostenida de participación en el mercado de bebidas gaseosas en Perú. Este retroceso se debe a varios factores multifactoriales que involucran aspectos de marketing, innovación, competencia y comportamiento del consumidor.</p>
+                
+                <p class="problema-text">A pesar de su fuerte identidad nacional, la marca corre el riesgo de perder relevancia si no se adapta a las nuevas expectativas del mercado. Afrontar estos desafíos es clave para mantener su liderazgo y asegurar su sostenibilidad a largo plazo.</p>
+            </div>
+            
+            <!-- GRID DE PROBLEMAS PRINCIPALES -->
+            <div class="problema-grid" data-aos="fade-up" data-aos-delay="800">
+                <div class="problema-card">
+                    <div class="problema-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="problema-card-title">COMPETENCIA INTERNACIONAL</h3>
+                    <p class="problema-description">Marcas globales aplican estrategias de marketing más agresivas y recursos ilimitados, desplazando la presencia de Inca Kola en el mercado peruano.</p>
+                </div>
+                
+                <div class="problema-card">
+                    <div class="problema-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="problema-card-title">CAMBIO DE HÁBITOS</h3>
+                    <p class="problema-description">Creciente preferencia por bebidas más saludables y naturales, afectando negativamente la percepción de Inca Kola por su alto contenido de azúcar.</p>
+                </div>
+                
+                <div class="problema-card">
+                    <div class="problema-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3 class="problema-card-title">DÉBIL PRESENCIA DIGITAL</h3>
+                    <p class="problema-description">Limitada actividad en redes sociales y estrategias digitales, reduciendo su conexión con el público joven y moderno.</p>
+                </div>
+                
+                <div class="problema-card">
+                    <div class="problema-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="problema-card-title">FALTA DE INNOVACIÓN</h3>
+                    <p class="problema-description">Escasa renovación de productos y formatos que respondan a las nuevas tendencias del mercado de bebidas.</p>
+                </div>
+            </div>
+            
+            <!-- SECCIÓN DE IMPACTO -->
+            <div class="impacto-section" data-aos="zoom-in" data-aos-delay="1000">
+                <h3 class="impacto-title">Impacto en el Mercado</h3>
+                <div class="impacto-container">
+                    <div class="impacto-item">
+                        <div class="impacto-icon">
+                            <i class="fas fa-chart-line-down"></i>
+                        </div>
+                        <p class="impacto-text">Disminución sostenida de participación en el mercado de bebidas gaseosas</p>
+                    </div>
+                    <div class="impacto-item">
+                        <div class="impacto-icon">
+                            <i class="fas fa-users-slash"></i>
+                        </div>
+                        <p class="impacto-text">Pérdida de conexión con el público joven y nuevos consumidores</p>
+                    </div>
+                    <div class="impacto-item">
+                        <div class="impacto-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <p class="impacto-text">Riesgo de perder el liderazgo histórico en el mercado peruano</p>
+                    </div>
+                    <div class="impacto-item">
+                        <div class="impacto-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <p class="impacto-text">Urgencia de adaptación a las nuevas expectativas del consumidor</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- BOTONES DE NAVEGACIÓN -->
+            <div class="botones-container" data-aos="fade-up" data-aos-delay="1200">
+                <a href="index.html" class="btn-problema">
+                    <i class="fas fa-arrow-left"></i> Volver al Inicio
+                </a>
+                <a href="mision.html" class="btn-problema">
+                    Siguente <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>

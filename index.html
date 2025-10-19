@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inca Kola - El Sabor Dorado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        /* ANIMACIÓN MEJORADA PARA LA BOTELLA - MÁS MOVIMIENTO VISIBLE */
+        .hero-bottle {
+            animation: floatBottle 3s ease-in-out infinite;
+            transform-origin: center bottom;
+        }
+
+        @keyframes floatBottle {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) rotate(-1deg);
+            }
+            50% {
+                transform: translateY(-25px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(1deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        /* Asegurar que la botella tenga buena visibilidad */
+        .hero-bottle {
+            filter: drop-shadow(0 10px 20px rgba(255, 215, 0, 0.4));
+            transition: all 0.3s ease;
+        }
+
+        .hero-bottle:hover {
+            filter: drop-shadow(0 15px 30px rgba(255, 215, 0, 0.6));
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="floating-elements" id="floating-elements"></div>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>INCA KOLA</h1>
+                <p>El sabor dorado que ilumina tus momentos. Una experiencia única de sabor que conquista desde el primer sorbo.</p>
+                <img src="imagenes/logo-principal.png" alt="Botella de Inca Kola" class="hero-bottle">
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase">
+        <div class="container">
+            <h2 class="section-title">NUESTRA IDENTIDAD</h2> 
+            <div class="products-grid">
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-book" style="font-size: 5rem; color: var(--gold);"></i> 
+                    </div>
+                    <h3 class="product-name">NUESTRA HISTORIA</h3>
+                    <p class="product-desc">Conoce nuestro origen, los hitos clave y el legado que construimos a través de los años.</p>
+                    <a href="historia.html" class="btn-institucional btn-historia">
+                        <i class="fas fa-scroll"></i> Leer Historia
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-rocket" style="font-size: 5rem; color: var(--gold);"></i>
+                    </div>
+                    <h3 class="product-name">MISIÓN</h3>
+                    <p class="product-desc">Nuestro propósito actual: el compromiso que tenemos con nuestros clientes, equipo y comunidad.</p>
+                    <a href="mision.html" class="btn-institucional btn-mision">
+                        <i class="fas fa-bullseye"></i> Conocer Misión
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-star" style="font-size: 5rem; color: var(--gold);"></i>
+                    </div>
+                    <h3 class="product-name">VISIÓN</h3>
+                    <p class="product-desc">La meta a largo plazo: el futuro que aspiramos a construir y la posición que queremos alcanzar.</p>
+                    <a href="vision.html" class="btn-institucional btn-vision">
+                        <i class="fas fa-eye"></i> Ver Visión
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <section class="gallery">
+        <h2 class="section-title">ANÁLISIS ESTRATÉGICO</h2>
+        <div class="gallery-grid">
+            
+           <div class="gallery-item">
+    <img src="imagenes/foda_logo.png" alt="FODA Analysis Background">
+    <div class="gallery-overlay">
+        <h3>ANÁLISIS FODA</h3>
+        <p>Fortalezas, Oportunidades, Debilidades, Amenazas.</p>
+        
+        <div style="margin-bottom: 10px;">
+            <i class="fas fa-chart-simple" style="font-size: 3rem; color: var(--gold); display: block;"></i> 
+        </div>
+
+        <a href="foda.html" class="btn-institucional btn-analisis-small">
+            <i class="fas fa-search"></i> Explorar 
+        </a>
+    </div>
+</div>
+
+            <div class="gallery-item">
+    <img src="imagenes/pestel.jpg" alt="PESTEL Analysis Background">
+    <div class="gallery-overlay">
+        <h3>ANÁLISIS PESTEL</h3>
+        <p>Factores Políticos, Económicos, Sociales y más.</p>
+        
+        <div style="margin-bottom: 10px;">
+            <i class="fas fa-globe-americas" style="font-size: 3rem; color: var(--gold); display: block;"></i> 
+        </div>
+        
+        <a href="pestel.html" class="btn-institucional btn-analisis-small">
+            <i class="fas fa-search"></i> Explorar
+        </a>
+    </div>
+</div>
+
+<div class="gallery-item">
+    <img src="imagenes/analisis_mercado.jpg" alt="Extra Analysis Background">
+    <div class="gallery-overlay">
+        <h3>POSICIONAMIENTO EN EL MERCADO</h3>
+        <p>Conoce a quién nos dirigimos y por qué.</p>
+        
+        <div style="margin-bottom: 10px;">
+            <i class="fas fa-users" style="font-size: 3rem; color: var(--gold); display: block;"></i>
+        </div>
+        
+        <a href="segmentos.html" class="btn-institucional btn-analisis-small">
+            <i class="fas fa-search"></i> Explorar
+        </a>
+    </div>
+</div>
+
+
+
+<div class="gallery-item">
+    <img src="imagenes/portel.png" alt="Portafolio de Marketing">
+    <div class="gallery-overlay">
+        <h3>Las 5 Fuerzas de Portel</h3>
+        <p>Estrategias y tácticas para posicionar nuestra marca.</p>
+        
+        <div style="margin-bottom: 10px;">
+            <i class="fas fa-bullhorn" style="font-size: 3rem; color: var(--gold); display: block;"></i>
+        </div>
+        
+        <a href="postel.html" class="btn-institucional btn-analisis-small">
+            <i class="fas fa-search"></i> Explorar
+        </a>
+    </div>
+</div>
+<div class="gallery-item">
+    <img src="imagenes/propuesta.jpg" alt="Propuesta de Valor Background">
+    <div class="gallery-overlay">
+        <h3>PROPUESTA DE VALOR</h3>
+        <p>Descubre nuestra oferta única y diferenciadora en el mercado.</p>
+        
+        <div style="margin-bottom: 10px;">
+            <i class="fas fa-star" style="font-size: 3rem; color: var(--gold); display: block;"></i>
+        </div>
+        
+        <a href="propuesta.html" class="btn-institucional btn-analisis-small">
+            <i class="fas fa-search"></i> Explorar
+        </a>
+    </div>
+</div>
+
+<div class="gallery-item">
+    <img src="imagenes/diagrama-de-ishikawa-.png" alt="Diagrama de Ishikawa Background">
+    <div class="gallery-overlay">
+        <h3>DIAGRAMA DE ISHIKAWA</h3>
+        <p>Mejora continua y control de calidad en producción.</p>
+        
+        <div style="margin-bottom: 10px;">
+            <i class="fas fa-chart-line" style="font-size: 3rem; color: var(--gold); display: block;"></i>
+        </div>
+        
+        <a href="ishikawa.html" class="btn-institucional btn-analisis-small">
+            <i class="fas fa-search"></i> Explorar
+        </a>
+    </div>
+</div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+    <footer>
+    <div class="container">
+        <div class="logo">INCA KOLA</div>
+        <p>El sabor dorado del Perú</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/incakolaand"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.youtube.com/@canalincakola"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Crear elementos flotantes
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingContainer = document.getElementById('floating-elements');
+            
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                
+                // Posición aleatoria
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.top = `${Math.random() * 100}%`;
+                
+                // Tamaño aleatorio
+                const size = Math.random() * 30 + 10;
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                
+                // Animación con duración aleatoria
+                const duration = Math.random() * 20 + 10;
+                element.style.animationDuration = `${duration}s`;
+                
+                floatingContainer.appendChild(element);
+            }
+            
+            // Animaciones con GSAP
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Animación para las tarjetas de identidad (Historia, Misión, Visión)
+            gsap.from('.showcase .product-card', {
+                scrollTrigger: {
+                    trigger: '.showcase',
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2
+            });
+            
+            // Animación para las tarjetas de análisis (FODA, PESTEL)
+            gsap.from('.gallery-item', {
+                scrollTrigger: {
+                    trigger: '.gallery',
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.3
+            });
+            
+            // Animación para el título de la sección
+            gsap.from('.section-title', {
+                scrollTrigger: {
+                    trigger: '.showcase, .gallery',
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1
+            });
+        });
+    </script>
+</body>
+</html>
