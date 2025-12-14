@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inca Kola - El Sabor Dorado</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
@@ -42,6 +42,61 @@
         .hero-bottle:hover {
             filter: drop-shadow(0 15px 30px rgba(255, 215, 0, 0.6));
         }
+
+        /* Estilos Adicionales para la Conclusión (Simulando la estructura de las tarjetas de showcase) */
+        .conclusion-card {
+            background-color: var(--dark-bg, #1a1a1a); /* Usar una variable o color oscuro */
+            color: var(--light-text, #ffffff);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin: 20px auto; /* Centrar la tarjeta */
+            border: 2px solid var(--gold, #FFD700);
+            text-align: left;
+        }
+        .conclusion-card h3 {
+            color: var(--gold, #FFD700);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--gold, #FFD700);
+            padding-bottom: 10px;
+        }
+        .conclusion-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .conclusion-card li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .conclusion-card li i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--gold, #FFD700);
+        }
+        /* Nuevo estilo para el navegador simple en la conclusión */
+        .simple-navigator {
+            display: block;
+            margin: 30px auto 0;
+            max-width: 350px;
+            text-align: center;
+            padding: 15px 25px;
+            background-color: var(--gold, #FFD700);
+            color: var(--dark-bg, #1a1a1a);
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        .simple-navigator:hover {
+            background-color: var(--light-text, #FFFACD);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -58,154 +113,116 @@
             </div>
         </div>
     </section>
-
-    <section class="showcase">
-        <div class="container">
-            <h2 class="section-title">NUESTRA IDENTIDAD</h2> 
-            <div class="products-grid">
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-book" style="font-size: 5rem; color: var(--gold);"></i> 
-                    </div>
-                    <h3 class="product-name">NUESTRA HISTORIA</h3>
-                    <p class="product-desc">Conoce nuestro origen, los hitos clave y el legado que construimos a través de los años.</p>
-                    <a href="historia.html" class="btn-institucional btn-historia">
-                        <i class="fas fa-scroll"></i> Leer Historia
-                    </a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-rocket" style="font-size: 5rem; color: var(--gold);"></i>
-                    </div>
-                    <h3 class="product-name">MISIÓN</h3>
-                    <p class="product-desc">Nuestro propósito actual: el compromiso que tenemos con nuestros clientes, equipo y comunidad.</p>
-                    <a href="mision.html" class="btn-institucional btn-mision">
-                        <i class="fas fa-bullseye"></i> Conocer Misión
-                    </a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-star" style="font-size: 5rem; color: var(--gold);"></i>
-                    </div>
-                    <h3 class="product-name">VISIÓN</h3>
-                    <p class="product-desc">La meta a largo plazo: el futuro que aspiramos a construir y la posición que queremos alcanzar.</p>
-                    <a href="vision.html" class="btn-institucional btn-vision">
-                        <i class="fas fa-eye"></i> Ver Visión
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
     
-    <section class="gallery">
-        <h2 class="section-title">ANÁLISIS ESTRATÉGICO</h2>
-        <div class="gallery-grid">
-            
-           <div class="gallery-item">
-    <img src="imagenes/foda_logo.png" alt="FODA Analysis Background">
-    <div class="gallery-overlay">
-        <h3>ANÁLISIS FODA</h3>
-        <p>Fortalezas, Oportunidades, Debilidades, Amenazas.</p>
-        
-        <div style="margin-bottom: 10px;">
-            <i class="fas fa-chart-simple" style="font-size: 3rem; color: var(--gold); display: block;"></i> 
-        </div>
 
-        <a href="foda.html" class="btn-institucional btn-analisis-small">
-            <i class="fas fa-search"></i> Explorar 
-        </a>
-    </div>
-</div>
+   <section class="showcase">
+    <div class="container">
+        <h2 class="section-title">NUESTRA IDENTIDAD</h2> 
+        <div class="products-grid">
 
-            <div class="gallery-item">
-    <img src="imagenes/pestel.jpg" alt="PESTEL Analysis Background">
-    <div class="gallery-overlay">
-        <h3>ANÁLISIS PESTEL</h3>
-        <p>Factores Políticos, Económicos, Sociales y más.</p>
-        
-        <div style="margin-bottom: 10px;">
-            <i class="fas fa-globe-americas" style="font-size: 3rem; color: var(--gold); display: block;"></i> 
-        </div>
-        
-        <a href="pestel.html" class="btn-institucional btn-analisis-small">
-            <i class="fas fa-search"></i> Explorar
-        </a>
-    </div>
-</div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-bullseye" style="font-size: 5rem; color: var(--gold);"></i> 
+                </div>
+                <h3 class="product-name">CAPÍTULO V: OBJETIVOS DEL BRANDING</h3>
+                <p class="product-desc">Define cómo Inca Kola construirá su identidad de marca, incluyendo posicionamiento, promesa de valor y personalidad.</p>
+                <a href="capitulo5.1.html" class="btn-institucional btn-historia">
+                    <i class="fas fa-scroll"></i> Leer Capítulo V
+                </a>
+            </div>
 
-<div class="gallery-item">
-    <img src="imagenes/analisis_mercado.jpg" alt="Extra Analysis Background">
-    <div class="gallery-overlay">
-        <h3>POSICIONAMIENTO EN EL MERCADO</h3>
-        <p>Conoce a quién nos dirigimos y por qué.</p>
-        
-        <div style="margin-bottom: 10px;">
-            <i class="fas fa-users" style="font-size: 3rem; color: var(--gold); display: block;"></i>
-        </div>
-        
-        <a href="segmentos.html" class="btn-institucional btn-analisis-small">
-            <i class="fas fa-search"></i> Explorar
-        </a>
-    </div>
-</div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-compass" style="font-size: 5rem; color: var(--gold);"></i>
+                </div>
+                <h3 class="product-name">CAPÍTULO VI: ESTRATEGIAS DE MARKETING MIX</h3>
+                <p class="product-desc">Análisis detallado de Producto, Precio, Plaza (distribución) y Promoción (publicidad) para maximizar la venta.</p>
+                <a href="capitulo6.1.html" class="btn-institucional btn-mision">
+                    <i class="fas fa-bullseye"></i> Conocer Capítulo VI
+                </a>
+            </div>
 
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-chart-column" style="font-size: 5rem; color: var(--gold);"></i>
+                </div>
+                <h3 class="product-name">CAPÍTULO Vll: ESTRATEGIAS DEL MARKETING DIGITAL</h3>
+                <p class="product-desc">Planificación para la presencia online, contenido para redes sociales, SEO, y campañas de publicidad digital efectivas.</p>
+                <a href="capitulo7.1.html" class="btn-institucional btn-vision">
+                    <i class="fas fa-eye"></i> Ver Capítulo VII
+                </a>
+            </div>
 
-
-<div class="gallery-item">
-    <img src="imagenes/portel.png" alt="Portafolio de Marketing">
-    <div class="gallery-overlay">
-        <h3>Las 5 Fuerzas de Portel</h3>
-        <p>Estrategias y tácticas para posicionar nuestra marca.</p>
-        
-        <div style="margin-bottom: 10px;">
-            <i class="fas fa-bullhorn" style="font-size: 3rem; color: var(--gold); display: block;"></i>
-        </div>
-        
-        <a href="postel.html" class="btn-institucional btn-analisis-small">
-            <i class="fas fa-search"></i> Explorar
-        </a>
-    </div>
-</div>
-<div class="gallery-item">
-    <img src="imagenes/propuesta.jpg" alt="Propuesta de Valor Background">
-    <div class="gallery-overlay">
-        <h3>PROPUESTA DE VALOR</h3>
-        <p>Descubre nuestra oferta única y diferenciadora en el mercado.</p>
-        
-        <div style="margin-bottom: 10px;">
-            <i class="fas fa-star" style="font-size: 3rem; color: var(--gold); display: block;"></i>
-        </div>
-        
-        <a href="propuesta.html" class="btn-institucional btn-analisis-small">
-            <i class="fas fa-search"></i> Explorar
-        </a>
-    </div>
-</div>
-
-<div class="gallery-item">
-    <img src="imagenes/diagrama-de-ishikawa-.png" alt="Diagrama de Ishikawa Background">
-    <div class="gallery-overlay">
-        <h3>DIAGRAMA DE ISHIKAWA</h3>
-        <p>Mejora continua y control de calidad en producción.</p>
-        
-        <div style="margin-bottom: 10px;">
-            <i class="fas fa-chart-line" style="font-size: 3rem; color: var(--gold); display: block;"></i>
-        </div>
-        
-        <a href="ishikawa.html" class="btn-institucional btn-analisis-small">
-            <i class="fas fa-search"></i> Explorar
-        </a>
-    </div>
-</div>
-            
         </div>
     </div>
 </section>
 
+
+    <section class="gallery">
+        <h2 class="section-title">CONCLUSIÓN</h2>
+        <div class="container">
+            <div class="conclusion-card">
+                <h3 class="text-center"><i class="fas fa-balance-scale"></i> Visión Estratégica Integral</h3>
+                <p class="mb-5 text-gray-300 text-lg">
+                    El éxito sostenido de Inca Kola reside en una estrategia de marketing holística que integra su valor emocional como 'El Sabor del Perú' con la ejecución moderna en el Mix y el entorno Digital.
+                </p>
+               
+                <a href="conclusiones.html" class="simple-navigator" target="_blank"> 
+                    <i class="fas fa-globe"></i> 
+                </a>
+                </div>
+        </div>
+    </section>
+    
+    <section class="gallery">
+        <h2 class="section-title">RECOMENDACIONES</h2>
+        <div class="gallery-grid">
+            
+            <div class="gallery-item">
+                <img src="imagenes/imagenes_hallowen/logo_incacola.png" alt="Recomendación Halloween Background">
+                <div class="gallery-overlay">
+                    <div style="margin-bottom: 10px;">
+                        <i class="fas fa-ghost" style="font-size: 3rem; color: var(--gold); display: block;"></i> 
+                    </div>
+                    <h3>Recomendación Halloween</h3>
+                    <p>Propuesta de campaña estacional para el mes de octubre, aprovechando el contexto cultural.</p>
+                    <a href="hallowen.html" class="btn-institucional btn-analisis-small">
+                        <i class="fas fa-search"></i> Explorar 
+                    </a>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="imagenes/imagenes_hallowen/navidad/logo_navideño.png" alt="Recomendación Navideña Background">
+                <div class="gallery-overlay">
+                    <div style="margin-bottom: 10px;">
+                        <i class="fas fa-gift" style="font-size: 3rem; color: var(--gold); display: block;"></i>
+                    </div>
+                    <h3>Recomendación Navideña</h3>
+                    <p>Estrategias de promoción y empaques especiales para las fiestas de fin de año.</p>
+                    <a href="navidad.html" class="btn-institucional btn-analisis-small">
+                        <i class="fas fa-search"></i> Explorar
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="gallery-item">
+                <img src="imagenes/carrusel/Recomendaciones1.jpeg" alt="Recomendación Digital Background">
+                <div class="gallery-overlay">
+                    <div style="margin-bottom: 10px;">
+                        <i class="fas fa-mobile-screen-button" style="font-size: 3rem; color: var(--gold); display: block;"></i>
+                    </div>
+                    <h3>Recomendación Digital</h3>
+                    <p>Plan de contenido para redes sociales, anuncios pagados y optimización web (SEO).</p>
+                    <a href="carrusel.html" class="btn-institucional btn-analisis-small">
+                        <i class="fas fa-search"></i> Explorar
+                    </a>
+                </div>
+            </div>
+                
+        </div>
+    </section>
 
 
     <footer>
@@ -222,7 +239,7 @@
 </footer>
 
     <script>
-        // Crear elementos flotantes
+        // Código JavaScript/GSAP original para animaciones
         document.addEventListener('DOMContentLoaded', function() {
             const floatingContainer = document.getElementById('floating-elements');
             

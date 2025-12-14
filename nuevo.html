@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos Inca Kola - Efecto 3D</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffd700 0%, #ffcc00 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+        }
+
+        .title {
+            color: #d40000;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: #d40000;
+            border-radius: 2px;
+        }
+
+        .swiper-container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 50px 0;
+        }
+
+        .swiper-slide {
+            width: 320px;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #ffffff, #f8f8f8);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .logo-top {
+            width: 120px;
+            height: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .price {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #d40000;
+            color: white;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .product-img {
+            width: 80%;
+            height: 240px;
+            object-fit: contain;
+            margin: 10px 0;
+            transition: transform 0.5s ease;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+        }
+
+        .swiper-slide-active .product-img {
+            transform: translateY(-10px);
+        }
+
+        .product-info {
+            text-align: center;
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-info h2 {
+            color: #d40000;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-info p {
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .buy-button {
+            background: linear-gradient(to right, #d40000, #ff0000);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 0, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 0, 0, 0.6);
+        }
+
+        .buy-button:active {
+            transform: translateY(0);
+        }
+
+        /* Efectos de brillo en las tarjetas */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .swiper-slide-active .card::before {
+            opacity: 1;
+        }
+
+        /* Indicadores personalizados */
+        .swiper-pagination {
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: #d40000;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* Botones de navegación */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #d40000;
+            background: rgba(255, 255, 255, 0.8);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Efecto de partículas de fondo */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .swiper-slide {
+                width: 280px;
+                height: 460px;
+            }
+            
+            .product-img {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .swiper-slide {
+                width: 250px;
+                height: 420px;
+            }
+            
+            .product-info h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">Productos Inca Kola</h1>
+
+    <div class="swiper-container mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="card">
+                    <img class="logo-top" src="imagenes/producot_1.webp" alt="Inca Kola Logo">
+                    <div class="price">S/5.50</div>
+                    <img class="product-img" src="imagenes/logo-principal.png" alt="Inca Kola Original">
+                    <div class="product-info">
+                        <h2>Inca Kola Original</h2>
+                        <p>
+                            El sabor único e inconfundible que ha endulzado los momentos peruanos por generaciones. 
+                            Disfruta de la bebida de sabor a hierba luisa que representa al Perú.
+                        </p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="card">
+                    <img class="logo-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Inca_Kola_logo.svg/1200px-Inca_Kola_logo.svg.png" alt="Inca Kola Logo">
+                    <div class="price">S/4.80</div>
+                    <img class="product-img" src="https://www.incakola.com.pe/wp-content/uploads/2021/05/light-1L.png" alt="Inca Kola Light">
+                    <div class="product-info">
+                        <h2>Inca Kola Light</h2>
+                        <p>
+                            Todo el sabor de la Inca Kola original pero con menos calorías. 
+                            Perfecta para quienes buscan cuidar su alimentación sin sacrificar el sabor.
+                        </p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="card">
+                    <img class="logo-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Inca_Kola_logo.svg/1200px-Inca_Kola_logo.svg.png" alt="Inca Kola Logo">
+                    <div class="price">S/3.20</div>
+                    <img class="product-img" src="https://www.incakola.com.pe/wp-content/uploads/2021/05/original-500ml.png" alt="Inca Kola 500ml">
+                    <div class="product-info">
+                        <h2>Inca Kola 500ml</h2>
+                        <p>
+                            El formato ideal para disfrutar en cualquier momento. 
+                            Lleva contigo el sabor dorado del Perú donde quiera que vayas.
+                        </p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="card">
+                    <img class="logo-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Inca_Kola_logo.svg/1200px-Inca_Kola_logo.svg.png" alt="Inca Kola Logo">
+                    <div class="price">S/2.50</div>
+                    <img class="product-img" src="https://www.incakola.com.pe/wp-content/uploads/2021/05/original-lata.png" alt="Inca Kola Lata">
+                    <div class="product-info">
+                        <h2>Inca Kola Lata</h2>
+                        <p>
+                            Práctica y refrescante, la Inca Kola en lata mantiene todo su sabor característico 
+                            en un formato ideal para fiestas y reuniones.
+                        </p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="card">
+                    <img class="logo-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Inca_Kola_logo.svg/1200px-Inca_Kola_logo.svg.png" alt="Inca Kola Logo">
+                    <div class="price">S/6.90</div>
+                    <img class="product-img" src="https://www.incakola.com.pe/wp-content/uploads/2021/05/original-1.5L.png" alt="Inca Kola 1.5L">
+                    <div class="product-info">
+                        <h2>Inca Kola Familiar</h2>
+                        <p>
+                            El formato familiar perfecto para compartir en reuniones y celebraciones. 
+                            Más Inca Kola para más momentos especiales.
+                        </p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="card">
+                    <img class="logo-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Inca_Kola_logo.svg/1200px-Inca_Kola_logo.svg.png" alt="Inca Kola Logo">
+                    <div class="price">S/7.50</div>
+                    <img class="product-img" src="https://www.incakola.com.pe/wp-content/uploads/2021/05/original-2L.png" alt="Inca Kola 2L">
+                    <div class="product-info">
+                        <h2>Inca Kola 2 Litros</h2>
+                        <p>
+                            El formato más grande para las ocasiones más especiales. 
+                            Ideal para fiestas y reuniones familiares donde el sabor peruano es el protagonista.
+                        </p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Agregar paginación y navegación -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Efecto de partículas de fondo -->
+    <div class="particles" id="particles"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Inicializar Swiper
+            var swiper = new Swiper('.mySwiper', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                spaceBetween: 30,
+                coverflowEffect: {
+                    rotate: 15,
+                    stretch: -60,
+                    depth: 400,
+                    modifier: 1.2,
+                    slideShadows: false,
+                },
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+
+            // Crear efecto de partículas
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['#ffd700', '#ffffff', '#d40000'];
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Tamaño aleatorio
+                const size = Math.random() * 20 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Color aleatorio
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = color;
+                
+                // Posición inicial aleatoria
+                particle.style.left = `${Math.random() * 100}vw`;
+                
+                // Duración de animación aleatoria
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Retraso inicial aleatorio
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+
+            // Efecto al hacer hover en los botones de compra
+            const buyButtons = document.querySelectorAll('.buy-button');
+            buyButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.background = 'linear-gradient(to right, #ff0000, #d40000)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.background = 'linear-gradient(to right, #d40000, #ff0000)';
+                });
+                
+                button.addEventListener('click', function() {
+                    // Efecto de pulsación
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                    
+                    // Aquí iría la lógica real de compra
+                    alert('¡Producto agregado al carrito!');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inca Kola - ¡Celebra con Sabor Dorado esta Navidad!</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos Base del Diseño Anterior (Glassmorphism, Colores) */
+        .christmas-background {
+            background-image: url('https://source.unsplash.com/random/1600x900/?christmas,snow,lights'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .christmas-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .text-inca-gold { color: #FFD700; }
+        .bg-inca-red { background-color: #E4002B; }
+        .btn-inca-gold { background-color: #FFD700; color: #000; }
+        .btn-inca-gold:hover { background-color: #FFC400; }
+
+        /* Estilos ESPECÍFICOS para el Carrusel (Scroll Snap) */
+        .carousel-snap-container {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 0; 
+        }
+
+        .carousel-snap-item {
+            flex-shrink: 0;
+            width: 50%; 
+            scroll-snap-align: start; 
+            padding: 0 10px; 
+        }
+
+        /* Ajuste para centrar el primer elemento y dejar espacio al final */
+        .carousel-snap-container::before,
+        .carousel-snap-container::after {
+            content: '';
+            width: 25%; 
+            flex-shrink: 0;
+            display: block;
+        }
+        .carousel-snap-container::after {
+            width: 25%; 
+        }
+        
+        /* Ocultar la barra de desplazamiento */
+        .carousel-snap-container::-webkit-scrollbar { display: none; }
+        .carousel-snap-container { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Estilos para la Animación de Nieve */
+        .snow {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0;
+            animation: snowfall linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-10px) translateX(0);
+                opacity: 0;
+            }
+            20% { opacity: 1; }
+            100% {
+                transform: translateY(100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        .hidden-audio-controls {
+            position: absolute;
+            top: -50px; 
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <audio controls autoplay loop class="hidden-audio-controls">
+        <source src="imagenes/imagenes_hallowen/musica/navidad.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <div id="snow-container" class="fixed top-0 left-0 w-full h-full pointer-events-none z-20"></div>
+
+    <header class="py-4 px-6 relative z-10">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-black text-inca-gold">INCA KOLA <span class="text-white">- NAVIDAD</span></h1>
+            
+        </div>
+    </header>
+
+    <main class="christmas-background min-h-screen flex items-center justify-center py-20 relative">
+        
+        <div class="relative z-10 max-w-5xl mx-auto text-center px-6">
+            <div class="glass-effect p-10 md:p-16 rounded-3xl">
+                
+                <h2 class="text-6xl md:text-7xl font-black mb-6 text-inca-gold leading-tight">
+                    ¡Esta Navidad,<br> Brilla con el Sabor Dorado!
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-200 mb-10">
+                    Celebra momentos inolvidables con Inca Kola.
+                </p>
+
+                <div class="mb-12">
+                    <img src="imagenes/imagenes_hallowen/navidad/logo_navideño.png" alt="Logo Central Inca Kola Navideño" class="mx-auto h-64 md:h-80 lg:h-96 w-auto object-contain filter drop-shadow-lg" /> 
+                </div>
+                
+                <div class="carousel-snap-container flex w-full max-w-2xl mx-auto mb-12 rounded-xl shadow-2xl">
+                    
+                    <div class="carousel-snap-item relative group">
+                        <img src="imagenes/imagenes_hallowen/navidad/inca_02.png" alt="Promoción 1" class="w-full h-80 object-cover rounded-xl shadow-lg">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
+                            <p class="text-lg font-bold text-white mb-2">Botellas Navideñas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-snap-item relative group">
+                        <img src="imagenes/imagenes_hallowen/navidad/inca_1.png" alt="Promoción 2" class="w-full h-80 object-cover rounded-xl shadow-lg">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
+                            <p class="text-lg font-bold text-white mb-2">Momentos en Familia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-snap-item relative group">
+                        <img src="imagenes/imagenes_hallowen/navidad/navidad.3.jpeg" alt="Promoción 3" class="w-full h-80 object-cover rounded-xl shadow-lg">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
+                            <p class="text-lg font-bold text-white mb-2">Cena Peruana Dorada</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-snap-item relative group">
+                        <img src="https://source.unsplash.com/random/500x500/?inca-kola-cans,christmas-dinner" alt="Promoción 4" class="w-full h-80 object-cover rounded-xl shadow-lg">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl">
+                            <p class="text-lg font-bold text-white mb-2">Edición Limitada</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <h3 class="text-4xl font-bold mb-6 text-inca-gold">Nuestras Promociones Navideñas:</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <div class="glass-effect p-6 rounded-xl flex flex-col items-center">
+                        <i class="fas fa-gift text-5xl text-inca-gold mb-4"></i>
+                        <h4 class="text-2xl font-semibold mb-2">Pack Familiar Navideño</h4>
+                        <p class="text-gray-300 text-center">Botella de 3L + Vasos exclusivos. ¡Perfecto para compartir!</p>
+                        <a href="#" class="mt-4 px-8 py-3 btn-inca-gold font-bold rounded-lg hover:shadow-xl">Ver Oferta</a>
+                    </div>
+                    
+                    <div class="glass-effect p-6 rounded-xl flex flex-col items-center">
+                        <i class="fas fa-tags text-5xl text-inca-gold mb-4"></i>
+                        <h4 class="text-2xl font-semibold mb-2">Descuentos Especiales Online</h4>
+                        <p class="text-gray-300 text-center">Hasta 25% de descuento en tu compra por la web.</p>
+                        <a href="#" class="mt-4 px-8 py-3 btn-inca-gold font-bold rounded-lg hover:shadow-xl">Comprar Ahora</a>
+                    </div>
+                    
+                    <div class="glass-effect p-6 rounded-xl flex flex-col items-center">
+                        <i class="fas fa-star text-5xl text-inca-gold mb-4"></i>
+                        <h4 class="text-2xl font-semibold mb-2">Sorteos Exclusivos</h4>
+                        <p class="text-gray-300 text-center">Participa por cenas navideñas y canastas de productos.</p>
+                        <a href="#" class="mt-4 px-8 py-3 btn-inca-gold font-bold rounded-lg hover:shadow-xl">Participar</a>
+                    </div>
+                </div>
+
+                <a href="carrusel.html" class="inline-block px-12 py-5 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-black text-lg rounded-xl hover:shadow-2xl hover:shadow-yellow-500/50 transition-all duration-300 transform hover:scale-105">
+                    SIGUENTE <i class="fas fa-paper-plane ml-3"></i>
+                </a>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 py-8 px-6 text-center relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <p class="text-gray-400">&copy; 2023 Inca Kola. El Sabor Dorado del Perú. ¡Felices Fiestas!</p>
+            <div class="social-icons mt-4 space-x-6 text-2xl">
+                <a href="https://www.facebook.com/incakolaand" class="text-gray-400 hover:text-inca-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-400 hover:text-inca-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-inca-gold transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="" class="text-gray-400 hover:text-inca-gold transition-colors"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // SCRIPT PARA LA ANIMACIÓN DE NIEVE 
+        const snowContainer = document.getElementById('snow-container');
+        if (snowContainer) {
+            function createSnowflake() {
+                const snow = document.createElement('div');
+                snow.classList.add('snow');
+                snow.style.left = Math.random() * 100 + 'vw';
+                const size = Math.random() * 5 + 5; 
+                snow.style.width = size + 'px';
+                snow.style.height = size + 'px';
+                snow.style.opacity = Math.random() * 0.7 + 0.3; 
+
+                snow.style.animationDuration = Math.random() * 8 + 10 + 's'; 
+                snow.style.animationDelay = Math.random() * 10 + 's'; 
+                snowContainer.appendChild(snow);
+
+                snow.addEventListener('animationend', () => {
+                    snow.remove();
+                    createSnowflake(); 
+                });
+            }
+
+            for (let i = 0; i < 75; i++) { 
+                createSnowflake();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto Inca Kola - Atributos y Presentaciones</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper CSS para el carrusel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'purple-light': '#C084FC',
+                        'purple-main': '#9333EA',
+                        'purple-dark': '#7C3AED',
+                        'purple-darker': '#5B21B6',
+                        'inca-yellow': '#F6EB14',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { 
+                                boxShadow: '0 0 20px rgba(147, 51, 234, 0.5)',
+                                transform: 'scale(1)' 
+                            },
+                            '50%': { 
+                                boxShadow: '0 0 40px rgba(147, 51, 234, 0.8)',
+                                transform: 'scale(1.05)' 
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .text-purple-gradient {
+            background: linear-gradient(45deg, #C084FC, #9333EA, #7C3AED);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 4s linear infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .purple-section {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.95) 0%, 
+                rgba(30, 10, 50, 0.9) 50%, 
+                rgba(0, 0, 0, 0.95) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .purple-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, 
+                rgba(147, 51, 234, 0.1) 0%, 
+                transparent 50%),
+                radial-gradient(circle at 80% 20%, 
+                rgba(147, 51, 234, 0.08) 0%, 
+                transparent 50%);
+            z-index: 1;
+        }
+
+        .purple-card {
+            background: linear-gradient(145deg, 
+                rgba(30, 10, 50, 0.9), 
+                rgba(0, 0, 0, 0.95));
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #9333EA, #C084FC, #9333EA) 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .purple-icon {
+            width: 80px; /* Aumentado */
+            height: 80px; /* Aumentado */
+            background: linear-gradient(135deg, 
+                rgba(147, 51, 234, 0.2), 
+                rgba(124, 58, 237, 0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px; /* Aumentado */
+            color: #C084FC;
+            border: 2px solid rgba(147, 51, 234, 0.3);
+        }
+
+        .section-number {
+            background: linear-gradient(45deg, #9333EA, #C084FC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            font-size: 120px; /* Aumentado */
+            line-height: 1;
+            opacity: 0.2;
+            position: absolute;
+            right: 20px;
+            top: -20px;
+        }
+
+        /* Estilos para el carrusel Swiper - MÁS GRANDES */
+        .presentation-slide {
+            background: linear-gradient(135deg, 
+                rgba(30, 10, 50, 0.9), 
+                rgba(0, 0, 0, 0.95));
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #9333EA, #C084FC, #9333EA) 1;
+            border-radius: 20px;
+            padding: 20px;
+            height: 500px; /* Aumentado de 450px */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .presentation-slide:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(147, 51, 234, 0.4);
+        }
+
+        /* IMÁGENES MUCHO MÁS GRANDES */
+        .presentation-image {
+            width: 280px; /* Aumentado de 220px */
+            height: 350px; /* Aumentado de 280px */
+            object-fit: contain;
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.7));
+            transition: all 0.4s ease;
+        }
+
+        .presentation-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .capacity-badge {
+            background: linear-gradient(45deg, #9333EA, #C084FC);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 22px; /* Aumentado */
+            margin-bottom: 10px;
+            box-shadow: 0 8px 20px rgba(147, 51, 234, 0.5);
+        }
+
+        .swiper-pagination-bullet {
+            background: #9333EA !important;
+            opacity: 0.5;
+            width: 14px; /* Aumentado */
+            height: 14px; /* Aumentado */
+            margin: 0 8px !important;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            transform: scale(1.3);
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #9333EA !important;
+            background: rgba(0, 0, 0, 0.8);
+            width: 60px; /* Aumentado */
+            height: 60px; /* Aumentado */
+            border-radius: 50%;
+            border: 2px solid #9333EA;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 24px !important;
+            font-weight: bold;
+        }
+
+        .price-strategy-card {
+            background: linear-gradient(145deg, 
+                rgba(30, 10, 50, 0.8), 
+                rgba(0, 0, 0, 0.9));
+            border: 2px solid rgba(147, 51, 234, 0.5);
+            border-radius: 20px;
+            padding: 30px; /* Aumentado */
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .price-strategy-card:hover {
+            border-color: #9333EA;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.3);
+        }
+
+        .slide-info {
+            text-align: center;
+            width: 100%;
+            padding-top: 15px;
+        }
+
+        /* Logo más grande */
+        .logo-grande {
+            width: 350px; /* Aumentado */
+            height: 200px; /* Aumentado */
+            object-fit: contain;
+        }
+
+        /* Textos más grandes */
+        .texto-grande {
+            font-size: 1.25rem; /* Aumentado para párrafos */
+        }
+
+        .titulo-grande {
+            font-size: 3.5rem; /* Aumentado para h2 */
+        }
+
+        @media (max-width: 768px) {
+            .logo-grande {
+                width: 280px;
+                height: 160px;
+            }
+            
+            .presentation-slide {
+                height: 450px;
+            }
+            
+            .presentation-image {
+                width: 200px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Sección 6.1 Producto -->
+    <section class="purple-section py-28 relative overflow-hidden"> <!-- py-28 aumentado -->
+        <!-- Fondo decorativo -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Encabezado principal - MÁS GRANDE -->
+            <div class="text-center mb-24"> <!-- mb-24 aumentado -->
+                <div class="relative inline-block">
+                    <div class="absolute -inset-6 bg-purple-500/20 rounded-full blur-2xl"></div>
+                    <div class="relative">
+                        <h1 class="text-6xl md:text-8xl font-black mb-8"> <!-- Aumentado -->
+                            <span class="text-purple-gradient">EL PRODUCTO</span>
+                        </h1>
+                    </div>
+                </div>
+                <p class="text-2xl texto-grande text-gray-400 font-poppins max-w-3xl mx-auto"> <!-- text-2xl aumentado -->
+                    Una bebida que trasciende su naturaleza para convertirse en símbolo cultural del Perú
+                </p>
+            </div>
+
+      <!-- Logo Inca Kola Centrado - EXTRA GRANDE -->
+<div class="flex justify-center mb-24">
+    <div class="relative">
+        <div class="absolute -inset-16 bg-gradient-to-r from-purple-600 to-purple-800 rounded-full blur-3xl opacity-30"></div>
+        <img src="imagenes/imagenes_6/logo_Dorado.png" 
+             alt="Inca Kola Logo" 
+             class="relative z-20 w-[400px] h-[250px] md:w-[500px] md:h-[300px] object-contain">
+    </div>
+</div>
+
+            <!-- Atributos del Producto - MÁS GRANDES -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 mb-24"> <!-- gap-14 y mb-24 aumentados -->
+                <!-- Columna izquierda -->
+                <div class="space-y-10">
+                    <!-- 1. Naturaleza del producto -->
+                    <div class="purple-card p-10 rounded-2xl"> <!-- p-10 aumentado -->
+                        <div class="flex items-center gap-6 mb-8"> <!-- gap-6 y mb-8 aumentados -->
+                            <div class="purple-icon">
+                                <i class="fas fa-wine-bottle"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-white">Naturaleza del Producto</h3> <!-- text-3xl aumentado -->
+                                <p class="text-purple-300 text-lg">Características tangibles</p> <!-- text-lg aumentado -->
+                            </div>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed texto-grande"> <!-- texto-grande -->
+                            Inca Kola es una bebida gaseosa de sabor dulce y aroma característico. 
+                            Su <span class="text-yellow-400 font-bold">color amarillo intenso</span> y su 
+                            <span class="text-yellow-400 font-bold">sabor único</span> la diferencian claramente 
+                            de otras gaseosas del mercado.
+                        </p>
+                    </div>
+
+                    <!-- 2. Identidad y diferenciación -->
+                    <div class="purple-card p-10 rounded-2xl">
+                        <div class="flex items-center gap-6 mb-8">
+                            <div class="purple-icon">
+                                <i class="fas fa-fingerprint"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-white">Identidad y Diferenciación</h3>
+                                <p class="text-purple-300 text-lg">Lo que nos hace únicos</p>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <p class="text-gray-300 texto-grande">
+                                Posee un sabor distintivo, difícil de comparar con otras marcas, 
+                                lo que le da una fuerte identidad sensorial.
+                            </p>
+                            <div class="bg-black/50 p-6 rounded-xl border border-purple-500/30">
+                                <div class="flex items-center gap-4">
+                                    <i class="fas fa-quote-left text-3xl text-purple-400"></i> <!-- text-3xl aumentado -->
+                                    <p class="text-2xl italic text-white"> <!-- text-2xl aumentado -->
+                                        "La bebida del sabor nacional"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Calidad y consistencia -->
+                    <div class="purple-card p-10 rounded-2xl">
+                        <div class="flex items-center gap-6 mb-8">
+                            <div class="purple-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-white">Calidad y Consistencia</h3>
+                                <p class="text-purple-300 text-lg">Compromiso con el consumidor</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed texto-grande">
+                            Inca Kola mantiene un nivel constante de calidad en sabor, gasificación y frescura, 
+                            lo que incrementa la confianza del consumidor.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Columna derecha -->
+                <div class="space-y-10">
+                    <!-- 4. Diseño y empaque -->
+                    <div class="purple-card p-10 rounded-2xl">
+                        <div class="flex items-center gap-6 mb-8">
+                            <div class="purple-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-white">Diseño y Empaque</h3>
+                                <p class="text-purple-300 text-lg">Identidad visual</p>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <p class="text-gray-300 texto-grande">
+                                Utiliza un empaque de color amarillo brillante, acompañado de elementos gráficos 
+                                inspirados en la estética andina.
+                            </p>
+                            <div class="flex items-center gap-6 p-6 bg-black/50 rounded-xl">
+                                <div class="w-16 h-16 rounded-full bg-yellow-500 flex items-center justify-center"> <!-- w-16 h-16 aumentado -->
+                                    <i class="fas fa-sun text-black text-2xl"></i> <!-- text-2xl aumentado -->
+                                </div>
+                                <div>
+                                    <p class="text-yellow-400 font-bold text-xl">Logo fácilmente reconocible</p> <!-- text-xl aumentado -->
+                                    <p class="text-gray-400 text-lg">Fortalece la recordación de marca</p> <!-- text-lg aumentado -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Atributos intangibles -->
+                    <div class="purple-card p-10 rounded-2xl">
+                        <div class="flex items-center gap-6 mb-8">
+                            <div class="purple-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-white">Atributos Intangibles</h3>
+                                <p class="text-purple-300 text-lg">Valor emocional</p>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-6 mb-8">
+                            <div class="text-center p-6 bg-black/50 rounded-xl">
+                                <i class="fas fa-flag text-4xl text-purple-400 mb-3"></i> <!-- text-4xl aumentado -->
+                                <p class="text-lg text-gray-300">Tradición</p> <!-- text-lg aumentado -->
+                            </div>
+                            <div class="text-center p-6 bg-black/50 rounded-xl">
+                                <i class="fas fa-crown text-4xl text-purple-400 mb-3"></i>
+                                <p class="text-lg text-gray-300">Orgullo Nacional</p>
+                            </div>
+                            <div class="text-center p-6 bg-black/50 rounded-xl">
+                                <i class="fas fa-users text-4xl text-purple-400 mb-3"></i>
+                                <p class="text-lg text-gray-300">Identidad Peruana</p>
+                            </div>
+                            <div class="text-center p-6 bg-black/50 rounded-xl">
+                                <i class="fas fa-glass-cheers text-4xl text-purple-400 mb-3"></i>
+                                <p class="text-lg text-gray-300">Celebraciones</p>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-300 italic texto-grande">
+                            Se asocia a celebraciones, reuniones familiares y momentos de convivencia.
+                        </p>
+                    </div>
+
+                
+                </div>
+            </div>
+
+            <!-- Título de Presentaciones - MÁS GRANDE -->
+            <div class="text-center mb-16">
+                <div class="relative inline-block">
+                    <h2 class="section-number">3</h2>
+                    <h2 class="text-5xl md:text-6xl font-black text-white relative z-10 titulo-grande"> <!-- Aumentado -->
+                        <span class="text-purple-gradient">PRESENTACIONES</span>
+                    </h2>
+                </div>
+                <p class="text-2xl text-gray-400 mt-6 max-w-3xl mx-auto"> <!-- text-2xl aumentado -->
+                    Una amplia variedad de tamaños y envases para atender todos los momentos de consumo
+                </p>
+            </div>
+
+            <!-- CARRUSEL DE PRESENTACIONES - MÁS GRANDES -->
+            <div class="relative mb-24">
+                <!-- Swiper Container -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 - 300ml -->
+                        <div class="swiper-slide">
+                            <div class="presentation-slide">
+                                <div class="capacity-badge"> Personal</div>
+                                <div class="w-full flex-1 flex items-center justify-center">
+                                    <!-- IMAGEN MUY GRANDE -->
+                                    <div class="presentation-image flex items-center justify-center">
+                                        <img src="imagenes/imagenes_6/carrusel.1.png" 
+                                             alt="Inca Kola 300ml" 
+                                             class="hover:scale-110 transition-transform duration-400">
+                                    </div>
+                                </div>
+                                <!-- SOLO TÍTULO Y DESCRIPCIÓN BREVE -->
+                                <div class="slide-info">
+                                    <h3 class="text-2xl font-bold text-white mb-2">Botella PET 300ml</h3> <!-- text-2xl aumentado -->
+                                    <p class="text-gray-400 text-lg">Presentación Personal</p> <!-- text-lg aumentado -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 - 500ml -->
+                        <div class="swiper-slide">
+                            <div class="presentation-slide">
+                                <div class="capacity-badge">La Gordita </div>
+                                <div class="w-full flex-1 flex items-center justify-center">
+                                    <!-- IMAGEN MUY GRANDE -->
+                                    <div class="presentation-image flex items-center justify-center">
+                                        <img src="imagenes/imagenes_6/carrusel.4.png"  
+                                             alt="Inca Kola 500ml" 
+                                             class="hover:scale-110 transition-transform duration-400">
+                                    </div>
+                                </div>
+                                <!-- SOLO TÍTULO Y DESCRIPCIÓN BREVE -->
+                                <div class="slide-info">
+                                    <h3 class="text-2xl font-bold text-white mb-2">Botella PET 500ml</h3>
+                                    <p class="text-gray-400 text-lg">Más Vendida La Gordita</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 - 1L -->
+                        <div class="swiper-slide">
+                            <div class="presentation-slide">
+                                <div class="capacity-badge">1 Litro</div>
+                                <div class="w-full flex-1 flex items-center justify-center">
+                                    <!-- IMAGEN MUY GRANDE -->
+                                    <div class="presentation-image flex items-center justify-center">
+                                        <img src="imagenes/imagenes_6/carrusel.1.png"   
+                                             alt="Inca Kola 1 Litro" 
+                                             class="hover:scale-110 transition-transform duration-400">
+                                    </div>
+                                </div>
+                                <!-- SOLO TÍTULO Y DESCRIPCIÓN BREVE -->
+                                <div class="slide-info">
+                                    <h3 class="text-2xl font-bold text-white mb-2">Botella PET 1L</h3>
+                                    <p class="text-gray-400 text-lg">Familiar</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 - 1.5L -->
+                        <div class="swiper-slide">
+                            <div class="presentation-slide">
+                                <div class="capacity-badge">1.5 Litros</div>
+                                <div class="w-full flex-1 flex items-center justify-center">
+                                    <!-- IMAGEN MUY GRANDE -->
+                                    <div class="presentation-image flex items-center justify-center">
+                                        <img src="imagenes/imagenes_6/carrusel1.5litros.png"  
+                                             alt="Inca Kola 1.5 Litros" 
+                                             class="hover:scale-110 transition-transform duration-400">
+                                    </div>
+                                </div>
+                                <!-- SOLO TÍTULO Y DESCRIPCIÓN BREVE -->
+                                <div class="slide-info">
+                                    <h3 class="text-2xl font-bold text-white mb-2">Botella PET 1.5L</h3>
+                                    <p class="text-gray-400 text-lg">Económico</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 - 2L -->
+                        <div class="swiper-slide">
+                            <div class="presentation-slide">
+                                <div class="capacity-badge">2 Litros</div>
+                                <div class="w-full flex-1 flex items-center justify-center">
+                                    <!-- IMAGEN MUY GRANDE -->
+                                    <div class="presentation-image flex items-center justify-center">
+                                        <img src="imagenes/imagenes_6/carrusel2litros.png"  
+                                             alt="Inca Kola 2 Litros" 
+                                             class="hover:scale-110 transition-transform duration-400">
+                                    </div>
+                                </div>
+                                <!-- SOLO TÍTULO Y DESCRIPCIÓN BREVE -->
+                                <div class="slide-info">
+                                    <h3 class="text-2xl font-bold text-white mb-2">Botella PET 2L</h3>
+                                    <p class="text-gray-400 text-lg">Extra Familiar</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 6 - Lata -->
+                        <div class="swiper-slide">
+                            <div class="presentation-slide">
+                                <div class="capacity-badge">Lata </div>
+                                <div class="w-full flex-1 flex items-center justify-center">
+                                    <!-- IMAGEN MUY GRANDE -->
+                                    <div class="presentation-image flex items-center justify-center">
+                                        <img src="imagenes/imagenes_6/carrusel.2.png"  
+                                             alt="Inca Kola Lata 355ml" 
+                                             class="hover:scale-110 transition-transform duration-400">
+                                    </div>
+                                </div>
+                                <!-- SOLO TÍTULO Y DESCRIPCIÓN BREVE -->
+                                <div class="slide-info">
+                                    <h3 class="text-2xl font-bold text-white mb-2">Lata 355ml</h3>
+                                    <p class="text-gray-400 text-lg">Clásica</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paginación y navegación -->
+                    <div class="swiper-pagination !relative !mt-10"></div> <!-- mt-10 aumentado -->
+                    <div class="swiper-button-next !hidden lg:!flex"></div>
+                    <div class="swiper-button-prev !hidden lg:!flex"></div>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <!-- Sección 6.2 Precio - MÁS GRANDE -->
+    <section class="py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-black via-purple-900/5 to-black"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Encabezado - MÁS GRANDE -->
+            <div class="flex items-center gap-8 mb-20">
+                <div class="relative">
+                    <div class="absolute -inset-6 bg-purple-500/20 rounded-full blur-xl"></div>
+                    <div class="relative bg-black border-2 border-purple-500 w-24 h-24 rounded-full flex items-center justify-center">
+                        <span class="text-5xl font-black text-purple-400">6.2</span> <!-- text-5xl aumentado -->
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-5xl md:text-7xl font-black text-white titulo-grande"> <!-- Aumentado -->
+                        <span class="text-purple-gradient">ESTRATEGIA DE PRECIO</span>
+                    </h2>
+                    <p class="text-2xl text-gray-400 font-poppins mt-4">Competitividad y valor percibido</p> <!-- text-2xl aumentado -->
+                </div>
+            </div>
+
+            <!-- Estrategias de precio - MÁS GRANDES -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+                <!-- Estrategia 1 -->
+                <div class="price-strategy-card">
+                    <div class="flex items-center gap-6 mb-6">
+                        <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center">
+                            <i class="fas fa-balance-scale text-2xl text-purple-400"></i> <!-- text-2xl aumentado -->
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Precio Competitivo</h3> <!-- text-2xl aumentado -->
+                    </div>
+                    <p class="text-gray-300 texto-grande">
+                        Ligeramente por debajo o similar a Coca-Cola para mantener accesibilidad y volumen masivo.
+                    </p>
+                </div>
+
+                <!-- Estrategia 2 -->
+                <div class="price-strategy-card">
+                    <div class="flex items-center gap-6 mb-6">
+                        <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center">
+                            <i class="fas fa-gem text-2xl text-purple-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Valor Percibido</h3>
+                    </div>
+                    <p class="text-gray-300 texto-grande">
+                        Los consumidores están dispuestos a pagar por su carácter simbólico y cultural único.
+                    </p>
+                </div>
+
+                <!-- Estrategia 3 -->
+                <div class="price-strategy-card">
+                    <div class="flex items-center gap-6 mb-6">
+                        <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center">
+                            <i class="fas fa-percentage text-2xl text-purple-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Promociones por Volumen</h3>
+                    </div>
+                    <p class="text-gray-300 texto-grande">
+                        "Precio especial por 3 botellas" y descuentos para bodegas y mayoristas.
+                    </p>
+                </div>
+
+                <!-- Estrategia 4 -->
+                <div class="price-strategy-card">
+                    <div class="flex items-center gap-6 mb-6">
+                        <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center">
+                            <i class="fas fa-layer-group text-2xl text-purple-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Segmentación</h3>
+                    </div>
+                    <p class="text-gray-300 texto-grande">
+                        Formatos pequeños con precio por litro más alto, familiares con mayor economía.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Comparativa de precios - MÁS GRANDE -->
+            <div class="bg-gradient-to-r from-purple-900/20 to-black/50 p-10 rounded-2xl border-2 border-purple-500/30">
+                <h3 class="text-4xl font-bold text-white text-center mb-12">Estructura de Precios por Presentación</h3> <!-- text-4xl aumentado -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-base text-left text-gray-400"> <!-- text-base aumentado -->
+                        <thead class="text-lg uppercase bg-black/50"> <!-- text-lg aumentado -->
+                            <tr>
+                                <th class="px-8 py-4">Presentación</th>
+                                <th class="px-8 py-4">Precio Unitario</th>
+                                <th class="px-8 py-4">Precio por Litro</th>
+                                <th class="px-8 py-4">Segmento</th>
+                                <th class="px-8 py-4">Momento de Consumo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-800 hover:bg-purple-900/10">
+                                <td class="px-8 py-6 font-medium text-white text-lg">Botella PET 300ml</td>
+                                <td class="px-8 py-6 text-purple-400 font-bold text-xl">S/ 1.50</td>
+                                <td class="px-8 py-6 text-lg">S/ 5.00/L</td>
+                                <td class="px-8 py-6"><span class="px-4 py-2 bg-purple-900/50 rounded-full text-base">Personal</span></td>
+                                <td class="px-8 py-6 text-lg">Individual</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 hover:bg-purple-900/10">
+                                <td class="px-8 py-6 font-medium text-white text-lg">Botella PET 500ml</td>
+                                <td class="px-8 py-6 text-purple-400 font-bold text-xl">S/ 2.20</td>
+                                <td class="px-8 py-6 text-lg">S/ 4.40/L</td>
+                                <td class="px-8 py-6"><span class="px-4 py-2 bg-purple-900/50 rounded-full text-base">Personal</span></td>
+                                <td class="px-8 py-6 text-lg">Compartir</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 hover:bg-purple-900/10">
+                                <td class="px-8 py-6 font-medium text-white text-lg">Botella PET 1L</td>
+                                <td class="px-8 py-6 text-purple-400 font-bold text-xl">S/ 3.80</td>
+                                <td class="px-8 py-6 text-lg">S/ 3.80/L</td>
+                                <td class="px-8 py-6"><span class="px-4 py-2 bg-purple-900/50 rounded-full text-base">Familiar</span></td>
+                                <td class="px-8 py-6 text-lg">Familia</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 hover:bg-purple-900/10">
+                                <td class="px-8 py-6 font-medium text-white text-lg">Botella PET 1.5L</td>
+                                <td class="px-8 py-6 text-purple-400 font-bold text-xl">S/ 5.20</td>
+                                <td class="px-8 py-6 text-lg">S/ 3.47/L</td>
+                                <td class="px-8 py-6"><span class="px-4 py-2 bg-purple-900/50 rounded-full text-base">Familiar</span></td>
+                                <td class="px-8 py-6 text-lg">Reuniones</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 hover:bg-purple-900/10">
+                                <td class="px-8 py-6 font-medium text-white text-lg">Botella PET 2L</td>
+                                <td class="px-8 py-6 text-purple-400 font-bold text-xl">S/ 6.50</td>
+                                <td class="px-8 py-6 text-lg">S/ 3.25/L</td>
+                                <td class="px-8 py-6"><span class="px-4 py-2 bg-purple-900/50 rounded-full text-base">Extra Familiar</span></td>
+                                <td class="px-8 py-6 text-lg">Fiestas</td>
+                            </tr>
+                            <tr class="hover:bg-purple-900/10">
+                                <td class="px-8 py-6 font-medium text-white text-lg">Lata 355ml</td>
+                                <td class="px-8 py-6 text-purple-400 font-bold text-xl">S/ 2.00</td>
+                                <td class="px-8 py-6 text-lg">S/ 5.63/L</td>
+                                <td class="px-8 py-6"><span class="px-4 py-2 bg-purple-900/50 rounded-full text-base">Personal</span></td>
+                                <td class="px-8 py-6 text-lg">Rápido</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-center text-gray-400 mt-8 text-lg">
+                    <i class="fas fa-chart-line text-purple-400 mr-3"></i>
+                    Economía de escala: mayor volumen = mejor precio por litro
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Siguiente - Añadido al final -->
+    <footer class="py-12 bg-black border-t border-purple-900/30">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center">
+                <a href="capitulo6.2.html" 
+                   class="next-button bg-gradient-to-r from-purple-main to-purple-dark hover:from-purple-darker hover:to-purple-dark text-white font-bold text-2xl py-5 px-16 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30 border-2 border-purple-500/50">
+                    <i class="fas fa-arrow-right mr-4"></i>
+                    SIGUIENTE
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // Inicializar Swiper
+        const swiper = new Swiper('.swiper-container', {
+            // Configuración del carrusel
+            slidesPerView: 1,
+            spaceBetween: 25,
+            loop: true,
+            centeredSlides: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 25,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 35,
+                },
+            },
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animación para el logo
+        gsap.from("img[src*='logo_Dorado.png']", {
+            scrollTrigger: {
+                trigger: "img[src*='logo_Dorado.png']",
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            },
+            scale: 0.5,
+            opacity: 0,
+            duration: 1.8,
+            ease: "back.out(1.7)"
+        });
+
+        // Animación para los títulos principales
+        gsap.from('h1, h2', {
+            scrollTrigger: {
+                trigger: 'h1, h2',
+                start: "top 90%",
+                toggleActions: "play none none reverse"
+            },
+            y: 60,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.3
+        });
+
+        // Animación para las tarjetas púrpuras
+        gsap.utils.toArray('.purple-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 90%",
+                    toggleActions: "play none none reverse"
+                },
+                x: i % 2 === 0 ? -60 : 60,
+                opacity: 0,
+                duration: 1.2,
+                delay: i * 0.1,
+                ease: "power3.out"
+            });
+        });
+
+        // Animación para las diapositivas del carrusel
+        gsap.utils.toArray('.presentation-slide').forEach((slide, i) => {
+            gsap.from(slide, {
+                scrollTrigger: {
+                    trigger: slide,
+                    start: "top 95%",
+                    toggleActions: "play none none reverse"
+                },
+                scale: 0.7,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.05,
+                ease: "back.out(1.4)"
+            });
+        });
+
+        // Animación para las estrategias de precio
+        gsap.utils.toArray('.price-strategy-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 95%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 40,
+                opacity: 0,
+                duration: 1,
+                delay: i * 0.1,
+                ease: "power3.out"
+            });
+        });
+
+        // Efecto hover para las tarjetas de presentación - MEJORADO
+        document.querySelectorAll('.presentation-slide').forEach(slide => {
+            slide.addEventListener('mouseenter', () => {
+                gsap.to(slide, {
+                    y: -20,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+                
+                // Efecto en la imagen
+                const img = slide.querySelector('img');
+                gsap.to(img, {
+                    scale: 1.15,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+                
+                // Efecto en el badge
+                const badge = slide.querySelector('.capacity-badge');
+                gsap.to(badge, {
+                    scale: 1.1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+            
+            slide.addEventListener('mouseleave', () => {
+                gsap.to(slide, {
+                    y: 0,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+                
+                // Resetear imagen
+                const img = slide.querySelector('img');
+                gsap.to(img, {
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+                
+                // Resetear badge
+                const badge = slide.querySelector('.capacity-badge');
+                gsap.to(badge, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // Efecto hover para las estrategias de precio
+        document.querySelectorAll('.price-strategy-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card.querySelector('i'), {
+                    rotation: 360,
+                    duration: 0.6,
+                    ease: "back.out(1.7)"
+                });
+            });
+        });
+
+        // Pausar autoplay del carrusel al hacer hover
+        const swiperContainer = document.querySelector('.swiper-container');
+        swiperContainer.addEventListener('mouseenter', () => {
+            swiper.autoplay.stop();
+        });
+        
+        swiperContainer.addEventListener('mouseleave', () => {
+            swiper.autoplay.start();
+        });
+
+        // Animación para la tabla
+        gsap.from('table tbody tr', {
+            scrollTrigger: {
+                trigger: 'table',
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            },
+            x: -60,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power3.out"
+        });
+        
+        // Animación para los números del resumen
+        gsap.utils.toArray('.text-4xl.font-bold.text-purple-400').forEach((num, i) => {
+            gsap.from(num, {
+                scrollTrigger: {
+                    trigger: num,
+                    start: "top 90%",
+                    toggleActions: "play none none reverse"
+                },
+                scale: 0,
+                rotation: 180,
+                duration: 1,
+                delay: i * 0.2,
+                ease: "back.out(1.7)"
+            });
+        });
+
+        // Animación para el botón Siguiente
+        gsap.from('.next-button', {
+            scrollTrigger: {
+                trigger: '.next-button',
+                start: "top 90%",
+                toggleActions: "play none none reverse"
+            },
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        // Efecto hover para el botón Siguiente
+        document.querySelector('.next-button').addEventListener('mouseenter', function() {
+            gsap.to(this, {
+                scale: 1.08,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+
+        document.querySelector('.next-button').addEventListener('mouseleave', function() {
+            gsap.to(this, {
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+    </script>
+</body>
+</html>

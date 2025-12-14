@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conclusiones - Estrategias del Marketing Digital - Inca Kola</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'inka-gold': '#FDD835', // Un amarillo brillante (más crema/lima que el dorado oscuro)
+                        'inka-yellow': '#FFD700', // El dorado tradicional
+                        'inka-dark': '#1A1A1A', // Negro suave
+                        'inka-crema': '#FFFACD', // Color crema para contraste
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Fondo con textura sutil que evoca el oro o la cultura incaica */
+        body {
+            background-color: #1A1A1A; /* Negro profundo de Inca Kola */
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            background-image:
+                radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 70%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="%231A1A1A"/><path d="M0 0 L100 0 L50 50 Z M100 100 L0 100 L50 50 Z" fill="%23303030" opacity="0.1"/></svg>');
+            background-size: 10px, 400px;
+            overflow-x: hidden;
+        }
+
+        /* Título con Gradiente (Simulando el logo) */
+        .title-gradient {
+            background: linear-gradient(90deg, #FFD700 0%, #FFFACD 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Tarjetas de Objetivos */
+        .objective-card {
+            background-color: #1A1A1A;
+            border: 2px solid #333;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .objective-card:hover {
+            border-color: #FDD835;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Estilo para los iconos de redes sociales */
+        .social-icon {
+            color: #FDD835; /* Color base */
+            transition: color 0.3s ease, transform 0.3s ease;
+            filter: drop-shadow(0 0 5px rgba(253, 216, 53, 0.5));
+        }
+
+        .social-icon:hover {
+            color: #FFFACD; /* Crema en hover */
+            transform: scale(1.1);
+        }
+
+        /* --- ESTILOS DEL BOTÓN SIGUIENTE --- */
+        .btn-siguiente {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 50px auto 0;
+            padding: 15px 30px;
+            background-color: #FFD700; /* gold-main */
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow:
+                0 0 10px rgba(255, 215, 0, 0.7),
+                0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-siguiente:hover {
+            background-color: #FFFACD; /* inka-crema en hover para un brillo más claro */
+            transform: translateY(-3px) scale(1.02);
+            box-shadow:
+                0 0 15px rgba(255, 215, 0, 1),
+                0 6px 20px rgba(0, 0, 0, 0.6);
+        }
+        /* ------------------------------------------- */
+        /* Estilo para el contenedor de video (para mantener la proporción) */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Proporción 16:9 */
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+            border-radius: 8px;
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="min-h-screen py-24">
+        <div class="container mx-auto px-6">
+
+            <header class="text-center mb-16">
+                
+                <h1 class="text-6xl md:text-8xl font-black title-gradient leading-tight">
+                    Conclusiones
+                </h1>
+                <h2 class="text-2xl text-inka-crema mt-4 font-light">
+                    Reflexiones Finales sobre la Estrategia Digital de Inca Kola
+                </h2>
+                <div class="w-20 h-1 bg-inka-yellow mx-auto mt-6 rounded"></div>
+            </header>
+
+            <section class="mb-20">
+                <h3 class="text-3xl font-bold text-inka-yellow mb-10 border-l-4 border-inka-gold pl-4 uppercase">
+                    Resumen de Puntos Clave
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-6 objective-card"><i class="fas fa-bullseye text-4xl text-inka-gold mb-4"></i><h4 class="text-xl font-bold mb-2 text-inka-crema">Identidad Central</h4><p class="text-gray-400 text-sm">La estrategia gira en torno a la peruanidad y la cultura, cimentando su posición única.</p></div>
+                    <div class="p-6 objective-card"><i class="fas fa-lightbulb text-4xl text-inka-gold mb-4"></i><h4 class="text-xl font-bold mb-2 text-inka-crema">Mix de Canales</h4><p class="text-gray-400 text-sm">Uso equilibrado de medios masivos (TV/Vía Pública) y digitales (Redes Sociales).</p></div>
+                    <div class="p-6 objective-card"><i class="fas fa-user-friends text-4xl text-inka-gold mb-4"></i><h4 class="text-xl font-bold mb-2 text-inka-crema">Enfoque Joven</h4><p class="text-gray-400 text-sm">Adaptación de contenido (TikTok, YouTube) para asegurar la relevancia intergeneracional.</p></div>
+                </div>
+            </section>
+
+            <section class="mb-20">
+                <h3 class="text-3xl font-bold text-inka-yellow mb-10 border-l-4 border-inka-gold pl-4 uppercase">
+                    Imagen de Refuerzo
+                </h3>
+
+                <div class="flex items-center justify-center p-8 bg-inka-dark/50 rounded-xl border border-inka-gold/30" style="min-height: 700px;">
+                    <div class="w-full max-w-4xl h-auto rounded-lg overflow-hidden border-4 border-inka-gold shadow-2xl">
+                        <img
+                            src="imagenes/conclusiones.jpeg"
+                            alt="Imagen de conclusión o resumen visual de la estrategia de Inca Kola"
+                            class="w-full h-full object-cover"
+                            style="min-height: 650px;"
+                        >
+                        </div>
+                </div>
+            </section>
+
+            <div class="pt-10 border-t border-inka-gold/30">
+                <a href="index.html" class="btn-siguiente">
+                    FINALIZAR
+                </a>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

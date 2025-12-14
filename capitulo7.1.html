@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo VII: Estrategias del Marketing Digital - Inca Kola</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'inka-gold': '#FDD835', // Un amarillo brillante (más crema/lima que el dorado oscuro)
+                        'inka-yellow': '#FFD700', // El dorado tradicional
+                        'inka-dark': '#1A1A1A', // Negro suave
+                        'inka-crema': '#FFFACD', // Color crema para contraste
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Fondo con textura sutil que evoca el oro o la cultura incaica */
+        body {
+            background-color: #1A1A1A; /* Negro profundo de Inca Kola */
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            background-image: 
+                radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 70%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="%231A1A1A"/><path d="M0 0 L100 0 L50 50 Z M100 100 L0 100 L50 50 Z" fill="%23303030" opacity="0.1"/></svg>');
+            background-size: 10px, 400px;
+            overflow-x: hidden;
+        }
+
+        /* Título con Gradiente (Simulando el logo) */
+        .title-gradient {
+            background: linear-gradient(90deg, #FFD700 0%, #FFFACD 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Tarjetas de Objetivos */
+        .objective-card {
+            background-color: #1A1A1A;
+            border: 2px solid #333;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .objective-card:hover {
+            border-color: #FDD835;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Estilo para los iconos de redes sociales */
+        .social-icon {
+            color: #FDD835; /* Color base */
+            transition: color 0.3s ease, transform 0.3s ease;
+            filter: drop-shadow(0 0 5px rgba(253, 216, 53, 0.5));
+        }
+
+        .social-icon:hover {
+            color: #FFFACD; /* Crema en hover */
+            transform: scale(1.1);
+        }
+        
+        /* --- ESTILOS DEL BOTÓN SIGUIENTE --- */
+        .btn-siguiente {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 50px auto 0;
+            padding: 15px 30px;
+            background-color: #FFD700; /* gold-main */
+            color: #000; 
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.7),
+                0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-siguiente:hover {
+            background-color: #FFFACD; /* inka-crema en hover para un brillo más claro */
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 0 15px rgba(255, 215, 0, 1),
+                0 6px 20px rgba(0, 0, 0, 0.6);
+        }
+        /* ------------------------------------------- */
+        /* Estilo para el contenedor de video (para mantener la proporción) */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Proporción 16:9 */
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+            border-radius: 8px;
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="min-h-screen py-24">
+        <div class="container mx-auto px-6">
+
+            <header class="text-center mb-16">
+                <p class="text-inka-gold font-bold text-xl uppercase tracking-[0.2em] mb-4">
+                    Capítulo VII
+                </p>
+                <h1 class="text-6xl md:text-8xl font-black title-gradient leading-tight">
+                    Estrategias Digitales
+                </h1>
+                <h2 class="text-2xl text-inka-crema mt-4 font-light">
+                    Impulsando el Símbolo Nacional en la Era Digital
+                </h2>
+                <div class="w-20 h-1 bg-inka-yellow mx-auto mt-6 rounded"></div>
+            </header>
+
+            <section class="mb-20">
+                <h3 class="text-3xl font-bold text-inka-yellow mb-10 border-l-4 border-inka-gold pl-4 uppercase">
+                    7.1 Objetivos del Marketing
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-6 objective-card"><i class="fas fa-chart-line text-4xl text-inka-gold mb-4"></i><h4 class="text-xl font-bold mb-2 text-inka-crema">Liderazgo de Mercado</h4><p class="text-gray-400 text-sm">Incrementar la participación, reforzando la preferencia frente a marcas globales.</p></div>
+                    <div class="p-6 objective-card"><i class="fas fa-flag text-4xl text-inka-gold mb-4"></i><h4 class="text-xl font-bold mb-2 text-inka-crema">Símbolo Nacional</h4><p class="text-gray-400 text-sm">Consolidar el posicionamiento aprovechando la fuerte identidad cultural.</p></div>
+                    <div class="p-6 objective-card"><i class="fas fa-heart text-4xl text-inka-gold mb-4"></i><h4 class="text-xl font-bold mb-2 text-inka-crema">Fidelización</h4><p class="text-gray-400 text-sm">Potenciar campañas que resalten la tradición, la familia y la peruanidad.</p></div>
+                    <div class="p-6 objective-card"><i class="fas fa-mobile-alt text-4xl text-inka-gold mb-4"></i><h4 class="text-xl font-bold mb-2 text-inka-crema">Expansión Joven</h4><p class="text-gray-400 text-sm">Asegurar presencia en segmentos jóvenes mediante estrategias digitales e influencers.</p></div>
+                    <div class="p-6 objective-card"><i class="fas fa-utensils text-4xl text-inka-gold mb-4"></i><h4 class="text-xl font-bold mb-2 text-inka-crema">Nuevos Momentos</h4><p class="text-gray-400 text-sm">Impulsar el consumo en celebraciones, comidas familiares y actividades cotidianas.</p></div>
+                    <div class="p-6 objective-card"><i class="fas fa-warehouse text-4xl text-inka-gold mb-4"></i><h4 class="text-xl font-bold mb-2 text-inka-crema">Optimización de Distribución</h4><p class="text-gray-400 text-sm">Asegurar disponibilidad constante en todo el territorio nacional (canales tradicionales y modernos).</p></div>
+                </div>
+            </section>
+            
+            <section class="mb-20">
+                <h3 class="text-3xl font-bold text-inka-yellow mb-10 border-l-4 border-inka-gold pl-4 uppercase">
+                    7.2 Plataformas y Canales Clave
+                </h3>
+
+                <div class="flex flex-wrap justify-center gap-12 p-8 bg-inka-dark/50 rounded-xl mb-12 border border-inka-gold/30">
+                    <div class="text-center"><i class="fab fa-facebook-f text-5xl text-inka-gold social-icon"></i><p class="text-sm font-semibold mt-2 text-inka-crema">Facebook</p></div>
+                    <div class="text-center"><i class="fab fa-instagram text-5xl text-inka-gold social-icon"></i><p class="text-sm font-semibold mt-2 text-inka-crema">Instagram</p></div>
+                    <div class="text-center"><i class="fab fa-tiktok text-5xl text-inka-gold social-icon"></i><p class="text-sm font-semibold mt-2 text-inka-crema">TikTok</p></div>
+                    <div class="text-center"><i class="fab fa-youtube text-5xl text-inka-gold social-icon"></i><p class="text-sm font-semibold mt-2 text-inka-crema">YouTube</p></div>
+                    <div class="text-center"><i class="fas fa-globe text-5xl text-inka-gold social-icon"></i><p class="text-sm font-semibold mt-2 text-inka-crema">Sitio Web</p></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="p-8 objective-card">
+                        <h4 class="text-2xl font-bold text-inka-yellow mb-4 flex items-center gap-3"><i class="fas fa-tv"></i> Canales Masivos</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                            <li>Televisión y Radio: Refuerzan la presencia masiva y el posicionamiento familiar y cultural.</li>
+                            <li>Publicidad en Vía Pública: Paneles y activaciones urbanas para alta recordación visual.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-8 objective-card">
+                        <h4 class="text-2xl font-bold text-inka-yellow mb-4 flex items-center gap-3"><i class="fas fa-store"></i> Puntos de Contacto</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                            <li>Puntos de Venta: Estrategias de exhibición y empaques diferenciados para impulsar la compra.</li>
+                            <li>Eventos y Activaciones: Participación en ferias gastronómicas y festividades para fortalecer la identidad.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-20">
+                <h3 class="text-3xl font-bold text-inka-yellow mb-10 border-l-4 border-inka-gold pl-4 uppercase">
+                    7.2 Refuerzo Visual de Canales (Vía Pública y Puntos de Venta)
+                </h3>
+                
+                <div class="bg-inka-dark/50 p-6 rounded-lg border border-inka-gold/30">
+                    <p class="text-inka-crema mb-4 font-semibold"></p>
+                    
+                    <!-- IMAGEN MODIFICADA a 800x800 -->
+                    <div class="flex items-center justify-center rounded-lg overflow-hidden border-4 border-inka-gold">
+                        <img 
+                            src="imagenes/imagenes_7/tren.inca_cola.jpg" 
+                            alt="Imagen de publicidad en vía pública o punto de venta de Inca Kola" 
+                            class="w-[800px] h-[800px] object-cover"
+                        >
+                    </div>
+                    
+                </div>
+            </section>
+
+            <section class="mb-20">
+                <h3 class="text-3xl font-bold text-inka-yellow mb-10 border-l-4 border-inka-gold pl-4 uppercase">
+                    7.4 Contenido Audiovisual Clave
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <div class="p-4 objective-card">
+                        <p class="text-inka-crema font-bold mb-3">Video Publicitario 1: Campaña de Identidad Nacional</p>
+                        <div class="video-container">
+                            <video controls poster="imagenes/imagenes_7/Video_Publicictario.mp4">
+                                <source src="imagenes/imagenes_7/Video_Publicictario.mp4"s type="video/mp4">
+                                
+                            </video>
+                        </div>
+                    </div>
+
+                    <div class="p-4 objective-card">
+                        <p class="text-inka-crema font-bold mb-3">Video Publicitario 2: Enfocado en Segmento Joven (TikTok/YouTube)</p>
+                        <div class="video-container">
+                            <video controls poster="imagenes/imagenes_7/video1.mp4">
+                                <source src="imagenes/imagenes_7/video1.mp4" type="video/mp4">
+                                
+                            </video>
+                        </div>
+                    </div>
+                </div>
+               
+            </section>
+            
+            <div class="pt-10 border-t border-inka-gold/30">
+                <a href="capitulo7.2.html" class="btn-siguiente">
+                    CONTINUAR AL CAPÍTULO VII: 
+                </a>
+            </div>
+            </div>
+    </main>
+    
+</body>
+</html>

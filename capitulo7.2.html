@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo VII: Estrategias del Marketing Digital - Inca Kola</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'inca-yellow': '#F6EB14',
+                        'inca-gold': '#FFD700',
+                        'inca-dark': '#000000',
+                        'inca-blue': '#0033A0',
+                        'inca-red': '#ED1C24',
+                        'kpi-card': '#1A1A2E',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { 
+                                boxShadow: '0 0 20px rgba(246, 235, 20, 0.5)',
+                                transform: 'scale(1)' 
+                            },
+                            '50%': { 
+                                boxShadow: '0 0 40px rgba(246, 235, 20, 0.8)',
+                                transform: 'scale(1.05)' 
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .inca-gradient-text {
+            background: linear-gradient(45deg, #F6EB14, #FFD700, #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient 4s linear infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .inca-section {
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.95) 0%, 
+                rgba(30, 30, 20, 0.9) 50%, 
+                rgba(0, 0, 0, 0.95) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .inca-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, 
+                rgba(246, 235, 20, 0.1) 0%, 
+                transparent 50%),
+                radial-gradient(circle at 80% 20%, 
+                rgba(255, 215, 0, 0.08) 0%, 
+                transparent 50%);
+            z-index: 1;
+        }
+
+        .inca-card {
+            background: linear-gradient(145deg, 
+                rgba(30, 30, 20, 0.9), 
+                rgba(0, 0, 0, 0.95));
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #F6EB14, #FFD700, #F6EB14) 1;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .inca-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(246, 235, 20, 0.2);
+        }
+
+        .tactic-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, 
+                rgba(246, 235, 20, 0.2), 
+                rgba(255, 215, 0, 0.1));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #F6EB14;
+            border: 2px solid rgba(246, 235, 20, 0.3);
+            margin: 0 auto 20px;
+        }
+
+        .metric-card {
+            background: rgba(26, 26, 46, 0.8);
+            border: 2px solid rgba(246, 235, 20, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .metric-card:hover {
+            border-color: #F6EB14;
+            box-shadow: 0 5px 15px rgba(246, 235, 20, 0.1);
+        }
+
+        .section-number {
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(246, 235, 20, 0.1);
+            position: absolute;
+            right: 20px;
+            top: -30px;
+            line-height: 1;
+        }
+
+        .btn-siguiente {
+            display: inline-block;
+            background: linear-gradient(45deg, #F6EB14, #FFD700);
+            color: #000;
+            font-weight: 700;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(246, 235, 20, 0.4);
+        }
+
+        .btn-siguiente:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(246, 235, 20, 0.6);
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .facebook { background: #3b5998; }
+        .instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
+        .tiktok { background: #000000; }
+        .youtube { background: #FF0000; }
+
+        .social-icon:hover {
+            transform: scale(1.05);
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: white;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #F6EB14;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .trend-up { color: #10B981; }
+        .trend-down { color: #EF4444; }
+        .trend-stable { color: #F59E0B; }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Sección 7.3: Tácticas y Herramientas -->
+    <section class="inca-section py-20 relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Encabezado -->
+            <div class="text-center mb-16">
+                <div class="relative inline-block">
+                    <h2 class="section-number">7.3</h2>
+                    <h2 class="text-5xl md:text-6xl font-black text-white relative z-10">
+                        <span class="inca-gradient-text">TÁCTICAS Y HERRAMIENTAS</span>
+                    </h2>
+                </div>
+                <p class="text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
+                    Estrategias integradas para fortalecer la presencia de Inca Kola en el mercado
+                </p>
+            </div>
+
+            <!-- Carrusel de Tácticas -->
+            <div class="swiper tacticsSwiper mb-16">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1: Marketing Digital -->
+                    <div class="swiper-slide">
+                        <div class="inca-card p-8 rounded-2xl h-full">
+                            <div class="tactic-icon">
+                                <i class="fas fa-digital-tachograph"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white text-center mb-4">Marketing Digital</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-center space-x-4 mb-6">
+                                    <div class="social-icon facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </div>
+                                    <div class="social-icon instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </div>
+                                    <div class="social-icon tiktok">
+                                        <i class="fab fa-tiktok"></i>
+                                    </div>
+                                    <div class="social-icon youtube">
+                                        <i class="fab fa-youtube"></i>
+                                    </div>
+                                </div>
+                                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                    <li>Campañas estratégicas en redes sociales</li>
+                                    <li>Videos cortos y storytelling peruano</li>
+                                    <li>Colaboraciones con creadores de contenido</li>
+                                    <li>Enfoque en gastronomía y cultura</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Publicidad ATL -->
+                    <div class="swiper-slide">
+                        <div class="inca-card p-8 rounded-2xl h-full">
+                            <div class="tactic-icon">
+                                <i class="fas fa-tv"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white text-center mb-4">Publicidad ATL</h3>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-3 gap-4 mb-6">
+                                    <div class="text-center p-3 bg-black/50 rounded-lg">
+                                        <i class="fas fa-tv text-xl text-inca-yellow mb-2"></i>
+                                        <p class="text-sm">TV</p>
+                                    </div>
+                                    <div class="text-center p-3 bg-black/50 rounded-lg">
+                                        <i class="fas fa-broadcast-tower text-xl text-inca-yellow mb-2"></i>
+                                        <p class="text-sm">Radio</p>
+                                    </div>
+                                    <div class="text-center p-3 bg-black/50 rounded-lg">
+                                        <i class="fas fa-ad text-xl text-inca-yellow mb-2"></i>
+                                        <p class="text-sm">Paneles</p>
+                                    </div>
+                                </div>
+                                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                    <li>Presencia constante en medios tradicionales</li>
+                                    <li>Mayor inversión en temporadas clave</li>
+                                    <li>Verano, Fiestas Patrias y Navidad</li>
+                                    <li>Refuerzo de mensaje cultural</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Punto de Venta -->
+                    <div class="swiper-slide">
+                        <div class="inca-card p-8 rounded-2xl h-full">
+                            <div class="tactic-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white text-center mb-4">Punto de Venta</h3>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-2 gap-4 mb-6">
+                                    <div class="text-center p-3 bg-black/50 rounded-lg">
+                                        <i class="fas fa-wine-glass-alt text-xl text-inca-yellow mb-2"></i>
+                                        <p class="text-sm">Degustaciones</p>
+                                    </div>
+                                    <div class="text-center p-3 bg-black/50 rounded-lg">
+                                        <i class="fas fa-tags text-xl text-inca-yellow mb-2"></i>
+                                        <p class="text-sm">Combos</p>
+                                    </div>
+                                    <div class="text-center p-3 bg-black/50 rounded-lg">
+                                        <i class="fas fa-box-open text-xl text-inca-yellow mb-2"></i>
+                                        <p class="text-sm">Material POP</p>
+                                    </div>
+                                    <div class="text-center p-3 bg-black/50 rounded-lg">
+                                        <i class="fas fa-snowflake text-xl text-inca-yellow mb-2"></i>
+                                        <p class="text-sm">Refrigeradoras</p>
+                                    </div>
+                                </div>
+                                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                    <li>Activaciones en tiendas y supermercados</li>
+                                    <li>Fuerte presencia en HORECA</li>
+                                    <li>Acuerdos de exclusividad</li>
+                                    <li>Exhibiciones estratégicas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Alianzas -->
+                    <div class="swiper-slide">
+                        <div class="inca-card p-8 rounded-2xl h-full">
+                            <div class="tactic-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white text-center mb-4">Alianzas y Patrocinios</h3>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-3 gap-4 mb-6">
+                                    <div class="text-center p-3 bg-black/50 rounded-lg">
+                                        <i class="fas fa-utensils text-xl text-inca-yellow mb-2"></i>
+                                        <p class="text-sm">Ferias</p>
+                                    </div>
+                                    <div class="text-center p-3 bg-black/50 rounded-lg">
+                                        <i class="fas fa-music text-xl text-inca-yellow mb-2"></i>
+                                        <p class="text-sm">Culturales</p>
+                                    </div>
+                                    <div class="text-center p-3 bg-black/50 rounded-lg">
+                                        <i class="fas fa-futbol text-xl text-inca-yellow mb-2"></i>
+                                        <p class="text-sm">Deportivos</p>
+                                    </div>
+                                </div>
+                                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                    <li>Participación en eventos nacionales</li>
+                                    <li>Ferias gastronómicas y culturales</li>
+                                    <li>Campañas deportivas</li>
+                                    <li>Refuerzo de identidad nacional</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination !relative !mt-8"></div>
+            </div>
+
+            <!-- Galería de Imágenes con URLs de Google -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div>
+                    <div class="image-container">
+                        <img src="imagenes/imagenes_7/imagen1.jpg" 
+                             alt="Campaña Digital Inca Kola">
+                        <div class="image-overlay">
+                            <h4 class="font-bold text-lg">Campaña Digital</h4>
+                            <p class="text-sm text-gray-300">Estrategias en redes sociales</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="image-container">
+                        <img src="imagenes/imagenes_7/tambo.jpg" 
+                             alt="Punto de Venta Inca Kola">
+                        <div class="image-overlay">
+                            <h4 class="font-bold text-lg">Activación en Tienda</h4>
+                            <p class="text-sm text-gray-300">Exhibición estratégica</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="image-container">
+                        <img src="imagenes/imagenes_7/fiesta.png" 
+                             alt="Evento Inca Kola">
+                        <div class="image-overlay">
+                            <h4 class="font-bold text-lg">Patrocinio Evento</h4>
+                            <p class="text-sm text-gray-300">Participación en ferias</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 7.4: MÉTRICAS Y KPIs -->
+    <section class="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-6">
+            <!-- Encabezado -->
+            <div class="flex items-center gap-8 mb-16">
+                <div class="relative">
+                    <div class="absolute -inset-6 bg-yellow-500/20 rounded-full blur-xl"></div>
+                    <div class="relative bg-black border-2 border-inca-yellow w-20 h-20 rounded-full flex items-center justify-center">
+                        <span class="text-3xl font-black text-inca-yellow">7.4</span>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-5xl md:text-6xl font-black text-white">
+                        <span class="inca-gradient-text">MÉTRICAS Y KPIs</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 mt-4">Sistema de medición del desempeño estratégico</p>
+                </div>
+            </div>
+
+            <!-- Grid de KPIs Simplificados -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                
+                <!-- KPI 1: Brand Awareness -->
+                <div class="metric-card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                            <i class="fas fa-brain text-xl text-inca-yellow"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Brand Awareness</h3>
+                    </div>
+                    <div class="metric-value">85%</div>
+                    <div class="text-center mb-3">
+                        <span class="text-green-500"><i class="fas fa-arrow-up"></i> +3%</span>
+                        <span class="text-gray-400 text-sm ml-2">vs mes anterior</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Recordación espontánea y asociación con "sabor nacional"
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-800">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Espontánea</span>
+                            <span class="text-white">78%</span>
+                        </div>
+                        <div class="flex justify-between text-sm mt-1">
+                            <span class="text-gray-400">Asistida</span>
+                            <span class="text-white">92%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI 2: Market Share -->
+                <div class="metric-card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                            <i class="fas fa-chart-pie text-xl text-inca-yellow"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Market Share</h3>
+                    </div>
+                    <div class="metric-value">32%</div>
+                    <div class="text-center mb-3">
+                        <span class="text-green-500"><i class="fas fa-arrow-up"></i> +2%</span>
+                        <span class="text-gray-400 text-sm ml-2">vs trimestre anterior</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Participación en categoría gaseosas
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-800">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Supermercados</span>
+                            <span class="text-white">45%</span>
+                        </div>
+                        <div class="flex justify-between text-sm mt-1">
+                            <span class="text-gray-400">Bodegas</span>
+                            <span class="text-white">35%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI 3: Engagement Digital -->
+                <div class="metric-card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-xl text-inca-yellow"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Engagement Digital</h3>
+                    </div>
+                    <div class="metric-value">4.5%</div>
+                    <div class="text-center mb-3">
+                        <span class="text-green-500"><i class="fas fa-arrow-up"></i> +0.5%</span>
+                        <span class="text-gray-400 text-sm ml-2">vs campaña anterior</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Tasa de interacción en redes sociales
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-800">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Instagram</span>
+                            <span class="text-white">5.2%</span>
+                        </div>
+                        <div class="flex justify-between text-sm mt-1">
+                            <span class="text-gray-400">Facebook</span>
+                            <span class="text-white">3.8%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI 4: Fidelización -->
+                <div class="metric-card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                            <i class="fas fa-heart text-xl text-inca-yellow"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Fidelización</h3>
+                    </div>
+                    <div class="metric-value">65%</div>
+                    <div class="text-center mb-3">
+                        <span class="text-yellow-500"><i class="fas fa-minus"></i> Estable</span>
+                        <span class="text-gray-400 text-sm ml-2">vs trimestre anterior</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Tasa de recompra y preferencia de marca
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-800">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">NPS</span>
+                            <span class="text-white">+52</span>
+                        </div>
+                        <div class="flex justify-between text-sm mt-1">
+                            <span class="text-gray-400">Frecuencia</span>
+                            <span class="text-white">3.2/sem</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI 5: ROI Campañas -->
+                <div class="metric-card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                            <i class="fas fa-dollar-sign text-xl text-inca-yellow"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">ROI Campañas</h3>
+                    </div>
+                    <div class="metric-value">2.8x</div>
+                    <div class="text-center mb-3">
+                        <span class="text-green-500"><i class="fas fa-arrow-up"></i> +0.3x</span>
+                        <span class="text-gray-400 text-sm ml-2">vs promedio anual</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Retorno de inversión en marketing
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-800">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Digital</span>
+                            <span class="text-white">3.2x</span>
+                        </div>
+                        <div class="flex justify-between text-sm mt-1">
+                            <span class="text-gray-400">Tradicional</span>
+                            <span class="text-white">2.4x</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI 6: Crecimiento Ventas -->
+                <div class="metric-card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-xl text-inca-yellow"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Crecimiento Ventas</h3>
+                    </div>
+                    <div class="metric-value">+8%</div>
+                    <div class="text-center mb-3">
+                        <span class="text-green-500"><i class="fas fa-arrow-up"></i> +2%</span>
+                        <span class="text-gray-400 text-sm ml-2">vs meta anual</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Crecimiento interanual en volumen
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-800">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Fiestas Patrias</span>
+                            <span class="text-white">+22%</span>
+                        </div>
+                        <div class="flex justify-between text-sm mt-1">
+                            <span class="text-gray-400">Navidad</span>
+                            <span class="text-white">+18%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Resumen de Métricas -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                <div class="inca-card p-6 rounded-2xl">
+                    <h4 class="text-2xl font-bold text-white mb-6">Distribución por Canal</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Supermercados</span>
+                                <span class="text-white font-bold">45%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-3">
+                                <div class="bg-inca-yellow h-3 rounded-full" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Bodegas Tradicionales</span>
+                                <span class="text-white font-bold">35%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-3">
+                                <div class="bg-inca-gold h-3 rounded-full" style="width: 35%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">HORECA</span>
+                                <span class="text-white font-bold">20%</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-3">
+                                <div class="bg-yellow-600 h-3 rounded-full" style="width: 20%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-4">
+                        *HORECA: Hoteles, Restaurantes y Cafeterías
+                    </p>
+                </div>
+                
+                <div class="inca-card p-6 rounded-2xl">
+                    <h4 class="text-2xl font-bold text-white mb-6">Performance por Temporada</h4>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-4 bg-black/30 rounded-lg">
+                            <div class="text-3xl font-bold text-inca-yellow mb-2">+15%</div>
+                            <p class="text-sm text-gray-300">Verano</p>
+                        </div>
+                        <div class="text-center p-4 bg-black/30 rounded-lg">
+                            <div class="text-3xl font-bold text-inca-yellow mb-2">+22%</div>
+                            <p class="text-sm text-gray-300">Fiestas Patrias</p>
+                        </div>
+                        <div class="text-center p-4 bg-black/30 rounded-lg">
+                            <div class="text-3xl font-bold text-inca-yellow mb-2">+18%</div>
+                            <p class="text-sm text-gray-300">Navidad</p>
+                        </div>
+                        <div class="text-center p-4 bg-black/30 rounded-lg">
+                            <div class="text-3xl font-bold text-inca-yellow mb-2">+5%</div>
+                            <p class="text-sm text-gray-300">Temporada Baja</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-4">
+                        Crecimiento vs mismo período año anterior
+                    </p>
+                </div>
+            </div>
+
+            <!-- Imagen representativa de análisis -->
+            <div class="mb-16">
+                <div class="image-container rounded-xl">
+                    <img src="imagenes/imagenes_7/monitoreo.png" 
+                         alt="Análisis de Métricas">
+                    <div class="image-overlay">
+                        <h4 class="font-bold text-xl">Sistema de Monitoreo Continuo</h4>
+                        <p class="text-gray-300">Tracking en tiempo real de todas las métricas clave</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón Siguiente -->
+            <div class="text-center">
+                <a href="capitulos8.html" class="btn-siguiente inline-block">
+                    <i class="fas fa-arrow-right mr-3"></i>
+                    CONTINUAR AL SIGUIENTE CAPÍTULO
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Inicializar Swiper para tácticas
+        const tacticsSwiper = new Swiper('.tacticsSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+    
+    <!-- GSAP para animaciones -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // Inicializar GSAP
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animaciones para los títulos
+        gsap.from('h2', {
+            scrollTrigger: {
+                trigger: 'h2',
+                start: "top 90%",
+                toggleActions: "play none none reverse"
+            },
+            y: 60,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.3
+        });
+        
+        // Animación para las tarjetas
+        gsap.utils.toArray('.inca-card, .metric-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 90%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.1,
+                ease: "power3.out"
+            });
+        });
+        
+        // Animación para las imágenes
+        gsap.utils.toArray('.image-container').forEach((img, i) => {
+            gsap.from(img, {
+                scrollTrigger: {
+                    trigger: img,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                scale: 0.8,
+                opacity: 0,
+                duration: 1,
+                delay: i * 0.15,
+                ease: "back.out(1.2)"
+            });
+        });
+        
+        // Animación para los valores de métricas
+        gsap.utils.toArray('.metric-value').forEach((value, i) => {
+            gsap.from(value, {
+                scrollTrigger: {
+                    trigger: value,
+                    start: "top 90%",
+                    toggleActions: "play none none reverse"
+                },
+                scale: 0,
+                rotation: 180,
+                duration: 1,
+                delay: i * 0.2,
+                ease: "back.out(1.7)"
+            });
+        });
+    </script>
+</body>
+</html>

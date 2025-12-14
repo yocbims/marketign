@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canal de Distribución de Inca Kola</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root {
+            --inca-red: #E60000;
+            --inca-dark-red: #CC0000;
+            --inca-yellow: #FFD700;
+            --inca-gold: #FFA500;
+            --inca-dark: #1A1A1A;
+            --inca-light: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, 
+                rgba(230, 0, 0, 0.05) 0%, 
+                rgba(245, 245, 245, 0.9) 30%,
+                rgba(245, 245, 245, 0.95) 70%,
+                rgba(230, 0, 0, 0.05) 100%);
+            min-height: 100vh;
+            color: var(--inca-dark);
+            overflow-x: hidden;
+        }
+
+        /* Logo grande en la parte superior */
+        .logo-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--inca-red);
+        }
+
+        .inca-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-main {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--inca-yellow), var(--inca-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .logo-img {
+            height: 150px; /* MÁS GRANDE */
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.2));
+        }
+
+        /* Contenedor principal del diagrama */
+        .diagram-container {
+            background: white;
+            border-radius: 20px;
+            border: 4px solid var(--inca-red);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            margin: 1rem auto;
+            max-width: 1100px;
+        }
+
+        .diagram-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(230, 0, 0, 0.02) 50%,
+                transparent 100%);
+            pointer-events: none;
+        }
+
+        /* Pasos del diagrama */
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-width: 130px;
+            padding: 0.8rem;
+            opacity: 0;
+            transform: translateY(50px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-icon-container {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+            border: 3px solid var(--inca-red);
+            box-shadow: 0 6px 12px rgba(230, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .step-icon-container:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(230, 0, 0, 0.25);
+            background: linear-gradient(135deg, var(--inca-red), var(--inca-dark-red));
+        }
+
+        .step-icon-container:hover .step-icon {
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            color: var(--inca-red);
+            transition: all 0.4s ease;
+        }
+
+        .step-label {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--inca-dark);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            border: 2px solid rgba(230, 0, 0, 0.15);
+            min-width: 120px;
+            transition: all 0.3s ease;
+        }
+
+        .flow-step:hover .step-label {
+            background: var(--inca-red);
+            color: white;
+            border-color: var(--inca-red);
+            transform: translateY(-3px);
+        }
+
+        /* Flechas de conexión */
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            position: relative;
+        }
+
+        .arrow-svg {
+            color: var(--inca-red);
+            width: 50px;
+            height: 20px;
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+            transition: all 0.3s ease;
+        }
+
+        .flow-arrow:hover .arrow-svg {
+            color: var(--inca-dark-red);
+            transform: scale(1.1);
+        }
+
+        /* Línea de flujo animada */
+        .flow-line {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--inca-red), 
+                transparent);
+            z-index: 1;
+            opacity: 0.6;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            transform: translateY(-50%);
+            border-radius: 2px;
+        }
+
+        /* Contenedores de filas */
+        .flow-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        /* Efectos de brillo y sombra */
+        .glow-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, 
+                rgba(230, 0, 0, 0.08) 0%, 
+                transparent 70%);
+            z-index: -1;
+            opacity: 0;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                opacity: 0.2;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
+        /* Número de paso */
+        .step-number {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 24px;
+            height: 24px;
+            background: var(--inca-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 3;
+        }
+
+        /* Tooltip informativo */
+        .step-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--inca-dark);
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            z-index: 100;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--inca-dark) transparent transparent transparent;
+        }
+
+        .flow-step:hover .step-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .flow-row {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .flow-step {
+                margin: 0.8rem;
+                min-width: 110px;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg) !important;
+                margin: 0.8rem 0 !important;
+            }
+            
+            .flow-line {
+                display: none;
+            }
+            
+            .logo-main {
+                font-size: 3.5rem;
+            }
+            
+            .logo-img {
+                height: 130px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .logo-main {
+                font-size: 2.8rem;
+            }
+            
+            .logo-img {
+                height: 110px;
+            }
+            
+            .diagram-container {
+                padding: 1.2rem;
+                border-radius: 15px;
+            }
+            
+            .step-icon-container {
+                width: 65px;
+                height: 65px;
+            }
+            
+            .step-icon {
+                font-size: 1.6rem;
+            }
+            
+            .step-label {
+                font-size: 0.9rem;
+                min-width: 100px;
+                padding: 0.3rem 0.6rem;
+            }
+            
+            .arrow-svg {
+                width: 40px;
+                height: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-main {
+                font-size: 2.2rem;
+            }
+            
+            .logo-img {
+                height: 90px;
+            }
+        }
+
+    </style>
+</head>
+<body class="p-4 md:p-6">
+
+    <!-- Logo grande y título -->
+    <div class="logo-container">
+        <div class="inca-logo">
+            <!-- Logo Inca Kola MÁS GRANDE -->
+            <img src="imagenes/producot_1.webp" 
+                 alt="Logo Inca Kola" 
+                 class="logo-img"
+                 id="inca-logo">
+            
+            <!-- INCA KOLA en AMARILLO DORADO -->
+            <h1 class="logo-main">INCA KOLA</h1>
+        </div>
+    </div>
+
+    <!-- Contenedor principal del diagrama -->
+    <div class="diagram-container" id="diagram-container">
+        
+        <!-- Efecto de brillo -->
+        <div class="glow-effect"></div>
+        
+        <!-- Fila 1: Producción y distribución primaria -->
+        <div class="flow-row" id="row-1">
+            <div class="flow-line"></div>
+            
+            <!-- Paso 1: Compañía -->
+            <div class="flow-step" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-icon-container">
+                    <i class="fas fa-industry step-icon"></i>
+                </div>
+                <p class="step-label">Compañía</p>
+                <div class="step-tooltip">Producción en fábricas Inca Kola</div>
+            </div>
+
+            <div class="flow-arrow" data-step="2">
+                <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                </svg>
+            </div>
+
+            <!-- Paso 2: Transporte -->
+            <div class="flow-step" data-step="3">
+                <div class="step-number">2</div>
+                <div class="step-icon-container">
+                    <i class="fas fa-shipping-fast step-icon"></i>
+                </div>
+                <p class="step-label">Transporte</p>
+                <div class="step-tooltip">Logística y transporte especializado</div>
+            </div>
+
+            <div class="flow-arrow" data-step="4">
+                <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                </svg>
+            </div>
+
+            <!-- Paso 3: Distribuidor Mayorista -->
+            <div class="flow-step" data-step="5">
+                <div class="step-number">3</div>
+                <div class="step-icon-container">
+                    <i class="fas fa-warehouse step-icon"></i>
+                </div>
+                <p class="step-label">Distribuidor Mayorista</p>
+                <div class="step-tooltip">Centros de distribución regionales</div>
+            </div>
+        </div>
+        
+        <!-- Flecha vertical de conexión -->
+        <div class="flex justify-center my-4">
+            <div class="flow-arrow" data-step="6" style="transform: rotate(90deg);">
+                <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 35px; height: 35px;">
+                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Fila 2: Distribución secundaria y venta -->
+        <div class="flow-row" id="row-2">
+            <div class="flow-line"></div>
+            
+            <!-- Paso 4: Agente -->
+            <div class="flow-step" data-step="7">
+                <div class="step-number">4</div>
+                <div class="step-icon-container">
+                    <i class="fas fa-user-tie step-icon"></i>
+                </div>
+                <p class="step-label">Agente</p>
+                <div class="step-tooltip">Representantes y agentes locales</div>
+            </div>
+
+            <div class="flow-arrow" data-step="8">
+                <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                </svg>
+            </div>
+
+            <!-- Paso 5: Detallista -->
+            <div class="flow-step" data-step="9">
+                <div class="step-number">5</div>
+                <div class="step-icon-container">
+                    <i class="fas fa-store step-icon"></i>
+                </div>
+                <p class="step-label">Detallista</p>
+                <div class="step-tooltip">Supermercados, tiendas y comercios</div>
+            </div>
+
+            <div class="flow-arrow" data-step="10">
+                <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                </svg>
+            </div>
+
+            <!-- Paso 6: Cliente Final -->
+            <div class="flow-step" data-step="11">
+                <div class="step-number">6</div>
+                <div class="step-icon-container">
+                    <i class="fas fa-users step-icon"></i>
+                </div>
+                <p class="step-label">Cliente Final</p>
+                <div class="step-tooltip">Consumidores que disfrutan Inca Kola</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Función para cargar el logo
+            function loadLogo() {
+                const logoImg = document.getElementById('inca-logo');
+                
+                // Si la imagen no se carga, mostrar un icono alternativo
+                logoImg.onerror = function() {
+                    console.log('No se pudo cargar el logo desde la ruta especificada');
+                    
+                    // Crear un icono alternativo
+                    const logoContainer = document.querySelector('.inca-logo');
+                    const imgElement = logoContainer.querySelector('img');
+                    
+                    if (imgElement) {
+                        imgElement.remove();
+                    }
+                    
+                    const iconContainer = document.createElement('div');
+                    iconContainer.className = 'logo-icon';
+                    iconContainer.innerHTML = '<i class="fas fa-wine-bottle" style="font-size: 5rem; color: var(--inca-red);"></i>';
+                    
+                    logoContainer.insertBefore(iconContainer, logoContainer.querySelector('.logo-main'));
+                };
+                
+                // Forzar carga de la imagen
+                logoImg.src = logoImg.src;
+            }
+
+            // Llamar a la función para cargar el logo
+            loadLogo();
+
+            // Animación con GSAP
+            gsap.registerPlugin(ScrollTrigger);
+            
+            const flowSteps = gsap.utils.toArray('.flow-step, .flow-arrow');
+            const container = document.getElementById('diagram-container');
+
+            // Ocultar elementos inicialmente
+            gsap.set(flowSteps, { 
+                opacity: 0, 
+                scale: 0.7, 
+                y: 20,
+                rotationY: -20 
+            });
+
+            // Crear timeline principal
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: container,
+                    start: "top 75%",
+                    end: "bottom 25%",
+                    toggleActions: "play none none reverse",
+                    markers: false
+                }
+            });
+
+            // Animación secuencial de los elementos
+            flowSteps.forEach((step, index) => {
+                const delay = index * 0.15;
+                
+                tl.to(step, {
+                    opacity: 1,
+                    scale: 1,
+                    y: 0,
+                    rotationY: 0,
+                    duration: 0.5,
+                    ease: "back.out(1.5)",
+                }, delay);
+            });
+
+            // Animación de las líneas de flujo
+            const flowLines = document.querySelectorAll('.flow-line');
+            flowLines.forEach(line => {
+                tl.fromTo(line,
+                    { scaleX: 0, transformOrigin: "left center" },
+                    { scaleX: 1, duration: 1.2, ease: "power2.out" },
+                    "<0.3"
+                );
+            });
+
+            // Efecto hover para los pasos
+            const stepContainers = document.querySelectorAll('.step-icon-container');
+            stepContainers.forEach(container => {
+                container.addEventListener('mouseenter', () => {
+                    gsap.to(container, {
+                        scale: 1.1,
+                        rotation: 5,
+                        duration: 0.25,
+                        ease: "power2.out"
+                    });
+                });
+                
+                container.addEventListener('mouseleave', () => {
+                    gsap.to(container, {
+                        scale: 1,
+                        rotation: 0,
+                        duration: 0.25,
+                        ease: "power2.out"
+                    });
+                });
+            });
+
+            // Animación de entrada del logo
+            gsap.from('.logo-container', {
+                opacity: 0,
+                y: -30,
+                duration: 0.8,
+                ease: "back.out(1.7)",
+                delay: 0.2
+            });
+
+            // Mostrar tooltips con animación
+            const flowStepsElements = document.querySelectorAll('.flow-step');
+            flowStepsElements.forEach(step => {
+                step.addEventListener('mouseenter', function() {
+                    const tooltip = this.querySelector('.step-tooltip');
+                    if (tooltip) {
+                        gsap.to(tooltip, {
+                            opacity: 1,
+                            y: -3,
+                            duration: 0.2,
+                            ease: "power2.out"
+                        });
+                    }
+                });
+                
+                step.addEventListener('mouseleave', function() {
+                    const tooltip = this.querySelector('.step-tooltip');
+                    if (tooltip) {
+                        gsap.to(tooltip, {
+                            opacity: 0,
+                            y: 0,
+                            duration: 0.2,
+                            ease: "power2.out"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

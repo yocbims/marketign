@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilares de Marca Interactivos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ====================================
+            2. ESTILOS CSS
+            ==================================== */
+        
+        /* Estilos Generales */
+        body {
+            margin: 0; padding: 0; background-color: #0d0d0d; color: white; font-family: 'Roboto', sans-serif; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; 
+        }
+
+        /* --- HEADER SUPERIOR AJUSTADO Y RESPONSIVE --- */
+        .page-header {
+            width: 100%; background-color: #000000; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); z-index: 100; flex-wrap: wrap; 
+        }
+
+        /* Título del Header Superior */
+        .header-title-top {
+            width: 100%; text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 15px; color: #FFD700; letter-spacing: 0.1em; text-transform: uppercase;
+        }
+
+        /* Contenedor del Logo */
+        .logo-container {
+            flex: 0 0 40%; max-width: 400px; height: auto; filter: drop-shadow(0 0 15px rgba(100, 200, 255, 0.8)); transition: filter 0.5s ease; display: flex; justify-content: center;
+        }
+        
+        .logo-container img {
+            width: 100%; height: auto; display: block;
+        }
+        
+        /* Contenedor de Texto Descriptivo */
+        .text-wrapper {
+            flex: 0 0 55%; padding-left: 30px; display: flex; align-items: center; justify-content: center; 
+        }
+
+        .header-text {
+            font-size: 1rem; color: #c0c0c0; line-height: 1.5; text-align: center; margin: 0; max-width: 500px; 
+        }
+
+        /* Contenedor principal del contenido central */
+        .main-container-wrapper {
+            flex-grow: 1; display: flex; flex-direction: column; /* Cambiado a column para que el botón de enlace quede abajo */
+            justify-content: center; align-items: center; width: 100%;
+        }
+
+        /* Títulos Fijos en la Parte Superior del Carrusel */
+        .header-titles {
+            position: absolute; top: 50px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1200px; text-align: left; z-index: 30; 
+        }
+        
+        .header-titles h1 {
+            font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 0 0 5px 0; color: white; letter-spacing: 0.1em;
+        }
+        
+        .header-titles h2 {
+            font-family: 'Roboto', sans-serif; font-size: 1.1rem; margin: 0; color: #b0b0b0; font-weight: 300;
+        }
+
+        /* Sección Principal del Carrusel */
+        .carrusel-hero {
+            position: relative; width: 100%; max-width: 1400px; min-height: 700px; overflow: hidden; padding-top: 150px; 
+        }
+
+        .main-content {
+            display: flex; align-items: center; padding: 50px; transition: background-color 0.8s ease; min-height: 600px;
+        }
+
+        .product-image-wrapper {
+            position: relative; flex: 1; max-width: 50%; display: flex; justify-content: center; align-items: center;
+        }
+
+        .product-image {
+            width: 100%; max-height: 600px; object-fit: contain; z-index: 10; position: relative; filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1)); transition: transform 0.5s ease;
+        }
+
+        .product-glow {
+            position: absolute; top: 50%; left: 50%; width: 80%; height: 80%; border-radius: 50%; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 70%); transform: translate(-50%, -50%); opacity: 0.5; z-index: 5; pointer-events: none; transition: all 0.8s ease-in-out; animation: pulse 4s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            from { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            to { transform: translate(-50%, -50%) scale(1.05); opacity: 0.7; }
+        }
+
+        .product-text {
+            flex: 1; padding-left: 50px; max-width: 50%;
+        }
+
+        .product-type {
+            font-size: 1.2rem; color: #aaaaaa; margin-bottom: 5px; font-weight: 300;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif; font-size: 5rem; margin: 0; font-weight: 700; text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); transition: color 0.5s ease; text-transform: uppercase;
+        }
+
+        .product-description {
+            font-size: 1rem; color: #cccccc; line-height: 1.6; max-width: 450px; margin-bottom: 25px; /* Espacio antes del botón */
+        }
+        
+        /* ESTILO DEL BOTÓN SIGUIENTE (Interno al Carrusel) */
+        .btn-next {
+            background-color: #FFD700; /* Dorado */
+            color: #111;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+            display: block; /* Para que ocupe su propia línea */
+            margin-top: 15px;
+        }
+
+        .btn-next:hover {
+            background-color: #e6c200;
+            transform: translateY(-2px);
+        }
+        
+        /* ESTILO DEL BOTÓN DE ENLACE (Externo a la Sección) */
+        .btn-chapter-link {
+            display: block;
+            margin: 50px auto; /* Centrar y dar espacio vertical */
+            padding: 15px 35px;
+            background-color: #2a6fdb; /* Azul para distinguirlo */
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 6px 15px rgba(42, 111, 219, 0.4);
+            max-width: fit-content;
+        }
+
+        .btn-chapter-link:hover {
+            background-color: #1e5aae;
+            transform: scale(1.02);
+        }
+
+        /* Miniaturas de Navegación */
+        .thumbnails-container {
+            width: 100%; padding: 20px 0; display: flex; justify-content: center; border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .thumbnails-list {
+            display: flex; gap: 30px; justify-content: center;
+        }
+
+        .thumbnail {
+            text-align: center; cursor: pointer; opacity: 0.6; transition: opacity 0.3s ease, transform 0.3s ease; padding: 10px;
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            opacity: 1; transform: translateY(-5px);
+        }
+
+        .thumbnail.active {
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .thumbnail img {
+            width: 80px; height: 80px; object-fit: contain; margin-bottom: 5px;
+        }
+
+        .thumbnail p {
+            font-size: 0.9rem; margin: 0; color: inherit;
+        }
+        
+        /* MEDIA QUERY PARA MÓVILES */
+        @media (max-width: 900px) {
+            .page-header { flex-direction: column; align-items: center; padding: 15px 20px; }
+            .header-title-top { font-size: 1.8rem; }
+            .logo-container { flex: 0 0 100%; max-width: 250px; margin-bottom: 15px; }
+            .text-wrapper { flex: 0 0 100%; padding-left: 0; margin-bottom: 10px; display: block; }
+            .header-text { font-size: 0.9rem; text-align: center; max-width: 100%; }
+            .main-content { flex-direction: column; text-align: center; padding: 30px 15px; }
+            .product-text { padding-left: 0; max-width: 100%; }
+            .product-image-wrapper { max-width: 80%; margin-bottom: 30px; }
+            .product-name { font-size: 3rem; }
+            .header-titles h1 { font-size: 1.8rem; }
+            .header-titles h2 { font-size: 1rem; }
+            .btn-chapter-link { margin: 30px auto; padding: 12px 25px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="page-header">
+        
+        <h1 class="header-title-top">OBJETIVOS DEL BRANDING</h1>
+
+        <div class="logo-container">
+            <img src="imagenes/producot_1.webp" alt="Logo de la Marca Inca Kola">
+        </div>
+        
+        <div class="text-wrapper">
+            <p class="header-text">
+                La marca Inka Kola se define como una bebida peruana icónica que representa identidad, tradición y orgullo nacional. Su imagen, sabor único y color característico la diferencian en el mercado y la convierten en un símbolo cultural del Perú.
+            </p>
+        </div>
+        
+    </header>
+
+    <div class="main-container-wrapper">
+        <div class="carrusel-hero">
+            
+            <div class="header-titles">
+                <h1>OBJETIVOS DEL BRANDING</h1> 
+                <h2>DEFINICIÓN DE LA MARCA</h2> 
+            </div>
+
+            <div id="main-content" class="main-content">
+                
+                <div class="product-image-wrapper">
+                    <img id="main-product-image" src="" alt="Pilar de Marca" class="product-image">
+                    <div class="product-glow"></div>
+                </div>
+
+                <div class="product-text">
+                    <p id="product-type" class="product-type">PILAR DE POSICIONAMIENTO</p>
+                    <h2 id="product-name" class="product-name"></h2>
+                    <p id="product-description" class="product-description"></p>
+                    
+                    <button id="btn-next" class="btn-next">Siguiente Pilar</button>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="thumbnails-container">
+                <div id="thumbnails-list" class="thumbnails-list">
+                    </div>
+            </div>
+
+        </div>
+        
+        <a href="capitulo5.2.html" id="btn-chapter-link" class="btn-chapter-link">Continuar al Capítulo VI: Estrategias</a>
+
+    </div>
+
+    <script>
+        // RUTA BASE para todas las imágenes del carrusel, ubicadas en la carpeta "imagenes/"
+        const IMAGE_BASE_PATH = "imagenes/"; 
+
+        const products = [
+            {
+                type: "PILAR 1",
+                name: "IDENTIDAD PERUANA",
+                description: "Representa el orgullo y la tradición nacional. Es el sabor inconfundible que evoca los lazos culturales y el espíritu de la peruanidad en cada sorbo.",
+                // IMAGEN ACTUALIZADA
+                mainImage: "inca_cola_capitulo5.png", 
+                thumbnail: "inca_cola_capitulo5.png", 
+                bgColor: "#5e3500", // Tono oscuro dorado/marrón
+                glowColor: "rgba(255, 165, 0, 0.8)" // Naranja/Dorado
+            },
+            {
+                type: "PILAR 2",
+                name: "PREFERENCIA HISTÓRICA",
+                description: "Una herencia de décadas como la bebida favorita. Su posición se consolidó a través del tiempo, siendo parte de las celebraciones y la vida cotidiana de generaciones.",
+                // IMAGEN ACTUALIZADA
+                mainImage: "capitulo5.5.png", 
+                thumbnail: "capitulo5.5.png",
+                bgColor: "#1a1e26", // Tono oscuro azul/gris
+                glowColor: "rgba(200, 200, 200, 0.8)" // Gris claro/Plata
+            },
+            {
+                type: "PILAR 3",
+                name: "SABOR DISTINTIVO",
+                description: "La fórmula secreta que le otorga un dulzor único y una personalidad incomparable en el mercado de bebidas. Es la chispa que no se olvida.",
+                // IMAGEN ORIGINAL
+                mainImage: "inca_cola_capitulo5_1.png", 
+                thumbnail: "inca_cola_capitulo5_1.png", 
+                bgColor: "#303030", // Tono oscuro gris
+                glowColor: "rgba(255, 255, 0, 0.8)" // Amarillo brillante
+            },
+            {
+                type: "PILAR 4",
+                name: "CONSUMO TRANSVERSAL",
+                description: "Desde niños hasta adultos mayores, la marca es disfrutada por todos. Su versatilidad la convierte en el complemento perfecto para cualquier ocasión y comida peruana.",
+                // IMAGEN ORIGINAL
+                mainImage: "imagenes_capitulo5.3.jpg", 
+                thumbnail: "imagenes_capitulo5.3.jpg",
+                bgColor: "#6a203a", // Tono oscuro rojo/púrpura
+                glowColor: "rgba(100, 200, 255, 0.8)" // Azul claro/Cian
+            }
+        ];
+
+        let currentIndex = 0; // Variable para rastrear el pilar actual
+
+        const mainContent = document.getElementById('main-content');
+        const mainImage = document.getElementById('main-product-image');
+        const productName = document.getElementById('product-name');
+        const productType = document.getElementById('product-type');
+        const productDescription = document.getElementById('product-description');
+        const thumbnailsList = document.getElementById('thumbnails-list');
+        const productGlow = document.querySelector('.product-glow');
+        const nextButton = document.getElementById('btn-next'); // Botón interno del carrusel
+
+        function renderCarousel() {
+            products.forEach((product, index) => {
+                const thumbnailDiv = document.createElement('div');
+                thumbnailDiv.className = 'thumbnail';
+                thumbnailDiv.dataset.index = index;
+                
+                // Ruta completa: "imagenes/" + nombre_archivo
+                const fullImagePath = IMAGE_BASE_PATH + product.thumbnail; 
+                const shortName = product.name.split(' ')[0]; 
+
+                thumbnailDiv.innerHTML = `
+                    <img src="${fullImagePath}" alt="${product.name} Miniatura">
+                    <p>${shortName}</p>
+                `;
+                
+                thumbnailDiv.addEventListener('click', () => updatePilar(index));
+                thumbnailsList.appendChild(thumbnailDiv);
+            });
+
+            // Asigna el evento al botón de Siguiente (interno)
+            nextButton.addEventListener('click', goToNextPilar);
+
+            updatePilar(0); // Inicializa con el primer pilar
+        }
+
+        function updatePilar(index) {
+            currentIndex = index; // Actualiza el índice actual
+            const product = products[index];
+
+            // Carga las imágenes y actualiza el texto
+            mainImage.src = IMAGE_BASE_PATH + product.mainImage;
+            productName.textContent = product.name;
+            productType.textContent = product.type;
+            productDescription.textContent = product.description;
+
+            // Actualiza los estilos de fondo y brillo
+            mainContent.style.backgroundColor = product.bgColor;
+            productGlow.style.background = `radial-gradient(circle at center, ${product.glowColor}, transparent 70%)`;
+
+            // Controla la miniatura activa
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                thumb.classList.remove('active');
+                if (i === index) {
+                    thumb.classList.add('active');
+                }
+            });
+        }
+        
+        function goToNextPilar() {
+            // Calcula el siguiente índice, ciclando al inicio si llega al final
+            const nextIndex = (currentIndex + 1) % products.length;
+            updatePilar(nextIndex);
+        }
+
+        document.addEventListener('DOMContentLoaded', renderCarousel);
+    </script>
+</body>
+</html>

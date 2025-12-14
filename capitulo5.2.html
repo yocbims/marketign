@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exposición Final: Estrategias de Branding de Inca Kola (Neo-Neón)</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables y Reset Básico */
+        :root {
+            --bg-color: #0a0a0a; 
+            --line-color-base: #1a1a1a; 
+            --text-color: #e0e0e0;
+            --dot-size: 12px;
+            
+            /* 🛠️ COLORES CIAN/AZUL ACERO (Neo-Neón) */
+            --accent-color: #00c4b4; /* Cian brillante */
+            --accent-glow-color: rgba(0, 196, 180, 0.5); /* Para las sombras */
+            --accent-color-dark: #007a71; /* Cian oscuro para detalles */
+            
+            /* Colores de la línea de tiempo SVG (PLATA/BLANCO) */
+            --progress-color: #ffffff; 
+            --glow-color: #c0c0c0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* --- HEADER / HERO MODIFICADO PARA SIMULAR EL DISEÑO DE REFERENCIA --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #080808; 
+            color: white;
+            padding: 50px 20px;
+            border-bottom: 3px solid var(--accent-color); 
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 196, 180, 0.08) 0%, transparent 70%); 
+            animation: pulse 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .hero-title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5em, 8vw, 6em); 
+            letter-spacing: 5px;
+            text-shadow: 
+                0 0 10px var(--accent-glow-color),
+                0 0 30px rgba(0, 168, 150, 0.6); 
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 0 20px; 
+            position: relative;
+            z-index: 2;
+            line-height: 1; 
+        }
+
+        #central-image {
+            width: clamp(200px, 35vw, 350px); 
+            height: auto;
+            object-fit: contain;
+            margin: 0 40px;
+            position: relative;
+            z-index: 3;
+            animation: fadeIn 1s ease-out 0.5s both;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6)); 
+        }
+
+        .hero-tagline {
+            color: var(--text-color);
+            font-size: clamp(1em, 1.5vw, 1.2em);
+            max-width: 700px;
+            margin-top: 50px;
+            padding: 10px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out 0.8s both;
+            line-height: 1.8;
+            font-weight: 300;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- LÍNEA DE TIEMPO (Curvas SVG) --- */
+        .timeline-wrapper {
+            position: relative; 
+            width: 90%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 100px 0; 
+            min-height: 400vh;
+            z-index: 1;
+        }
+        
+        .timeline-svg { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: 1; 
+        }
+        
+        .timeline-svg path { 
+            fill: none; 
+            stroke-width: 3; 
+            stroke: var(--line-color-base); 
+            transition: stroke 0.5s ease; 
+        }
+        
+        .timeline-svg .progress-path { 
+            stroke: var(--progress-color); 
+            filter: 
+                drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) 
+                drop-shadow(0 0 10px rgba(180, 180, 180, 0.6))
+                drop-shadow(0 0 15px rgba(100, 100, 100, 0.4)); 
+            stroke-dasharray: 10000; 
+            stroke-dashoffset: 10000;
+            stroke-width: 4;
+        }
+
+        /* --- ÍTEMS Y TARJETAS --- */
+        .timeline-item { 
+            position: absolute; 
+            width: 45%; 
+            padding: 20px; 
+            opacity: 0; 
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            transform: translateY(50px) scale(0.95); 
+            z-index: 2;
+        }
+        
+        .timeline-item.in-view { 
+            opacity: 1; 
+            transform: translateY(0) scale(1); 
+        }
+        
+        .timeline-item.left { left: 0; text-align: right; }
+        .timeline-item.right { right: 0; text-align: left; }
+
+        .card { 
+            padding: 30px; 
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 15px; 
+            border: 2px solid rgba(200, 200, 200, 0.3); 
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color); 
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.6),
+                0 0 20px var(--accent-glow-color), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .card h3 { 
+            color: var(--accent-color);
+            margin-top: 0; 
+            font-weight: 700; 
+            font-size: 1.6em; 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--accent-glow-color); 
+        }
+        
+        .card p { 
+            color: var(--text-color); 
+            font-size: 1.1em; 
+            margin-bottom: 0; 
+            line-height: 1.7; 
+            font-weight: 300;
+        }
+
+        .card i { 
+            color: var(--accent-color); 
+            margin-right: 15px; 
+            font-size: 1.4em; 
+            text-shadow: 0 0 10px var(--accent-glow-color); 
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover i {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .timeline-item.left .card h3 { justify-content: flex-end; }
+        .timeline-item.left .card i { order: 2; margin-right: 0; margin-left: 15px; }
+
+        /* --- Puntos de Conexión (Dots) --- */
+        .dot { 
+            position: absolute; 
+            width: var(--dot-size); 
+            height: var(--dot-size); 
+            border-radius: 50%; 
+            background: radial-gradient(circle, #ffffff 0%, var(--accent-color-dark) 100%);
+            box-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.8), 
+                0 0 20px rgba(200, 200, 200, 0.6),
+                0 0 30px rgba(150, 150, 150, 0.4); 
+            z-index: 10; 
+            animation: dotPulse 2s ease-in-out infinite;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.8), 
+                    0 0 20px rgba(200, 200, 200, 0.6),
+                    0 0 30px rgba(150, 150, 150, 0.4);
+            }
+            50% { 
+                transform: scale(1.2);
+                box-shadow: 
+                    0 0 15px rgba(255, 255, 255, 1), 
+                    0 0 30px rgba(200, 200, 200, 0.8),
+                    0 0 40px rgba(150, 150, 150, 0.6);
+            }
+        }
+
+        /* Posiciones de los ítems (se mantiene) */
+        .dot-1 { top: 180px; left: 45%; } 
+        .dot-2 { top: 480px; left: 45%; } 
+        .dot-3 { top: 800px; left: 45%; } 
+        .dot-4 { top: 1100px; left: 45%; } 
+        .dot-5 { top: 1400px; left: 45%; } 
+        .dot-6 { top: 1700px; left: 45%; }
+        
+        .timeline-item.right .dot-1 { left: auto; right: 45%; }
+        
+        .item-1 { top: 150px; } 
+        .item-2 { top: 450px; } 
+        .item-3 { top: 770px; } 
+        .item-4 { top: 1070px; } 
+        .item-5 { top: 1370px; } 
+        .item-6 { top: 1670px; }
+
+        /* --- ESTILOS DEL BOTÓN DE NAVEGACIÓN --- */
+        .btn-chapter-link {
+            display: block;
+            margin: 50px auto; /* Reducimos el margen vertical aquí ya que estará en el footer */
+            padding: 15px 35px;
+            background-color: var(--accent-color); 
+            color: #000; 
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center; 
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.4s ease;
+            box-shadow: 
+                0 0 10px var(--accent-color), 
+                0 0 20px var(--accent-glow-color),
+                0 6px 15px rgba(0, 0, 0, 0.5);
+            max-width: 450px; 
+            width: 80%; 
+            z-index: 10;
+            position: relative; 
+        }
+
+        .btn-chapter-link:hover {
+            background-color: #ffffff; 
+            color: var(--accent-color);
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 15px #fff,
+                0 0 30px var(--accent-color),
+                0 0 40px var(--accent-glow-color); 
+        }
+        /* ----------------------------------------------- */
+
+        /* --- FOOTER (EXPERIENCIA DE MARCA Y LOGOS) --- */
+        footer { min-height: auto; background-color: var(--bg-color); position: relative; z-index: 1; }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 50px;
+            gap: 30px;
+        }
+
+        .footer-item {
+            width: 45%;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-color);
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.6),
+                0 0 20px var(--accent-glow-color); 
+        }
+
+        .footer-item h4 {
+            color: var(--accent-color); 
+            font-size: 1.4em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--accent-glow-color); 
+        }
+
+        .footer-item i {
+            color: var(--accent-color); 
+            margin-right: 15px;
+            font-size: 1.6em;
+            text-shadow: 0 0 10px var(--accent-glow-color); 
+            transition: transform 0.3s ease;
+        }
+
+        .footer-item:hover i {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .footer-logo-area {
+            text-align: center;
+            padding: 50px 20px 0; /* Ajustamos el padding para el botón */
+            border-top: 2px solid rgba(200, 200, 200, 0.3);
+            margin-top: 40px;
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.03) 100%);
+            width: 100%; 
+            box-sizing: border-box; 
+        }
+
+        .footer-logo-area h3 {
+            color: var(--accent-color); 
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px var(--accent-glow-color); 
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: clamp(20px, 5vw, 60px); 
+            flex-wrap: wrap; 
+            margin-top: 30px;
+            margin-bottom: 40px; /* Agregamos espacio debajo de los iconos */
+            max-width: 1000px; 
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+            min-width: 100px; 
+            text-align: center;
+        }
+
+        .footer-icon-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .footer-icon-item i {
+            font-size: 4em;
+            color: var(--accent-color); 
+            margin-bottom: 15px;
+            text-shadow: 
+                0 0 10px rgba(0, 168, 150, 0.5), 
+                0 0 20px var(--accent-glow-color);
+            transition: all 0.3s ease;
+        }
+
+        .footer-icon-item:hover i {
+            color: #fff;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 1),
+                0 0 40px var(--accent-color); 
+        }
+
+        .footer-icon-item span {
+            color: var(--text-color);
+            font-size: 1em;
+            font-weight: 300;
+        }
+        
+        .footer-end {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-color);
+            font-size: 1.1em;
+            font-weight: 300;
+            border-top: 1px solid rgba(200, 200, 200, 0.2);
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- Responsive Móvil --- */
+        @media (max-width: 768px) {
+            
+            .hero-title-container { flex-direction: column; margin-top: 20px; }
+            .hero h1 { font-size: 2.5em; letter-spacing: 3px; margin: 10px 0; }
+            .hero-tagline { margin-top: 30px; }
+            #central-image { width: 180px; }
+            
+            .timeline-item { 
+                width: 90%; 
+                left: 5% !important; 
+                right: 5%; 
+                text-align: left; 
+                transform: none !important; 
+                opacity: 1 !important; 
+                position: relative;
+                margin-bottom: 40px;
+            }
+            .timeline-svg, .dot { display: none; }
+            .timeline-wrapper { min-height: auto; padding: 40px 0; }
+            .timeline-item.left .card h3 { justify-content: flex-start; }
+            .timeline-item.left .card i { order: 1; margin-left: 0; margin-right: 15px; }
+            .footer-content { flex-direction: column; gap: 20px; }
+            .footer-item { width: 100%; margin-bottom: 20px; }
+            .footer-icons { gap: 20px; justify-content: space-around; } 
+            .footer-icon-item { min-width: 80px; } 
+            .footer-icon-item i { font-size: 3em; }
+            .btn-chapter-link { margin: 30px auto; padding: 12px 25px; font-size: 0.9em; max-width: 90%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        
+        <div class="hero-title-container">
+            
+            <h1 class="animate__animated">INCA</h1>
+            
+            <img id="central-image" src="imagenes/imagenes_5/robot_Logoinca.png" alt="Logo de Inca Kola" />
+
+            
+            <h1 class="animate__animated">KOLA</h1>
+        </div>
+        
+        <p class="hero-tagline">
+            La experiencia de marca se edifica sobre la conexión emocional, el orgullo nacional y la presencia en la cultura imaginaria peruana. Es la clave de su vigencia a través de las generaciones.
+        </p>
+    </header>
+    
+    <div class="timeline-wrapper">
+        
+        <svg class="timeline-svg" viewBox="0 0 1200 1800" preserveAspectRatio="xMidYMin slice" width="100%" height="100%">
+            <path id="timeline-path" d="
+                M 600, 0 C 800, 200, 200, 400, 600, 600 
+                C 1000, 800, 300, 1000, 600, 1200
+                C 900, 1400, 100, 1600, 600, 1800
+            " stroke-dasharray="0" />
+            <path class="progress-path" d="
+                M 600, 0 C 800, 200, 200, 400, 600, 600 
+                C 1000, 800, 300, 1000, 600, 1200
+                C 900, 1400, 100, 1600, 600, 1800
+            " stroke-dasharray="10000" stroke-dashoffset="10000" />
+        </svg>
+
+        <div class="timeline-content">
+            
+            <div class="dot dot-1"></div>
+            <div class="timeline-item left item-1">
+                <div class="card">
+                    <h3><i class="fas fa-palette"></i>1. IDENTIDAD VISUAL: EL AMARILLO</h3>
+                    <p>Mantiene coherencia con color, logo y envase para reconocimiento inmediato y diferenciación.</p>
+                </div>
+            </div>
+
+            <div class="dot dot-2"></div>
+            <div class="timeline-item right item-2">
+                <div class="card">
+                    <h3><i class="fas fa-flag"></i>2. POSICIONAMIENTO CULTURAL</h3>
+                    <p>Asociación directa con Gastronomía y la Identidad Peruana, consolidándose como símbolo nacional.</p>
+                </div>
+            </div>
+
+            <div class="dot dot-3"></div>
+            <div class="timeline-item left item-3">
+                <div class="card">
+                    <h3><i class="fas fa-heart"></i>3. COMUNICACIÓN EMOCIONAL</h3>
+                    <p>Mensajes enfocados en orgullo, tradición y unión. Genera conexiones profundas con el consumidor.</p>
+                </div>
+            </div>
+
+            <div class="dot dot-4"></div>
+            <div class="timeline-item right item-4">
+                <div class="card">
+                    <h3><i class="fas fa-handshake"></i>4. EXPERIENCIA DE MARCA CONSTANTE</h3>
+                    <p>Asegura una experiencia positiva y consistente en todos los puntos de contacto para fomentar la lealtad.</p>
+                </div>
+            </div>
+            
+            <div class="dot dot-5"></div>
+            <div class="timeline-item left item-5">
+                <div class="card">
+                    <h3><i class="fas fa-rocket"></i>5. ACTUALIZACIÓN Y MODERNIZACIÓN</h3>
+                    <p>Introduce nuevas versiones (Sin Azúcar) y adapta campañas a medios digitales para mantener su vigencia.</p>
+                </div>
+            </div>
+            
+            <div class="dot dot-6"></div>
+            <div class="timeline-item right item-6">
+                <div class="card">
+                    <h3><i class="fas fa-award"></i>6. COHESIÓN ENTRE VALORES Y ACCIONES</h3>
+                    <p>Los valores de calidad y peruanidad se reflejan en acciones concretas, reforzando la credibilidad.</p>
+                </div>
+            </div>
+
+        </div>
+        
+        </div>
+
+    <footer>
+        
+        <div class="footer-content">
+            
+            <div class="footer-item">
+                <h4><i class="fas fa-utensils"></i> Esencia de la Experiencia (Lo Sólido)</h4>
+                <p>Inca Kola simboliza **tradición, orgullo nacional** y es un componente fundamental de la **cultura culinaria**. La coherencia entre sabor, diseño y disponibilidad asegura una experiencia **sensorial y cultural** que genera lealtad.</p>
+            </div>
+            
+            <div class="footer-item">
+                <h4><i class="fas fa-mobile-alt"></i> El Desafío Digital (Lo Pendiente)</h4>
+                <p>Debe consolidar su presencia en el **entorno digital** para conectar con audiencias más jóvenes. Requiere generar **contenidos más innovadores y colaborativos** sin sacrificar su esencia tradicional.</p>
+            </div>
+        </div>
+
+        <div class="footer-logo-area">
+            <h3>Elementos Clave del Branding</h3>
+            <div class="footer-icons">
+                <div class="footer-icon-item">
+                    <i class="fas fa-palette"></i>
+                    <span>Identidad Visual</span>
+                </div>
+                <div class="footer-icon-item">
+                    <i class="fas fa-flag"></i>
+                    <span>Orgullo Nacional</span>
+                </div>
+                <div class="footer-icon-item">
+                    <i class="fas fa-heart"></i>
+                    <span>Conexión Emocional</span>
+                </div>
+                <div class="footer-icon-item">
+                    <i class="fas fa-users"></i>
+                    <span>Comunidad</span>
+                </div>
+                <div class="footer-icon-item">
+                    <i class="fas fa-trophy"></i>
+                    <span>Liderazgo de Marca</span>
+                </div>
+            </div>
+            
+            <a href="capitulo6.1.html" class="btn-chapter-link">CONTINUAR AL CAPÍTULO VI</a>
+
+        </div>
+        
+        <div class="footer-end">
+            LA EXPERIENCIA SE CULMINA CON LA COHERENCIA ENTRE COMUNICACIÓN, SABOR Y ROL EN LA VIDA DEL PERUANO ✨
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const path = document.querySelector('.progress-path');
+            const timelineWrapper = document.querySelector('.timeline-wrapper');
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            // 1. Inicialización del SVG
+            const pathLength = path.getTotalLength();
+            path.style.strokeDasharray = pathLength;
+            path.style.strokeDashoffset = pathLength;
+
+            function updateTimeline() {
+                
+                // 2. Cálculo del progreso para animar la curva
+                if (timelineWrapper) {
+                    const wrapperRect = timelineWrapper.getBoundingClientRect();
+                    const wrapperHeight = timelineWrapper.offsetHeight;
+                    const viewportHeight = window.innerHeight;
+                    
+                    let scrollDistance = -wrapperRect.top;
+                    let scrollableRange = wrapperHeight - viewportHeight;
+                    
+                    let progressRatio = Math.min(1, Math.max(0, scrollDistance / scrollableRange));
+
+                    const drawLength = pathLength * progressRatio;
+                    path.style.strokeDashoffset = pathLength - drawLength;
+                }
+
+                // 3. Control de visibilidad de los ítems (fade-in)
+                timelineItems.forEach(item => {
+                    const itemRect = item.getBoundingClientRect();
+                    const triggerPoint = window.innerHeight * 0.7; 
+
+                    if (itemRect.top < triggerPoint && itemRect.bottom > 0) {
+                        item.classList.add('in-view');
+                    } else if (itemRect.top > window.innerHeight) {
+                         item.classList.remove('in-view');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateTimeline);
+            updateTimeline();
+        });
+    </script>
+</body>
+</html>

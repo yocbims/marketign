@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inca Kola - Estrategia 2024</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gold-light': '#FFE566',
+                        'gold-main': '#FFD700',
+                        'gold-dark': '#B8860B',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .text-gold-gradient {
+            background: linear-gradient(to right, #F7CE00, #FFD700, #B8860B, #F7CE00);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Canvas de partículas */
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Línea decorativa dorada */
+        .gold-line {
+            height: 4px;
+            width: 80px;
+            background: linear-gradient(90deg, #FFD700, transparent);
+            margin-top: 2rem;
+        }
+
+        /* Estilos para tu imagen con efecto dorado */
+        .logo-dorado {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            
+            /* Efecto de brillo dorado pulsante */
+            animation: glow-gold 3s ease-in-out infinite alternate;
+            
+            /* Sombra dorada */
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.3),
+                0 0 40px rgba(255, 215, 0, 0.2),
+                0 0 60px rgba(255, 215, 0, 0.1);
+            
+            transition: all 0.5s ease;
+        }
+
+        /* Efecto de brillo pulsante */
+        @keyframes glow-gold {
+            from {
+                box-shadow: 
+                    0 0 20px rgba(255, 215, 0, 0.3),
+                    0 0 40px rgba(255, 215, 0, 0.2),
+                    0 0 60px rgba(255, 215, 0, 0.1);
+                filter: brightness(1) saturate(1);
+            }
+            to {
+                box-shadow: 
+                    0 0 30px rgba(255, 215, 0, 0.6),
+                    0 0 60px rgba(255, 215, 0, 0.4),
+                    0 0 90px rgba(255, 215, 0, 0.2),
+                    0 0 120px rgba(255, 215, 0, 0.1);
+                filter: brightness(1.1) saturate(1.2);
+            }
+        }
+
+        /* Efecto hover adicional */
+        .logo-dorado:hover {
+            animation: glow-gold-hover 1.5s ease-in-out infinite alternate;
+            transform: scale(1.02);
+        }
+
+        @keyframes glow-gold-hover {
+            from {
+                box-shadow: 
+                    0 0 40px rgba(255, 215, 0, 0.8),
+                    0 0 80px rgba(255, 215, 0, 0.5),
+                    0 0 120px rgba(255, 215, 0, 0.3);
+                filter: brightness(1.2) saturate(1.3);
+            }
+            to {
+                box-shadow: 
+                    0 0 50px rgba(255, 215, 0, 1),
+                    0 0 100px rgba(255, 215, 0, 0.6),
+                    0 0 150px rgba(255, 215, 0, 0.4),
+                    0 0 200px rgba(255, 215, 0, 0.2);
+                filter: brightness(1.3) saturate(1.4);
+            }
+        }
+
+        /* Contenedor adicional para partículas doradas alrededor del logo */
+        .logo-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+            border-radius: 12px;
+            z-index: 0;
+            animation: pulse-ring 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { opacity: 0.3; transform: scale(0.95); }
+            50% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 0.3; transform: scale(0.95); }
+        }
+
+        /* Estilos para el carrusel 360° - MÁS GRANDE */
+        .carousel-container {
+            perspective: 1500px;
+            height: 500px; /* Más alto */
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .carousel-360 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: rotate360 40s infinite linear;
+            transform-origin: center center;
+        }
+
+        @keyframes rotate360 {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 320px; /* Más ancho */
+            height: 380px; /* Más alto */
+            top: 50%;
+            left: 50%;
+            margin-left: -160px;
+            margin-top: -190px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 3px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.8),
+                0 0 30px rgba(255, 215, 0, 0.3);
+            transition: all 0.4s ease;
+            background: black;
+        }
+
+        .carousel-item:hover {
+            border-color: #FFD700;
+            transform: scale(1.08);
+            box-shadow: 
+                0 20px 50px rgba(255, 215, 0, 0.4),
+                0 0 50px rgba(255, 215, 0, 0.5);
+            z-index: 10;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .carousel-item:hover img {
+            transform: scale(1.15);
+        }
+
+        /* Etiqueta flotante en cada imagen */
+        .image-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 20px 15px 10px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-item:hover .image-label {
+            transform: translateY(0);
+        }
+
+        .label-text {
+            color: #FFD700;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Control de animación */
+        .carousel-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .control-btn {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #FFD700;
+            color: #FFD700;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .control-btn:hover {
+            background: #FFD700;
+            color: black;
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+        }
+
+        /* Indicador de velocidad */
+        .speed-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #FFD700;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 12px;
+            color: #FFD700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Pausar animación al hacer hover */
+        .carousel-container:hover .carousel-360 {
+            animation-play-state: paused;
+        }
+
+        /* Panel de información del carrusel */
+        .carousel-info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 12px;
+            padding: 15px;
+            max-width: 250px;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-title {
+            color: #FFD700;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-text {
+            color: #FFFFFF;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        /* --- ESTILOS DEL BOTÓN SIGUIENTE (NUEVO) --- */
+        .btn-siguiente {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 50px auto 0;
+            padding: 15px 30px;
+            background-color: #FFD700; /* gold-main */
+            color: #000; 
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.7),
+                0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-siguiente:hover {
+            background-color: #ffe566; /* gold-light */
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 0 15px rgba(255, 215, 0, 1),
+                0 6px 20px rgba(0, 0, 0, 0.6);
+        }
+        /* ------------------------------------------- */
+
+        /* ESTILOS PARA LA NUEVA IMAGEN DEBAJO DE LOS 3 CUADROS */
+        .espacio-imagen {
+            margin-top: 60px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .imagen-distribucion {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 12px;
+            margin: 0 auto;
+            display: block;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.7),
+                0 0 20px rgba(255, 215, 0, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .imagen-distribucion:hover {
+            border-color: #FFD700;
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.8),
+                0 0 30px rgba(255, 215, 0, 0.4);
+            transform: translateY(-5px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="canvas-bg"></div>
+
+    <section class="min-h-screen flex items-center justify-center py-10 relative z-10">
+        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <div class="gs-reveal">
+                <p class="text-gold-main font-bold tracking-[0.2em] text-sm mb-4 uppercase">
+                    Estrategia de Distribución de Inca Kola
+                </p>
+                
+                <h1 class="text-7xl md:text-8xl font-black leading-tight tracking-tight mb-6">
+                    El Sabor <br>
+                    <span class="text-gold-gradient">Dorado</span>
+                </h1>
+                
+                <p class="text-gray-400 text-lg md:text-xl font-light max-w-lg leading-relaxed border-l-2 border-gray-800 pl-6">
+                    Estrategia de posicionamiento de mercado enfocada en la identidad nacional y la distribución intensiva.
+                </p>
+
+                <div class="gold-line"></div>
+            </div>
+
+            <div class="gs-reveal logo-container">
+                <img src="imagenes/imagenes_6/logo_Dorado.png" 
+                    alt="Logo Inca Kola Dorado" 
+                    class="logo-dorado">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-24 bg-zinc-950">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="text-gold-main font-black text-4xl">6.3</span>
+                <h2 class="text-4xl font-bold text-white uppercase tracking-wider">Distribución</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 border border-zinc-800 bg-black hover:border-gold-dark/50 transition-all group">
+                    <i class="fas fa-truck text-3xl text-zinc-600 group-hover:text-gold-main mb-6 transition-colors"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Cobertura Total</h3>
+                    <p class="text-zinc-400 text-sm">Presencia garantizada en bodegas, zonas urbanas y rurales profundas.</p>
+                </div>
+                <div class="p-8 border border-zinc-800 bg-black hover:border-gold-dark/50 transition-all group">
+                    <i class="fas fa-utensils text-3xl text-zinc-600 group-hover:text-gold-main mb-6 transition-colors"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Aliado HORECA</h3>
+                    <p class="text-zinc-400 text-sm">El socio estratégico indiscutible para la gastronomía peruana.</p>
+                </div>
+                <div class="p-8 border border-zinc-800 bg-black hover:border-gold-dark/50 transition-all group">
+                    <i class="fas fa-globe text-3xl text-zinc-600 group-hover:text-gold-main mb-6 transition-colors"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Exportación</h3>
+                    <p class="text-zinc-400 text-sm">Llegando a comunidades peruanas en el extranjero (EEUU, Europa, Chile).</p>
+                </div>
+            </div>
+
+            <!-- ESPACIO AÑADIDO PARA TU IMAGEN -->
+            <div class="espacio-imagen">
+                <!-- REEMPLAZA "ruta/de/tu/imagen.jpg" CON LA RUTA DE TU IMAGEN -->
+                <img src="imagenes/plaza.png" 
+                     alt="Imagen de distribución adicional" 
+                     class="imagen-distribucion">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-24 bg-black relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-zinc-900 to-transparent opacity-50"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-zinc-800 pb-8">
+                <div>
+                    <span class="text-gold-main font-black text-4xl">6.4</span>
+                    <h2 class="text-4xl font-bold text-white uppercase tracking-wider mt-2">Promoción</h2>
+                </div>
+                <div class="mt-6 md:mt-0 text-right">
+                    <p class="text-xl italic text-white font-serif">"La bebida de sabor nacional"</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div class="flex gap-6 items-start">
+                        <div class="w-2 h-12 bg-gold-dark shrink-0"></div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-white mb-2">Publicidad Emocional</h4>
+                            <p class="text-zinc-400">Conexión profunda en fiestas patrias, enfocada en el orgullo y la identidad.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <div class="w-2 h-12 bg-gold-dark shrink-0"></div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-white mb-2">Digital & Influencers</h4>
+                            <p class="text-zinc-400">Estrategia agresiva en redes sociales, sorteos y creadores de contenido.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 grid grid-cols-2 gap-6">
+                        <div class="text-center p-4 border border-gold-dark/30 rounded-lg bg-black/50">
+                            <div class="text-3xl font-bold text-gold-main mb-2">+45%</div>
+                            <div class="text-sm text-zinc-400">Engagement Digital</div>
+                        </div>
+                        <div class="text-center p-4 border border-gold-dark/30 rounded-lg bg-black/50">
+                            <div class="text-3xl font-bold text-gold-main mb-2">+120</div>
+                            <div class="text-sm text-zinc-400">Influencers Activos</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="h-auto min-h-[550px] bg-gradient-to-br from-zinc-900/50 to-black border-2 border-gold-dark/30 rounded-2xl overflow-hidden relative group p-6">
+                    
+                    <div class="carousel-container">
+                        <div class="carousel-360" id="carousel360">
+                            </div>
+                        
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="py-16 bg-zinc-950/70 border-t border-zinc-800">
+        <div class="container mx-auto px-6 text-center">
+            
+            <p class="text-zinc-400 text-sm mb-4">Fin de la Sección 6: Distribución y Promoción.</p>
+            
+            <a href="capitulo7.1.html" class="btn-siguiente">
+                CONTINUAR AL CAPÍTULO VII
+            </a>
+            
+            <p class="text-zinc-600 text-xs mt-8">
+                Presentación de Estrategia 2024 - Inca Kola
+            </p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // THREE.JS: Partículas de "Polvo Dorado" Espacial
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 20;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('canvas-bg').appendChild(renderer.domElement);
+
+        // Crear partículas
+        const geometry = new THREE.BufferGeometry();
+        const count = 400;
+        const posArray = new Float32Array(count * 3);
+        const sizesArray = new Float32Array(count);
+
+        for(let i = 0; i < count * 3; i+=3) {
+            posArray[i] = (Math.random() - 0.5) * 40;
+            posArray[i+1] = (Math.random() - 0.5) * 40;
+            posArray[i+2] = (Math.random() - 0.5) * 20;
+            
+            sizesArray[i/3] = Math.random();
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        geometry.setAttribute('size', new THREE.BufferAttribute(sizesArray, 1));
+
+        const material = new THREE.PointsMaterial({
+            size: 0.1,
+            color: 0xFFD700,
+            transparent: true,
+            opacity: 0.8,
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        // Animación suave
+        function animate() {
+            requestAnimationFrame(animate);
+            particles.rotation.y += 0.0003;
+            particles.rotation.x -= 0.0001;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.from(".gs-reveal", {
+            duration: 1.5,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "power4.out"
+        });
+
+        // CARRUSEL 360° - Configuración
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('carousel360');
+            
+            // ¡ESTA RUTA FUE CORREGIDA DE 'images/' A 'imagenes/'!
+            const images = [
+                'imagenes/imagenes_6/promocion.jpeg',  // Archivo 1
+                'imagenes/imagenes_6/promocion8.png',  // Archivo 2
+                'imagenes/imagenes_6/promocion3.webp', // Archivo 3
+                'imagenes/imagenes_6/promocion4.jpeg', // Archivo 4
+                'imagenes/imagenes_6/promocion5.jpg',  // Archivo 5
+                'imagenes/imagenes_6/promocion7.jpg',  // Archivo 6
+            ];
+            
+            // Textos para cada imagen (puedes personalizar)
+            const textos = [
+                "Promoción Principal (JPEG)",
+                "Promoción 2 (JPG)",
+                "Promoción 3 (WEBP)",
+                "Promoción 4 (JPEG)",
+                "Promoción 5 (JPG)",
+                "Promoción 7 (JPG)"
+            ];
+
+            const totalItems = images.length;
+            
+            // Crear elementos del carrusel
+            images.forEach((img, index) => {
+                const item = document.createElement('div');
+                item.className = 'carousel-item';
+                
+                // Calcular posición 3D
+                const angle = (index / totalItems) * Math.PI * 2;
+                const radius = 400; // Radio más grande
+                
+                const x = Math.sin(angle) * radius;
+                const z = Math.cos(angle) * radius;
+                
+                // El carrusel necesita la rotación negativa para girar de forma coherente.
+                item.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${-angle}rad)`;
+                
+                const imgElement = document.createElement('img');
+                imgElement.src = img;
+                imgElement.alt = `Campaña ${index + 1}`;
+                imgElement.loading = 'lazy';
+                
+                // Crear etiqueta flotante
+                const label = document.createElement('div');
+                label.className = 'image-label';
+                
+                // Verificar si existe un texto para el índice actual
+                const labelText = textos[index] ? textos[index] : `Ítem ${index + 1}`;
+                
+                label.innerHTML = `<div class="label-text">${labelText}</div>`;
+                
+                item.appendChild(imgElement);
+                item.appendChild(label);
+                carousel.appendChild(item);
+            });
+        });
+        
+        // Controles del carrusel
+        let rotationSpeed = 40; // segundos para una rotación completa
+        let isPaused = false;
+
+        function updateCarouselSpeed() {
+            const carousel = document.querySelector('.carousel-360');
+            const speedText = document.getElementById('speedText');
+            
+            if (carousel) {
+                carousel.style.animationDuration = `${rotationSpeed}s`;
+                
+                // Actualizar texto de velocidad (NOTA: Este texto no se muestra en el HTML, pero la función está lista)
+                if (speedText) {
+                    if (rotationSpeed <= 20) {
+                        speedText.textContent = 'Rápido';
+                    } else if (rotationSpeed <= 40) {
+                        speedText.textContent = 'Normal';
+                    } else if (rotationSpeed <= 60) {
+                        speedText.textContent = 'Lento';
+                    } else {
+                        speedText.textContent = 'Muy Lento';
+                    }
+                }
+            }
+        }
+
+        function pauseCarousel() {
+            const carousel = document.querySelector('.carousel-360');
+            if (carousel) {
+                carousel.style.animationPlayState = 'paused';
+                isPaused = true;
+            }
+        }
+
+        function playCarousel() {
+            const carousel = document.querySelector('.carousel-360');
+            if (carousel) {
+                carousel.style.animationPlayState = 'running';
+                isPaused = false;
+            }
+        }
+
+        function speedUp() {
+            rotationSpeed = Math.max(10, rotationSpeed - 10);
+            updateCarouselSpeed();
+            if (!isPaused) playCarousel();
+        }
+
+        function speedDown() {
+            rotationSpeed = Math.min(80, rotationSpeed + 10);
+            updateCarouselSpeed();
+            if (!isPaused) playCarousel();
+        }
+
+        function resetSpeed() {
+            rotationSpeed = 40;
+            updateCarouselSpeed();
+            if (!isPaused) playCarousel();
+        }
+
+        // Alternar pausa/reproducción con clic en el carrusel
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.carousel-container') && !e.target.closest('.control-btn')) {
+                const carousel = document.querySelector('.carousel-360');
+                if (carousel) {
+                    // Si el carrusel está en pausa por el hover, el clic lo reanuda/pausa
+                    if (carousel.style.animationPlayState === 'paused' || isPaused) {
+                        playCarousel();
+                    } else {
+                        pauseCarousel();
+                    }
+                }
+            }
+        });
+
+        // Inicializar velocidad
+        setTimeout(updateCarouselSpeed, 100);
+    </script>
+</body>
+</html>
